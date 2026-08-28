@@ -1,5 +1,5 @@
 import './style.css';
-import { accessibleHtml, csvExport, issueReport, parseOcrJson, reviewIssues } from './logic';
+import { accessibleHtml, assertBoundedGrid, boundedGridCoordinate, csvExport, issueReport, MAX_CELLS, MAX_GRID_DIMENSION, nextAvailableGridPosition, parseOcrJson, repairPersistedGrid, reviewIssues, tableMatrix } from './logic';
 import { sampleProject } from './sample';
 import { clearProject, loadProject, saveProject } from './storage';
 import type { Cell, Project } from './types';
@@ -9,22 +9,25 @@ const SLUG = 'accessible-table-ocr-check';
 const LICENSE_KEY = `sb_license:${SLUG}`;
 const VERDICT_KEY = `${LICENSE_KEY}:verdict`;
 const API_BASE = 'https://api.sociobot.in/api/v1';
+const LICENSE_VERIFY_PATH = '/api/license/verify';
 let project: Project | null = null;
 let selectedCell = '';
 let saveTimer = 0;
 let isOffline = !navigator.onLine || sessionStorage.getItem('proof-desk-offline') === 'true';
 let licenseActive = false;
 let licenseNotice = '';
+let productNotice = '';
 
 const escapeHtml = (value: string) => value.replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char] ?? char);
 
 function shell(content: string) {
   return `<header class="site-header">
-    <a class="wordmark" href="/" aria-label="Accessible Table OCR Check home"><span class="registration" aria-hidden="true">＋</span><span>Table<br><b>proofing desk</b></span></a>
+    <a class="wordmark" href="/"><span class="registration" aria-hidden="true">＋</span><span>Table<br><b>proofing desk</b></span></a>
     <nav aria-label="Primary"><a href="/#how">How it works</a><a href="/#license">Desk license</a></nav>
     <span class="local-badge"><span aria-hidden="true">●</span> Local by default</span>
   </header>
   ${isOffline ? '<div class="offline-banner" role="status">You’re offline. The open proof stays on this device and exports still work.</div>' : ''}
+  ${productNotice ? `<div class="product-notice" role="alert"><b>Check the proof.</b> ${escapeHtml(productNotice)}</div>` : ''}
   <main id="main">${content}</main>
   <footer><p><b>Accessible Table OCR Check</b> · Your pages stay in this browser.</p><nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-accessible-table-ocr-check">Source</a></nav><p class="generated-note">The proofing-desk artwork was generated for this product.</p></footer>
   <div id="live-status" class="sr-only" aria-live="polite"></div>
@@ -51,7 +54,7 @@ function landing() {
       <div class="hero-actions"><button class="button primary" type="button" data-action="sample">Open a scrambled sample <span aria-hidden="true">→</span></button><a class="button quiet" href="#import">Import your page</a></div>
       <ul class="trust-list" aria-label="Product guarantees"><li>Runs in your browser</li><li>No document upload</li><li>Works offline after first visit</li></ul>
     </div>
-    <figure class="hero-art"><img src="/assets/proofing-table.webp" width="1280" height="853" alt="Tactile paper collage showing scattered table cells being matched to an orderly grid" fetchpriority="high" decoding="async"><figcaption>Source page → reading order → semantic table</figcaption></figure>
+    <figure class="hero-art"><picture><source media="(max-width: 620px)" srcset="/assets/proofing-table-640.webp" width="640" height="427"><img src="/assets/proofing-table.webp" width="1280" height="853" sizes="(max-width: 620px) 125vw, (max-width: 900px) 115vw, 67vw" alt="Tactile paper collage showing scattered table cells being matched to an orderly grid" fetchpriority="high" decoding="async"></picture><figcaption>Source page → reading order → semantic table</figcaption></figure>
   </section>
   <section id="import" class="import-section" aria-labelledby="import-heading"><div><p class="eyebrow">Start a proof</p><h2 id="import-heading">Bring the page and its OCR blocks.</h2><p>Use either input first. OCR JSON should contain a <code>cells</code> or <code>blocks</code> array with text, row, column, and optional bounding box.</p></div>
     <div class="import-slips">
@@ -74,7 +77,8 @@ function readFile(file: File, asText = false): Promise<string> {
     const reader = new FileReader();
     reader.onload = () => resolve(String(reader.result));
     reader.onerror = () => reject(new Error('The file could not be read. Try a different copy.'));
-    asText ? reader.readAsText(file) : reader.readAsDataURL(file);
+    if (asText) reader.readAsText(file);
+    else reader.readAsDataURL(file);
   });
 }
 
@@ -107,13 +111,11 @@ function bindLanding() {
 
 function tablePreview(cells: Cell[]) {
   if (!cells.length) return '<p class="empty-mini">No cells yet.</p>';
-  const maxRow = Math.max(...cells.map((cell) => cell.row));
-  const maxCol = Math.max(...cells.map((cell) => cell.col));
+  const matrix = tableMatrix(cells);
   let output = '<table><caption>Current semantic table preview</caption>';
-  for (let row = 1; row <= maxRow; row++) {
+  for (const row of matrix) {
     output += '<tr>';
-    for (let col = 1; col <= maxCol; col++) {
-      const cell = cells.find((item) => item.row === row && item.col === col);
+    for (const cell of row) {
       if (!cell) output += '<td aria-label="Empty cell"></td>';
       else if (cell.role === 'columnheader') output += `<th scope="col">${escapeHtml(cell.text)}</th>`;
       else if (cell.role === 'rowheader') output += `<th scope="row">${escapeHtml(cell.text)}</th>`;
@@ -167,7 +169,20 @@ function bindWorkbench() {
     row.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-field]').forEach((field) => field.addEventListener('change', () => {
       const cell = project!.cells.find((item) => item.id === id); if (!cell) return;
       const key = field.dataset.field as 'text' | 'role' | 'row' | 'col';
-      if (key === 'row' || key === 'col') cell[key] = Math.max(1, Number(field.value) || 1);
+      if (key === 'row' || key === 'col') {
+        try {
+          cell[key] = boundedGridCoordinate(field.value, key === 'row' ? 'Row' : 'Column');
+          field.setCustomValidity('');
+        } catch (error) {
+          const message = error instanceof Error ? error.message : `Use a position from 1 to ${MAX_GRID_DIMENSION}.`;
+          field.value = String(cell[key]);
+          field.setCustomValidity(message);
+          field.reportValidity();
+          productNotice = `${message} The previous position was kept; enter a value from 1 to ${MAX_GRID_DIMENSION}.`;
+          render();
+          return;
+        }
+      }
       else if (key === 'role') cell.role = field.value as Cell['role'];
       else cell.text = field.value;
       scheduleSave('Cell updated.'); render();
@@ -183,8 +198,13 @@ function bindWorkbench() {
     });
   });
   document.querySelector('[data-action="add"]')?.addEventListener('click', () => {
-    const maxRow = Math.max(1, ...project!.cells.map((cell) => cell.row));
-    const cell: Cell = { id: crypto.randomUUID(), text: '', row: maxRow, col: project!.cells.filter((item) => item.row === maxRow).length + 1, role: 'data', box: { x: 10, y: 10, width: 20, height: 10 } };
+    if (project!.cells.length >= MAX_CELLS) {
+      productNotice = `This proof already has ${MAX_CELLS} cells. Remove a cell or split the table before adding another.`;
+      render();
+      return;
+    }
+    const position = nextAvailableGridPosition(project!.cells);
+    const cell: Cell = { id: crypto.randomUUID(), text: '', ...position, role: 'data', box: { x: 10, y: 10, width: 20, height: 10 } };
     project!.cells.push(cell); selectedCell = cell.id; scheduleSave('Blank cell added.'); render();
   });
   document.querySelector('[data-action="issues"]')?.addEventListener('click', () => document.querySelector('#issues')?.scrollIntoView({ behavior: 'smooth' }));
@@ -220,24 +240,33 @@ function bindImageInput(selector: string) {
 async function importOcr(event: Event) {
   const file = (event.target as HTMLInputElement).files?.[0]; if (!file || !project) return;
   try { const parsed = parseOcrJson(await readFile(file, true)); project.cells = parsed.cells; project.sourcePage = parsed.sourcePage || project.sourcePage; await persist(`${parsed.cells.length} OCR blocks imported.`); render(); }
-  catch (error) { announce(error instanceof Error ? error.message : 'OCR JSON could not be imported.'); }
+  catch (error) {
+    productNotice = `${error instanceof Error ? error.message : 'OCR JSON could not be imported.'} The current proof was not changed; correct the file and import it again.`;
+    render();
+  }
 }
 
 function exportProject(kind: string) {
   if (!project) return;
-  const formats: Record<string, { content: string; type: string; ext: string }> = {
-    html: { content: accessibleHtml(project), type: 'text/html', ext: 'html' },
-    csv: { content: csvExport(project), type: 'text/csv', ext: 'csv' },
-    report: { content: issueReport(project), type: 'text/plain', ext: 'txt' },
-    json: { content: JSON.stringify(project, null, 2), type: 'application/json', ext: 'json' },
-  };
-  const format = formats[kind]; if (!format) return;
-  const blob = new Blob([format.content], { type: `${format.type};charset=utf-8` });
-  const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `${project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'table'}-${kind}.${format.ext}`; link.click(); URL.revokeObjectURL(link.href); announce(`${kind === 'report' ? 'Issue report' : kind.toUpperCase()} exported.`);
+  try {
+    assertBoundedGrid(project.cells);
+    const formats: Record<string, { content: string; type: string; ext: string }> = {
+      html: { content: accessibleHtml(project), type: 'text/html', ext: 'html' },
+      csv: { content: csvExport(project), type: 'text/csv', ext: 'csv' },
+      report: { content: issueReport(project), type: 'text/plain', ext: 'txt' },
+      json: { content: JSON.stringify(project, null, 2), type: 'application/json', ext: 'json' },
+    };
+    const format = formats[kind]; if (!format) return;
+    const blob = new Blob([format.content], { type: `${format.type};charset=utf-8` });
+    const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `${project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'table'}-${kind}.${format.ext}`; link.click(); URL.revokeObjectURL(link.href); announce(`${kind === 'report' ? 'Issue report' : kind.toUpperCase()} exported.`);
+  } catch (error) {
+    productNotice = `${error instanceof Error ? error.message : 'This proof could not be exported.'} Correct the grid positions and try again.`;
+    render();
+  }
 }
 
 function scheduleSave(message: string) { window.clearTimeout(saveTimer); saveTimer = window.setTimeout(() => persist(message), 250); }
-async function persist(message: string) { if (!project) return; project.updatedAt = new Date().toISOString(); await saveProject(project); announce(message); }
+async function persist(message: string) { if (!project) return; assertBoundedGrid(project.cells); project.updatedAt = new Date().toISOString(); await saveProject(project); announce(message); }
 function announce(message: string) { const live = document.querySelector<HTMLElement>('#live-status'); if (live) live.textContent = message; }
 
 function bindLicense() {
@@ -259,8 +288,8 @@ async function initializeLicense() {
 
 async function verifyLicense(token: string, rerender: boolean) {
   try {
-    const response = await fetch(`${API_BASE}/products/${SLUG}/verify?license=${encodeURIComponent(token)}`);
-    if (!response.ok) throw new Error('Verification service unavailable.');
+    const response = await fetch(`${LICENSE_VERIFY_PATH}?license=${encodeURIComponent(token)}`);
+    if (!response.ok) throw new Error(response.status === 429 ? 'Too many verification attempts. Wait a minute and try again.' : 'Verification service unavailable.');
     const result = await response.json() as { valid: boolean; reason?: string };
     licenseActive = result.valid; localStorage.setItem(VERDICT_KEY, JSON.stringify({ valid: result.valid, checkedAt: Date.now() }));
     licenseNotice = result.valid ? 'License verified on this device.' : 'This license is no longer active. Free proofing and exports are unchanged.';
@@ -290,7 +319,8 @@ function render() {
   const path = location.pathname.replace(/\/+$/, '');
   if (path === '/privacy') { legalPage('privacy'); return; }
   if (path === '/terms') { legalPage('terms'); return; }
-  project ? workbench() : landing();
+  if (project) workbench();
+  else landing();
   document.querySelector('[data-action="reload"]')?.addEventListener('click', () => location.reload());
 }
 
@@ -298,7 +328,17 @@ window.addEventListener('online', () => { isOffline = false; sessionStorage.remo
 window.addEventListener('offline', () => { isOffline = true; sessionStorage.setItem('proof-desk-offline', 'true'); render(); });
 
 await initializeLicense();
-try { project = await loadProject(); } catch { project = null; }
+try {
+  const saved = await loadProject();
+  if (saved) {
+    const recovered = repairPersistedGrid(saved);
+    project = recovered.project;
+    if (recovered.repaired) {
+      productNotice = `Positions outside the supported 1–${MAX_GRID_DIMENSION} grid were moved to the nearest boundary. Review those positions or import corrected OCR JSON.`;
+      await saveProject(project);
+    }
+  }
+} catch { project = null; }
 render();
 registerServiceWorker();
 void checkOfflineMarker();

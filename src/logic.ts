@@ -1,11 +1,67 @@
 import type { Box, Cell, CellRole, Project, ReviewIssue } from './types';
 
+export const MAX_CELLS = 500;
+export const MAX_GRID_DIMENSION = 99;
+
 const escapeHtml = (value: string) => value.replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[char] ?? char);
 
 const finitePositive = (value: unknown, fallback: number) => {
   const parsed = Number(value);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
 };
+
+export function boundedGridCoordinate(value: unknown, label = 'Grid coordinate', fallback = 1): number {
+  const normalized = Math.max(1, Math.round(finitePositive(value, fallback)));
+  if (normalized > MAX_GRID_DIMENSION) {
+    throw new Error(`${label} ${normalized} is outside the supported 1–${MAX_GRID_DIMENSION} range. Correct the position and try again.`);
+  }
+  return normalized;
+}
+
+export function assertBoundedGrid(cells: Cell[]): void {
+  if (cells.length > MAX_CELLS) throw new Error(`A proof can contain at most ${MAX_CELLS} cells.`);
+  for (const [index, cell] of cells.entries()) {
+    for (const [axis, value] of [['row', cell.row], ['column', cell.col]] as const) {
+      if (!Number.isInteger(value) || value < 1 || value > MAX_GRID_DIMENSION) {
+        throw new Error(`Cell ${index + 1} has ${axis} ${String(value)}, outside the supported 1–${MAX_GRID_DIMENSION} range.`);
+      }
+    }
+  }
+}
+
+export function repairPersistedGrid(project: Project): { project: Project; repaired: boolean } {
+  let repaired = false;
+  const repairCells = (cells: Cell[]) => cells.slice(0, MAX_CELLS).map((cell) => {
+    const repair = (value: unknown) => {
+      const parsed = Number(value);
+      const normalized = Number.isFinite(parsed) ? Math.min(MAX_GRID_DIMENSION, Math.max(1, Math.round(parsed))) : 1;
+      if (normalized !== value) repaired = true;
+      return normalized;
+    };
+    return { ...cell, row: repair(cell.row), col: repair(cell.col) };
+  });
+  if (project.cells.length > MAX_CELLS) repaired = true;
+  const checkpoints = project.checkpoints.map((checkpoint) => {
+    if (checkpoint.cells.length > MAX_CELLS) repaired = true;
+    return { ...checkpoint, cells: repairCells(checkpoint.cells) };
+  });
+  return { project: { ...project, cells: repairCells(project.cells), checkpoints }, repaired };
+}
+
+export function nextAvailableGridPosition(cells: Cell[]): { row: number; col: number } {
+  assertBoundedGrid(cells);
+  const occupied = new Set(cells.map((cell) => `${cell.row}:${cell.col}`));
+  const preferredRow = Math.max(1, ...cells.map((cell) => cell.row));
+  for (let col = 1; col <= MAX_GRID_DIMENSION; col++) {
+    if (!occupied.has(`${preferredRow}:${col}`)) return { row: preferredRow, col };
+  }
+  for (let row = 1; row <= MAX_GRID_DIMENSION; row++) {
+    for (let col = 1; col <= MAX_GRID_DIMENSION; col++) {
+      if (!occupied.has(`${row}:${col}`)) return { row, col };
+    }
+  }
+  throw new Error(`The ${MAX_GRID_DIMENSION} × ${MAX_GRID_DIMENSION} grid is full.`);
+}
 
 const normalizedBox = (raw: Record<string, unknown>, index: number, pageWidth = 1, pageHeight = 1): Box => {
   const candidate = raw.bbox ?? raw.boundingBox ?? raw.box;
@@ -34,7 +90,7 @@ export function parseOcrJson(text: string): { cells: Cell[]; sourcePage: string 
   const firstPage = (pages[0] && typeof pages[0] === 'object' ? pages[0] : {}) as Record<string, unknown>;
   const candidates = root.cells ?? root.blocks ?? firstPage.cells ?? firstPage.blocks;
   if (!Array.isArray(candidates) || candidates.length === 0) throw new Error('No cells or blocks were found. Use a “cells” or “blocks” array.');
-  if (candidates.length > 500) throw new Error('This page has more than 500 blocks. Split it into one table per review.');
+  if (candidates.length > MAX_CELLS) throw new Error(`This page has more than ${MAX_CELLS} blocks. Split it into one table per review.`);
   const pageWidth = finitePositive(root.width ?? firstPage.width, 1);
   const pageHeight = finitePositive(root.height ?? firstPage.height, 1);
   const cells = candidates.map((item, index) => {
@@ -46,13 +102,13 @@ export function parseOcrJson(text: string): { cells: Cell[]; sourcePage: string 
     return {
       id: String(raw.id ?? `cell-${crypto.randomUUID()}`),
       text: String(textValue),
-      row: Math.max(1, Math.round(finitePositive(raw.row ?? raw.rowIndex, Math.floor(index / 4) + 1))),
-      col: Math.max(1, Math.round(finitePositive(raw.col ?? raw.column ?? raw.columnIndex, index % 4 + 1))),
+      row: boundedGridCoordinate(raw.row ?? raw.rowIndex, `Block ${index + 1} row`, Math.floor(index / 4) + 1),
+      col: boundedGridCoordinate(raw.col ?? raw.column ?? raw.columnIndex, `Block ${index + 1} column`, index % 4 + 1),
       role,
       box: normalizedBox(raw, index, pageWidth, pageHeight),
       order: finitePositive(raw.order ?? raw.readingOrder, index + 1),
     };
-  }).sort((a, b) => a.order - b.order).map(({ order: _order, ...cell }) => cell);
+  }).sort((a, b) => a.order - b.order).map(({ id, text: cellText, row, col, role: cellRole, box }) => ({ id, text: cellText, row, col, role: cellRole, box }));
   return { cells, sourcePage: String(root.sourcePage ?? root.page ?? firstPage.page ?? 'Imported OCR page') };
 }
 
@@ -74,10 +130,12 @@ export function reviewIssues(cells: Cell[]): ReviewIssue[] {
   return issues;
 }
 
-function tableMatrix(cells: Cell[]) {
+export function tableMatrix(cells: Cell[]) {
+  assertBoundedGrid(cells);
   const maxRow = Math.max(1, ...cells.map((cell) => cell.row));
   const maxCol = Math.max(1, ...cells.map((cell) => cell.col));
-  return Array.from({ length: maxRow }, (_, row) => Array.from({ length: maxCol }, (_, col) => cells.find((cell) => cell.row === row + 1 && cell.col === col + 1)));
+  const byPosition = new Map(cells.map((cell) => [`${cell.row}:${cell.col}`, cell]));
+  return Array.from({ length: maxRow }, (_, row) => Array.from({ length: maxCol }, (_, col) => byPosition.get(`${row + 1}:${col + 1}`)));
 }
 
 export function accessibleHtml(project: Project): string {

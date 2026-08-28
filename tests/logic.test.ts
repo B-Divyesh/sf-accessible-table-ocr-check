@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { accessibleHtml, csvExport, parseOcrJson, reviewIssues } from '../src/logic';
+import { accessibleHtml, csvExport, nextAvailableGridPosition, parseOcrJson, repairPersistedGrid, reviewIssues } from '../src/logic';
 import { sampleProject } from '../src/sample';
 
 describe('OCR import and review', () => {
@@ -24,6 +24,31 @@ describe('OCR import and review', () => {
     [corrected[4], corrected[5]] = [corrected[5], corrected[4]];
     expect(reviewIssues(corrected)).toEqual([]);
   });
+
+  it.each([
+    ['row', { row: 10_000, column: 1 }],
+    ['column', { row: 1, column: 100 }],
+  ])('rejects an imported %s outside the bounded grid before use', (axis, coordinates) => {
+    expect(() => parseOcrJson(JSON.stringify({ cells: [{ text: 'Unsafe', ...coordinates }] })))
+      .toThrow(`Block 1 ${axis} ${coordinates[axis as keyof typeof coordinates]} is outside the supported 1–99 range`);
+  });
+
+  it('repairs legacy persisted coordinates and checkpoints into the safe grid', () => {
+    const unsafe = structuredClone(sampleProject);
+    unsafe.cells[0].row = 10_000;
+    unsafe.cells[1].col = 100;
+    unsafe.checkpoints = [{ id: 'old', name: 'Old', createdAt: '', cells: structuredClone(unsafe.cells) }];
+    const repaired = repairPersistedGrid(unsafe);
+    expect(repaired.repaired).toBe(true);
+    expect(repaired.project.cells[0].row).toBe(99);
+    expect(repaired.project.cells[1].col).toBe(99);
+    expect(repaired.project.checkpoints[0].cells[0].row).toBe(99);
+  });
+
+  it('adds within the grid even when the final row already has 99 occupied columns', () => {
+    const cells = Array.from({ length: 99 }, (_, index) => ({ ...sampleProject.cells[0], id: String(index), row: 99, col: index + 1 }));
+    expect(nextAvailableGridPosition(cells)).toEqual({ row: 1, col: 1 });
+  });
 });
 
 describe('accessible exports', () => {
@@ -38,5 +63,12 @@ describe('accessible exports', () => {
     const rows = csvExport(sampleProject).trim().split('\r\n');
     expect(rows).toHaveLength(3);
     expect(rows[1]).toBe('River,12 of 14,Yes');
+  });
+
+  it('refuses forged out-of-range coordinates before allocating an export matrix', () => {
+    const unsafe = structuredClone(sampleProject);
+    unsafe.cells[0].row = 1_000_000_000;
+    expect(() => accessibleHtml(unsafe)).toThrow(/outside the supported 1–99 range/);
+    expect(() => csvExport(unsafe)).toThrow(/outside the supported 1–99 range/);
   });
 });

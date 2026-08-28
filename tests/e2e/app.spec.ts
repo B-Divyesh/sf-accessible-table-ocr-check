@@ -36,6 +36,113 @@ test('fits the core workflow on a 390px viewport', async ({ page }, testInfo) =>
   await expect(page.getByText('No structural errors detected')).toBeVisible();
 });
 
+test('preserves hero artwork proportions, visible naming, and mobile touch targets', async ({ page }, testInfo) => {
+  await page.goto('/');
+  const wordmark = page.getByRole('link', { name: 'Table proofing desk', exact: true });
+  await expect(wordmark).toBeVisible();
+  await expect(wordmark).not.toHaveAttribute('aria-label');
+  const mismatch = await new AxeBuilder({ page }).withRules(['label-content-name-mismatch']).analyze();
+  expect(mismatch.violations).toEqual([]);
+
+  const hero = page.locator('.hero-art img');
+  const image = await hero.evaluate((element: HTMLImageElement) => ({
+    width: element.clientWidth,
+    height: element.clientHeight,
+    source: element.currentSrc,
+  }));
+  expect(Math.abs(image.width / image.height - 1280 / 853)).toBeLessThan(0.02);
+  expect(image.source).toContain(testInfo.project.name === 'mobile' ? 'proofing-table-640.webp' : 'proofing-table.webp');
+
+  if (testInfo.project.name === 'mobile') {
+    const targets = await page.locator('.merchant a, footer nav a').evaluateAll((links) => links.map((link) => {
+      const rect = link.getBoundingClientRect();
+      return { name: link.textContent?.trim(), width: rect.width, height: rect.height };
+    }));
+    expect(targets.length).toBeGreaterThan(0);
+    expect(targets.filter((target) => target.width < 44 || target.height < 44)).toEqual([]);
+  }
+});
+
+test('rejects oversized imported grid coordinates before persistence', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('#ocr-file').setInputFiles({
+    name: 'unsafe-grid.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify({ cells: [{ text: 'Unsafe', row: 10_000, column: 1 }] })),
+  });
+  await expect(page.getByText(/Block 1 row 10000 is outside the supported 1–99 range/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Make the table read/ })).toBeVisible();
+  const stored = await page.evaluate(async () => {
+    const request = indexedDB.open('table-proofing-desk', 1);
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    const result = await new Promise((resolve, reject) => {
+      const get = db.transaction('projects').objectStore('projects').get('current');
+      get.onsuccess = () => resolve(get.result ?? null);
+      get.onerror = () => reject(get.error);
+    });
+    db.close();
+    return result;
+  });
+  expect(stored).toBeNull();
+});
+
+test('rejects editor values above 99 and keeps the last safe persisted value', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: /Open a scrambled sample/ }).click();
+  const row = page.locator('[data-cell="c1"] [data-field="row"]');
+  await row.fill('100');
+  await row.press('Tab');
+  await expect(page.getByRole('alert')).toContainText(/Row 100 is outside the supported 1–99 range/);
+  await expect(row).toHaveValue('1');
+  await page.reload();
+  await expect(page.locator('[data-cell="c1"] [data-field="row"]')).toHaveValue('1');
+});
+
+test('repairs a legacy unsafe saved coordinate before rendering', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'desktop project only');
+  await page.goto('/');
+  await page.getByRole('button', { name: /Open a scrambled sample/ }).click();
+  await page.evaluate(async () => {
+    const request = indexedDB.open('table-proofing-desk', 1);
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    const project = await new Promise<any>((resolve, reject) => {
+      const get = db.transaction('projects').objectStore('projects').get('current');
+      get.onsuccess = () => resolve(get.result);
+      get.onerror = () => reject(get.error);
+    });
+    project.cells[0].row = 10_000;
+    await new Promise<void>((resolve, reject) => {
+      const transaction = db.transaction('projects', 'readwrite');
+      transaction.objectStore('projects').put(project);
+      transaction.oncomplete = () => resolve();
+      transaction.onerror = () => reject(transaction.error);
+    });
+    db.close();
+  });
+  await page.reload();
+  await expect(page.getByRole('alert')).toContainText(/moved to the nearest boundary/);
+  await expect(page.locator('[data-cell="c1"] [data-field="row"]')).toHaveValue('99');
+  expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeLessThan(20_000);
+});
+
+test('builds hardened static deployment policy', async ({ request }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'desktop project only');
+  const response = await request.get('/staticwebapp.config.json');
+  expect(response.ok()).toBe(true);
+  const config = await response.json();
+  expect(config.globalHeaders['Content-Security-Policy']).toContain("frame-ancestors 'none'");
+  expect(config.globalHeaders['Permissions-Policy']).toContain('camera=()');
+  expect(config.globalHeaders['X-Frame-Options']).toBe('DENY');
+  expect(config.routes.find((route: { route: string }) => route.route === '/assets/*').headers['Cache-Control']).toContain('immutable');
+  expect(config.routes.find((route: { route: string }) => route.route === '/manifest.webmanifest').headers['Content-Type']).toContain('application/manifest+json');
+});
+
 test('reloads the app shell and saved proof offline', async ({ page, context }) => {
   test.skip(test.info().project.name !== 'chromium', 'desktop project only');
   await page.goto('/');

@@ -31,7 +31,7 @@ function shell(content: string) {
   <main id="main">${content}</main>
   <footer><p><b>Accessible Table OCR Check</b> · Your pages stay in this browser.</p><nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-accessible-table-ocr-check">Source</a></nav><p class="generated-note">The proofing-desk artwork was generated for this product.</p></footer>
   <div id="live-status" class="sr-only" aria-live="polite"></div>
-  <div id="update-toast" class="update-toast" hidden><span>A newer proofing desk is ready.</span><button type="button" data-action="reload">Update now</button></div>`;
+  <div id="update-toast" class="update-toast" hidden><span>A newer proofing desk is ready.</span><button type="button" data-action="reload" aria-label="Update now">Update now</button></div>`;
 }
 
 function legalPage(kind: 'privacy' | 'terms') {

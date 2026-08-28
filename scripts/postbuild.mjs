@@ -20,7 +20,7 @@ const config = {
   routes: [
     { route: '/assets/*', headers: { 'Cache-Control': 'public, max-age=31536000, immutable' } },
     { route: '/icons/*', headers: { 'Cache-Control': 'public, max-age=31536000, immutable' } },
-    { route: '/manifest.webmanifest', headers: { 'Content-Type': 'application/manifest+json; charset=utf-8', 'Cache-Control': 'public, max-age=3600, must-revalidate' } },
+    { route: '/manifest.json', headers: { 'Cache-Control': 'public, max-age=3600, must-revalidate' } },
     { route: '/sw.js', headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' } },
     { route: '/', headers: { 'Cache-Control': 'no-cache, must-revalidate' } },
     { route: '/privacy/*', headers: { 'Cache-Control': 'no-cache, must-revalidate' } },
@@ -28,7 +28,7 @@ const config = {
   ],
   navigationFallback: {
     rewrite: '/index.html',
-    exclude: ['/assets/*', '/icons/*', '/api/*', '/*.{css,js,png,jpg,svg,webp,ico,woff2,json,txt,xml,wasm,webmanifest}'],
+    exclude: ['/assets/*', '/icons/*', '/api/*', '/*.{css,js,png,jpg,svg,webp,ico,woff2,json,txt,xml,wasm}'],
   },
   globalHeaders: {
     'Content-Security-Policy': `default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' ${sha256(js)}; style-src 'self' ${sha256(css)} ${sha256(offlineStyle)}; worker-src 'self'`,

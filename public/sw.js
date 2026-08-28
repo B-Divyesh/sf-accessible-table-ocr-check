@@ -1,7 +1,7 @@
 const VERSION = 'proof-desk-v2';
 const SHELL = [
   /* BUILD_ASSETS */
-  '/', '/index.html', '/offline.html', '/manifest.webmanifest', '/icon.svg',
+  '/', '/index.html', '/offline.html', '/manifest.json', '/icon.svg',
   '/icons/icon-192.png', '/icons/icon-512.png', '/assets/proofing-table.webp', '/assets/proofing-table-640.webp', '/sample-table.svg',
   '/privacy/', '/terms/'
 ];

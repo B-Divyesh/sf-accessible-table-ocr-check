@@ -140,7 +140,9 @@ test('builds hardened static deployment policy', async ({ request }, testInfo) =
   expect(config.globalHeaders['Permissions-Policy']).toContain('camera=()');
   expect(config.globalHeaders['X-Frame-Options']).toBe('DENY');
   expect(config.routes.find((route: { route: string }) => route.route === '/assets/*').headers['Cache-Control']).toContain('immutable');
-  expect(config.routes.find((route: { route: string }) => route.route === '/manifest.webmanifest').headers['Content-Type']).toContain('application/manifest+json');
+  expect(config.routes.find((route: { route: string }) => route.route === '/manifest.json').headers['Cache-Control']).toContain('must-revalidate');
+  const manifest = await request.get('/manifest.json');
+  expect(manifest.headers()['content-type']).toContain('application/json');
 });
 
 test('supports keyboard correction, reduced motion, and a private core flow', async ({ page }, testInfo) => {

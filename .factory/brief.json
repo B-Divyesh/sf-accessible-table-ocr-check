@@ -1,0 +1,12 @@
+{
+  "slug": "accessible-table-ocr-check",
+  "title": "Accessible Table OCR Check",
+  "territory": "utilities",
+  "user": "Readers, librarians, and accessibility practitioners converting scanned tables who need to verify that extracted text retains reading order and cell structure before sharing it.",
+  "smallest_useful_product": "A local PWA that accepts page images/OCR JSON, overlays detected blocks and reading order, lets a user relabel table cells and headers, and exports HTML/CSV plus an issue report.",
+  "success_measure": "Reviewers can identify scrambled reading-order defects and export an accessible table in under five minutes per page.",
+  "artifact_class": "pwa-offline",
+  "monetization": "one-time",
+  "constraints": "Local processing by default; copyright remains the user's responsibility; semantic HTML exports retain source-page references.",
+  "non_goals": ["Training an OCR model", "Hosting copyrighted books", "Full document editing", "Automatic perfect reconstruction"]
+}

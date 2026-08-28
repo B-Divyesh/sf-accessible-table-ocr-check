@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Scanned transit access table sample</title>
+  <desc id="desc">A grainy three-column table from page 42 with route access information.</desc>
+  <defs>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" seed="4" result="n"/><feBlend in="SourceGraphic" in2="n" mode="multiply"/></filter>
+  </defs>
+  <rect width="900" height="650" fill="#ece5d2"/>
+  <g transform="rotate(-0.5 450 325)" opacity=".9">
+    <text x="72" y="62" font-family="Georgia,serif" font-size="18" fill="#28312f">COMMUNITY MOBILITY REPORT</text>
+    <text x="760" y="62" font-family="Georgia,serif" font-size="18" fill="#28312f">42</text>
+    <path d="M72 88H828M72 180H828M72 300H828M72 420H828M72 88V420M292 88V420M555 88V420M828 88V420" fill="none" stroke="#27312f" stroke-width="3"/>
+    <g font-family="Georgia,serif" font-size="25" fill="#202725">
+      <text x="95" y="143">Route</text><text x="320" y="130">Step-free</text><text x="320" y="159">stops</text><text x="583" y="130">Audio</text><text x="583" y="159">notices</text>
+      <text x="95" y="250">River</text><text x="320" y="250">12 of 14</text><text x="583" y="250">Yes</text>
+      <text x="95" y="370">Hill</text><text x="320" y="370">8 of 11</text><text x="583" y="370">No</text>
+    </g>
+    <path d="M84 470h680M84 492h620M84 514h654M84 536h590" stroke="#505552" stroke-width="4" opacity=".45"/>
+  </g>
+  <rect width="900" height="650" filter="url(#grain)" opacity=".08"/>
+</svg>

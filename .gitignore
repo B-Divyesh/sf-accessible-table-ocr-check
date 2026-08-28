@@ -4,3 +4,6 @@ dist/
 *.log
 graphify-out/
 .DS_Store
+artifacts-*.png
+test-results/
+.factory/lighthouse.json

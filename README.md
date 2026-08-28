@@ -21,6 +21,8 @@ Open the printed local URL. Use **Open a scrambled sample** for a guided first p
 
 Import a PNG/JPEG/WebP/SVG page image and OCR JSON in either order. JSON may use a top-level `cells` or `blocks` array (or the same array under the first item in `pages`). Common `text`, `row`, `column`, `role`, `readingOrder`, and `bbox` fields are normalized. Bounding boxes may be percentages, normalized 0–1 values, or pixels when page `width` and `height` are supplied.
 
+Each proof is limited to 500 cells on a 99 × 99 grid. Imports outside those limits are rejected before local storage or rendering; older saved proofs with unsafe coordinates are recovered into the supported range with a visible review notice.
+
 ```json
 {
   "sourcePage": "Collection A, page 42",
@@ -48,6 +50,8 @@ Playwright 1.58.2 is pinned to match the factory browser image.
 
 ```sh
 npm test          # unit + desktop/mobile/offline/axe browser tests
+npm run lint      # ESLint across app, tests, worker, and API gateway
+npm run typecheck # TypeScript validation
 npm run build     # production output in ./dist
 npm run preview   # inspect the production build
 ```
@@ -56,7 +60,7 @@ The static deployment root is exactly `dist/`, with `index.html` at its root and
 
 ## Privacy and paid unlock
 
-There are no analytics, trackers, CDN fonts, or third-party runtime scripts. The optional one-time $19 Desk license adds named local checkpoints only; core checking and all accessible exports are free. Purchase and verification use the Sociobot billing API. Sociobot/Dodo is the merchant of record.
+There are no analytics, trackers, CDN fonts, or third-party runtime scripts. The optional one-time $19 Desk license adds named local checkpoints only; core checking and all accessible exports are free. Purchase and verification use the Sociobot billing API. Verification passes through the deployment’s same-origin, rate-limited gateway so bursts receive `429` and `Retry-After`; no document content enters that path. Sociobot/Dodo is the merchant of record.
 
 See [Privacy](https://accessible-table-ocr-check.sociobot.in/privacy/) and [Terms](https://accessible-table-ocr-check.sociobot.in/terms/).
 

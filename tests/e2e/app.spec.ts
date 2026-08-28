@@ -143,6 +143,31 @@ test('builds hardened static deployment policy', async ({ request }, testInfo) =
   expect(config.routes.find((route: { route: string }) => route.route === '/manifest.webmanifest').headers['Content-Type']).toContain('application/manifest+json');
 });
 
+test('supports keyboard correction, reduced motion, and a private core flow', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'desktop project only');
+  const offOrigin: string[] = [];
+  page.on('request', (request) => {
+    if (new URL(request.url()).origin !== 'http://127.0.0.1:4173') offOrigin.push(request.url());
+  });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/#main$/);
+  const sample = page.getByRole('button', { name: /Open a scrambled sample/ });
+  await sample.focus();
+  await page.keyboard.press('Space');
+  const move = page.getByRole('button', { name: 'Move Yes later' });
+  expect(await move.evaluate((element) => element.tabIndex)).toBe(0);
+  await move.focus();
+  await page.keyboard.press('Space');
+  await expect(page.getByText('No structural errors detected')).toBeVisible();
+  expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto');
+  expect(await page.locator('.button').first().evaluate((element) => parseFloat(getComputedStyle(element).transitionDuration))).toBeLessThan(0.001);
+  expect(offOrigin).toEqual([]);
+});
+
 test('reloads the app shell and saved proof offline', async ({ page, context }) => {
   test.skip(test.info().project.name !== 'chromium', 'desktop project only');
   await page.goto('/');

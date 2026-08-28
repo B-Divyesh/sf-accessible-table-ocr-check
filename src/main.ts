@@ -84,7 +84,7 @@ function readFile(file: File, asText = false): Promise<string> {
 
 function bindLanding() {
   document.querySelector('[data-action="sample"]')?.addEventListener('click', async () => {
-    project = structuredClone(sampleProject); project.id = 'current'; await persist('Scrambled sample opened.'); render();
+    productNotice = ''; project = structuredClone(sampleProject); project.id = 'current'; await persist('Scrambled sample opened.'); render();
   });
   let pendingImage = '';
   const imageInput = document.querySelector<HTMLInputElement>('#image-file')!;
@@ -94,7 +94,7 @@ function bindLanding() {
     const file = imageInput.files?.[0]; if (!file) return;
     try {
       if (file.size > 12_000_000) throw new Error('That image is over 12 MB. Compress or crop it before proofing.');
-      pendingImage = await readFile(file);
+      productNotice = ''; pendingImage = await readFile(file);
       project = { id: 'current', name: file.name.replace(/\.[^.]+$/, ''), sourcePage: file.name, image: pendingImage, cells: [], updatedAt: new Date().toISOString(), checkpoints: [] };
       await persist('Source image saved locally. Add OCR JSON or create cells manually.'); render();
     } catch (error) { message.textContent = error instanceof Error ? error.message : 'The image could not be opened.'; }
@@ -102,7 +102,7 @@ function bindLanding() {
   ocrInput.addEventListener('change', async () => {
     const file = ocrInput.files?.[0]; if (!file) return;
     try {
-      const parsed = parseOcrJson(await readFile(file, true));
+      const parsed = parseOcrJson(await readFile(file, true)); productNotice = '';
       project = { id: 'current', name: file.name.replace(/\.[^.]+$/, ''), sourcePage: parsed.sourcePage, image: pendingImage, cells: parsed.cells, updatedAt: new Date().toISOString(), checkpoints: [] };
       await persist(`${parsed.cells.length} OCR blocks imported.`); render();
     } catch (error) { message.textContent = error instanceof Error ? error.message : 'The OCR JSON could not be imported.'; }
@@ -173,6 +173,7 @@ function bindWorkbench() {
         try {
           cell[key] = boundedGridCoordinate(field.value, key === 'row' ? 'Row' : 'Column');
           field.setCustomValidity('');
+          productNotice = '';
         } catch (error) {
           const message = error instanceof Error ? error.message : `Use a position from 1 to ${MAX_GRID_DIMENSION}.`;
           field.value = String(cell[key]);
@@ -183,8 +184,8 @@ function bindWorkbench() {
           return;
         }
       }
-      else if (key === 'role') cell.role = field.value as Cell['role'];
-      else cell.text = field.value;
+      else if (key === 'role') { cell.role = field.value as Cell['role']; productNotice = ''; }
+      else { cell.text = field.value; productNotice = ''; }
       scheduleSave('Cell updated.'); render();
     }));
     row.querySelectorAll<HTMLButtonElement>('[data-move]').forEach((button) => button.addEventListener('click', () => {
@@ -205,12 +206,12 @@ function bindWorkbench() {
     }
     const position = nextAvailableGridPosition(project!.cells);
     const cell: Cell = { id: crypto.randomUUID(), text: '', ...position, role: 'data', box: { x: 10, y: 10, width: 20, height: 10 } };
-    project!.cells.push(cell); selectedCell = cell.id; scheduleSave('Blank cell added.'); render();
+    productNotice = ''; project!.cells.push(cell); selectedCell = cell.id; scheduleSave('Blank cell added.'); render();
   });
   document.querySelector('[data-action="issues"]')?.addEventListener('click', () => document.querySelector('#issues')?.scrollIntoView({ behavior: 'smooth' }));
   document.querySelector('[data-action="new"]')?.addEventListener('click', async () => {
     if (!confirm('Close this proof and remove its locally saved working copy? Export anything you need first.')) return;
-    await clearProject(); project = null; selectedCell = ''; render();
+    await clearProject(); project = null; selectedCell = ''; productNotice = ''; render();
   });
   bindImageInput('#replace-image'); bindImageInput('#empty-image');
   document.querySelector<HTMLInputElement>('#replace-ocr')?.addEventListener('change', importOcr);
@@ -239,7 +240,7 @@ function bindImageInput(selector: string) {
 
 async function importOcr(event: Event) {
   const file = (event.target as HTMLInputElement).files?.[0]; if (!file || !project) return;
-  try { const parsed = parseOcrJson(await readFile(file, true)); project.cells = parsed.cells; project.sourcePage = parsed.sourcePage || project.sourcePage; await persist(`${parsed.cells.length} OCR blocks imported.`); render(); }
+  try { const parsed = parseOcrJson(await readFile(file, true)); productNotice = ''; project.cells = parsed.cells; project.sourcePage = parsed.sourcePage || project.sourcePage; await persist(`${parsed.cells.length} OCR blocks imported.`); render(); }
   catch (error) {
     productNotice = `${error instanceof Error ? error.message : 'OCR JSON could not be imported.'} The current proof was not changed; correct the file and import it again.`;
     render();

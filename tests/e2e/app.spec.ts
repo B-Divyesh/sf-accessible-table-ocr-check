@@ -137,6 +137,7 @@ test('builds hardened static deployment policy', async ({ request }, testInfo) =
   expect(response.ok()).toBe(true);
   const config = await response.json();
   expect(config.globalHeaders['Content-Security-Policy']).toContain("frame-ancestors 'none'");
+  expect(config.globalHeaders['Content-Security-Policy']).toContain("style-src-attr 'unsafe-inline'");
   expect(config.globalHeaders['Permissions-Policy']).toContain('camera=()');
   expect(config.globalHeaders['X-Frame-Options']).toBe('DENY');
   expect(config.routes.find((route: { route: string }) => route.route === '/assets/*').headers['Cache-Control']).toContain('immutable');

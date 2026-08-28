@@ -31,7 +31,7 @@ const config = {
     exclude: ['/assets/*', '/icons/*', '/api/*', '/*.{css,js,png,jpg,svg,webp,ico,woff2,json,txt,xml,wasm}'],
   },
   globalHeaders: {
-    'Content-Security-Policy': `default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' ${sha256(js)}; style-src 'self' ${sha256(css)} ${sha256(offlineStyle)}; worker-src 'self'`,
+    'Content-Security-Policy': `default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' ${sha256(js)}; style-src 'self' ${sha256(css)} ${sha256(offlineStyle)}; style-src-attr 'unsafe-inline'; worker-src 'self'`,
     'Permissions-Policy': 'camera=(), geolocation=(), microphone=(), payment=(), usb=()',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'X-Content-Type-Options': 'nosniff',

@@ -43,7 +43,7 @@ npm run build
 - Art: mobile hero 22,664 bytes; desktop hero 110,030 bytes; social image 138,697 bytes.
 - Local Lighthouse mobile: Performance 97, Accessibility 100, Best Practices 100, SEO 100; LCP 1.7s, TBT 180ms, CLS 0.
 
-Every one of the 34 commands in `.factory/claims.json` then passed independently from fresh clone `/tmp/accessible-table-claims.3RZAm2`. This included dedicated offline context, privacy request capture, import limits, all exports, demo isolation, and the 21-request gateway contract.
+Every one of the 34 commands in `.factory/claims.json` then passed independently from final-HEAD fresh clone `/tmp/accessible-table-final.4LrYLr`. This included dedicated offline context, privacy request capture, import limits, all exports, demo isolation, and the 21-request gateway contract.
 
 ## Deployment and live evidence
 

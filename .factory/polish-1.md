@@ -71,3 +71,9 @@ Every review finding is mapped below. Claim evidence names the exact `@claim:*` 
 ## Earlier verification defects
 
 The full regression suite still passes the previously repaired 99×99 grid bound, 500-cell limit, hero aspect ratio, accessible wordmark name, 44px mobile targets, CSP/framing/cache headers, offline reload, and 21st-request rate limit. No earlier `.factory/review-*.md` or `.factory/polish-*.md` exists beyond review 1 and this report.
+
+## Live close-out
+
+Commit `6d149af1a94c3287ed43cf83d5938ad3a0b76d99` was deployed to the existing `sf-accessible-table-ocr-check` Static Web App. The live and local HTML SHA-256 values are both `f0c0cf46282f4c2cf7976f425e834fde79d321693cdc5d4d7385d9a68e17d231`.
+
+Cold mobile checks reconfirmed the demo banner, reset/exit isolation, scoped HTML export, responsive layout, route focus, offline reload, and zero off-origin core requests. Root, Demo, Privacy, Terms, and 404 each produced zero serious/critical axe findings. The designed unknown route returned HTTP 404. Live Lighthouse scored 99 Performance, 100 Accessibility, 100 Best Practices, and 100 SEO.

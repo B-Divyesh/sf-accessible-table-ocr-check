@@ -19,7 +19,7 @@ export function boundedGridCoordinate(value: unknown, label = 'Grid coordinate',
 }
 
 export function assertBoundedGrid(cells: Cell[]): void {
-  if (cells.length > MAX_CELLS) throw new Error(`A proof can contain at most ${MAX_CELLS} cells.`);
+  if (cells.length > MAX_CELLS) throw new Error(`A table check can contain at most ${MAX_CELLS} cells.`);
   for (const [index, cell] of cells.entries()) {
     for (const [axis, value] of [['row', cell.row], ['column', cell.col]] as const) {
       if (!Number.isInteger(value) || value < 1 || value > MAX_GRID_DIMENSION) {
@@ -125,7 +125,7 @@ export function reviewIssues(cells: Cell[]): ReviewIssue[] {
   cells.forEach((cell, index) => {
     if (expected[index]?.id !== cell.id) issues.push({ id: `order-${cell.id}`, severity: 'error', cellId: cell.id, message: `Reading order ${index + 1} jumps to row ${cell.row}, column ${cell.col}.`, fix: 'Move the cell until order follows rows from left to right.' });
   });
-  if (!cells.some((cell) => cell.role === 'columnheader')) issues.push({ id: 'no-column-header', severity: 'warning', message: 'No column headers are marked.', fix: 'Relabel heading cells so screen readers can announce them.' });
+  if (!cells.some((cell) => cell.role === 'columnheader')) issues.push({ id: 'no-column-header', severity: 'warning', message: 'No column headers are marked.', fix: 'Label heading cells so screen readers can announce them.' });
   if (cells.length && !cells.some((cell) => cell.role === 'rowheader')) issues.push({ id: 'no-row-header', severity: 'warning', message: 'No row headers are marked.', fix: 'If the first column names rows, relabel those cells as row headers.' });
   return issues;
 }

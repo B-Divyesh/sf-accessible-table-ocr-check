@@ -10,7 +10,7 @@ describe('license verification response policy', () => {
     vi.unstubAllGlobals();
   });
 
-  it('returns 429 with Retry-After after a 20-request client burst', async () => {
+  it('returns 429 with Retry-After after a 20-request client burst @claim:license-rate-limit', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ valid: false, reason: 'invalid', expires_at: null }), { status: 200 })));
     const context = { log: { warn: vi.fn() } };
     const request = { headers: { 'x-forwarded-for': '203.0.113.42' }, query: { license: 'invalid-test-token' } };

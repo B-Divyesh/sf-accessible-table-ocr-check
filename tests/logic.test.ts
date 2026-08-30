@@ -25,6 +25,20 @@ describe('OCR import and review', () => {
     expect(reviewIssues(corrected)).toEqual([]);
   });
 
+  it('flags order, blank, duplicate-position, and missing-header defects @claim:issue-detection', () => {
+    const cells = [
+      { ...sampleProject.cells[1], id: 'a', text: '', row: 2, col: 1, role: 'data' as const },
+      { ...sampleProject.cells[0], id: 'b', row: 1, col: 1, role: 'data' as const },
+      { ...sampleProject.cells[2], id: 'c', row: 2, col: 1, role: 'data' as const },
+    ];
+    const ids = reviewIssues(cells).map((issue) => issue.id);
+    expect(ids.some((id) => id.startsWith('blank-'))).toBe(true);
+    expect(ids.some((id) => id.startsWith('duplicate-'))).toBe(true);
+    expect(ids.some((id) => id.startsWith('order-'))).toBe(true);
+    expect(ids).toContain('no-column-header');
+    expect(ids).toContain('no-row-header');
+  });
+
   it.each([
     ['row', { row: 10_000, column: 1 }],
     ['column', { row: 1, column: 100 }],

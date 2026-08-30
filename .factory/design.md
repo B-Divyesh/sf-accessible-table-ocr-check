@@ -40,6 +40,7 @@ State changes use a 180ms paper-slide or opacity transition. Overlay focus appea
 ## Asset plan and provenance
 
 - `public/assets/proofing-table.webp`: original generated hero illustration, used to introduce source-to-structure comparison without implying automatic OCR. The 1280×853 WebP is paired with a locally derived 640×427 mobile WebP; both preserve the 1.5:1 composition, have explicit dimensions, and remain under 300KB.
+- `public/assets/social-preview.jpg`: a 1200×630 center crop composed locally from the original proofing-table artwork for link previews; no additional source material was used.
 - App icons and interface symbols are hand-authored SVG/CSS using simple registration crosses and cell shapes.
 - Generation model: factory Azure image deployment via `/opt/fleet/lib/gen-image.sh` (OpenAI image model), generated 2026-08-28. Original to this product; no third-party source imagery.
 

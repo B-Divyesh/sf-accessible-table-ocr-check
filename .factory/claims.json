@@ -1,0 +1,240 @@
+[
+  {
+    "id": "demo-ready",
+    "claim": "The direct demo opens a populated transit-table check in one step.",
+    "where": "landing action, README, demo banner",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:demo-ready\"",
+    "sandbox": "fresh browser state; open /demo and assert nine cells, source overlays, and two seeded errors"
+  },
+  {
+    "id": "demo-isolation",
+    "claim": "Demo changes never replace real table-check data and are deleted on exit.",
+    "where": "demo banner, .factory/demo.md",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:demo-isolation\"",
+    "sandbox": "seed real IndexedDB, complete and reset demo, exit, then compare real record byte-for-byte"
+  },
+  {
+    "id": "proof-and-export",
+    "claim": "Correct OCR reading order and export a table with scoped headers.",
+    "where": "landing first screen, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:proof-and-export\"",
+    "sandbox": "isolated demo; correct the two jumps and inspect downloaded HTML order and th scopes"
+  },
+  {
+    "id": "browser-local",
+    "claim": "The core table-checking workflow runs in the browser.",
+    "where": "landing facts",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:browser-local\"",
+    "sandbox": "isolated demo; edit, export, reload, and assert every request remains same-origin"
+  },
+  {
+    "id": "no-document-upload",
+    "claim": "Document content is not uploaded.",
+    "where": "landing facts, Privacy, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:no-document-upload\"",
+    "sandbox": "put a unique document marker in the demo and assert it occurs in no request body"
+  },
+  {
+    "id": "pages-stay-local",
+    "claim": "Pages and corrections stay in browser storage.",
+    "where": "footer, Privacy",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:pages-stay-local\"",
+    "sandbox": "edit demo, reload, and inspect IndexedDB plus outgoing requests"
+  },
+  {
+    "id": "no-third-party-runtime",
+    "claim": "There are no analytics, trackers, CDN fonts, or third-party runtime scripts.",
+    "where": "Privacy, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:no-third-party-runtime\"",
+    "sandbox": "record all requests and performance resources during the complete demo flow"
+  },
+  {
+    "id": "indexeddb-only",
+    "claim": "Working data and saved versions use IndexedDB.",
+    "where": "Privacy, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:indexeddb-only\"",
+    "sandbox": "inspect IndexedDB, localStorage, cookies, and requests after editing and reload"
+  },
+  {
+    "id": "offline-reload",
+    "claim": "The table checker works offline after the first visit.",
+    "where": "landing facts, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:offline-reload\"",
+    "sandbox": "dedicated browser context; prime /demo, set context offline, reload, edit, and export"
+  },
+  {
+    "id": "import-formats",
+    "claim": "Import PNG, JPEG, WebP, or SVG source images.",
+    "where": "landing import control, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:import-formats\"",
+    "sandbox": "fresh context per format; import image then OCR and assert the editable cell"
+  },
+  {
+    "id": "either-import-order",
+    "claim": "Add the image or OCR JSON first.",
+    "where": "landing import instructions, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:either-import-order\"",
+    "sandbox": "fresh contexts for image-first and JSON-first workflows"
+  },
+  {
+    "id": "ocr-schema",
+    "claim": "OCR JSON accepts cells or blocks with text, row, column, and bounding boxes.",
+    "where": "landing import instructions",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:ocr-schema\"",
+    "sandbox": "import documented fixtures and inspect normalized editor fields"
+  },
+  {
+    "id": "json-shapes",
+    "claim": "OCR JSON accepts top-level and first-page cells or blocks arrays.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:json-shapes\"",
+    "sandbox": "replace OCR with all four documented container shapes"
+  },
+  {
+    "id": "field-normalization",
+    "claim": "The importer normalizes common OCR text, position, role, order, and box fields.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:field-normalization\"",
+    "sandbox": "import aliased fields and assert editor values, role, order, and overlay"
+  },
+  {
+    "id": "bbox-formats",
+    "claim": "Bounding boxes accept percentages, normalized values, and pixels with page dimensions.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:bbox-formats\"",
+    "sandbox": "import equivalent boxes in each coordinate system and assert normalized overlays"
+  },
+  {
+    "id": "reading-order-overlays",
+    "claim": "Numbered source overlays map to cells and reveal reading-order jumps.",
+    "where": "How it works",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:reading-order-overlays\"",
+    "sandbox": "isolated demo; inspect nine accessible overlay labels and two reported jumps"
+  },
+  {
+    "id": "cell-corrections",
+    "claim": "Users can correct cell text, positions, and header roles.",
+    "where": "How it works, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:cell-corrections\"",
+    "sandbox": "isolated demo; edit all named fields and inspect semantic preview plus export"
+  },
+  {
+    "id": "all-exports",
+    "claim": "The app exports semantic HTML, CSV, project JSON, and an issue report.",
+    "where": "How it works, workbench, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:all-exports\"",
+    "sandbox": "isolated demo; download and validate contents of all four formats"
+  },
+  {
+    "id": "free-core",
+    "claim": "Core checking and accessible exports are free.",
+    "where": "pricing, Terms, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:free-core\"",
+    "sandbox": "no license in fresh context; correct and download all four exports"
+  },
+  {
+    "id": "free-state",
+    "claim": "Free table checking is active without a license.",
+    "where": "pricing state",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:free-state\"",
+    "sandbox": "fresh unlicensed demo; assert free state and complete exports"
+  },
+  {
+    "id": "desk-price",
+    "claim": "The optional Desk license costs USD 19 once.",
+    "where": "pricing, Terms, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:desk-price\"",
+    "sandbox": "fresh landing; assert exact price, frequency, and checkout product path without purchase"
+  },
+  {
+    "id": "sociobot-billing-path",
+    "claim": "Purchase and verification use the Sociobot billing path.",
+    "where": "pricing, Privacy, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:sociobot-billing-path\"",
+    "sandbox": "inspect checkout target and same-origin verification route without placing an order"
+  },
+  {
+    "id": "merchant-of-record",
+    "claim": "Sociobot/Dodo is the merchant of record.",
+    "where": "pricing, Privacy, Terms, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:merchant-of-record\"",
+    "sandbox": "assert merchant text beside the exact registered checkout path"
+  },
+  {
+    "id": "licensed-saved-versions",
+    "claim": "A valid Desk license adds named saved versions that can be restored.",
+    "where": "pricing, workbench, Terms, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:licensed-saved-versions\"",
+    "sandbox": "recorded valid verification response; save, edit, restore, and compare cells"
+  },
+  {
+    "id": "local-saved-versions",
+    "claim": "Saved versions stay in the browser.",
+    "where": "pricing, Privacy, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:local-saved-versions\"",
+    "sandbox": "recorded license response; inspect demo IndexedDB and outgoing requests"
+  },
+  {
+    "id": "import-limits",
+    "claim": "Each table check supports at most 500 cells on a 99 by 99 grid.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:import-limits\"",
+    "sandbox": "assert 500 and coordinate 99 pass while 501 and coordinate 100 fail"
+  },
+  {
+    "id": "rejection-before-write",
+    "claim": "Over-limit imports are rejected before replacing saved work.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:rejection-before-write\"",
+    "sandbox": "capture IndexedDB before invalid imports and compare it after each rejection"
+  },
+  {
+    "id": "legacy-recovery",
+    "claim": "Older unsafe saved coordinates are bounded with a visible review notice.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:legacy-recovery\"",
+    "sandbox": "seed a legacy real record with row 10000, reload, and assert row 99 plus notice"
+  },
+  {
+    "id": "project-round-trip",
+    "claim": "Project JSON exports can be imported again as OCR JSON.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:project-round-trip\"",
+    "sandbox": "export demo JSON, leave demo, import it into real mode, and compare all cell text"
+  },
+  {
+    "id": "clear-table-check",
+    "claim": "Clearing a table check removes its working copy.",
+    "where": "Privacy, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:clear-table-check\"",
+    "sandbox": "seed a real table check, confirm clear, reload, and inspect projects/current"
+  },
+  {
+    "id": "inline-offline-shell",
+    "claim": "The app bundle is inlined so the primed table checker can open offline.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:inline-offline-shell\"",
+    "sandbox": "inspect built index for no external JS/CSS and use the dedicated offline claim for navigation"
+  },
+  {
+    "id": "human-check-only",
+    "claim": "The tool checks supplied OCR but does not create OCR or guarantee accessibility.",
+    "where": "limitations section, Terms, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:human-check-only\"",
+    "sandbox": "import image only and assert an empty OCR state with no extraction result or action"
+  },
+  {
+    "id": "issue-detection",
+    "claim": "Automated checks flag reading order, blank cells, duplicate positions, and missing header roles.",
+    "where": "workbench issue report, README",
+    "test": "npm run test:unit -- --testNamePattern \"@claim:issue-detection\"",
+    "sandbox": "construct a bounded fixture containing each defect and assert every issue identifier"
+  },
+  {
+    "id": "license-rate-limit",
+    "claim": "A 20-request client burst then receives 429 and Retry-After responses.",
+    "where": "README",
+    "test": "npm run test:unit -- --testNamePattern \"@claim:license-rate-limit\"",
+    "sandbox": "stub upstream billing; send 21 deterministic requests from one client and inspect response 21"
+  }
+]

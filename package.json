@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "test": "vitest run tests/*.test.ts && playwright test",
     "test:unit": "vitest run tests/*.test.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:claims": "vitest run tests/*.test.ts --testNamePattern @claim: && playwright test --project=chromium --grep @claim:"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",

@@ -1,27 +1,45 @@
 # Accessible Table OCR Check
 
-A local-first proofing desk for readers, librarians, and accessibility practitioners who need to check whether OCR preserved a scanned table’s reading order and cell structure. It compares a source image with numbered OCR blocks, flags likely structural defects, supports cell/header correction, and exports semantic HTML, CSV, project JSON, and a plain-text issue report.
+Check whether OCR preserved a scanned table’s reading order and cells. This browser tool is for readers, librarians, and accessibility reviewers.
 
-This is a human QA layer, not an OCR engine. It does not upload documents or promise automatic reconstruction. Reviewers remain responsible for comparing text with the source and for having permission to process copyrighted material.
+Compare the scan with numbered OCR cells and fix structure errors. Export accessible HTML, CSV, project JSON, or a text report.
+
+This tool helps a person check OCR. It does not create OCR or guarantee that a table is accessible.
+
+Documents are not uploaded. Reviewers must compare text with the source and have permission to process copyrighted material.
 
 Live product: <https://accessible-table-ocr-check.sociobot.in>
 
+One-click sample: <https://accessible-table-ocr-check.sociobot.in/demo>
+
 ## Run locally
 
-Requires Node.js 20 or later.
+Use Node.js 20 or later.
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
-Open the printed local URL. Use **Open a scrambled sample** for a guided first proof.
+Open the printed local URL. Choose **Try it with sample data** to open an isolated transit-table check.
+
+The demo uses a separate IndexedDB database named `demo:table-proofing-desk`. Resetting or leaving it deletes that demo record.
 
 ## Import format
 
-Import a PNG/JPEG/WebP/SVG page image and OCR JSON in either order. JSON may use a top-level `cells` or `blocks` array (or the same array under the first item in `pages`). Common `text`, `row`, `column`, `role`, `readingOrder`, and `bbox` fields are normalized. Bounding boxes may be percentages, normalized 0–1 values, or pixels when page `width` and `height` are supplied.
+Import a PNG, JPEG, WebP, or SVG page image. Add OCR JSON before or after the image.
 
-Each proof is limited to 500 cells on a 99 × 99 grid. Imports outside those limits are rejected before local storage or rendering; older saved proofs with unsafe coordinates are recovered into the supported range with a visible review notice.
+JSON can use a top-level `cells` or `blocks` array. It can also use either array inside the first `pages` item.
+
+The importer normalizes `text`, `row`, `column`, `role`, `readingOrder`, and `bbox` fields.
+
+Bounding boxes can use percentages or normalized 0–1 values. Pixel values work when page `width` and `height` are supplied.
+
+Each table check supports 500 cells on a 99 × 99 grid. The app rejects larger imports before saving or rendering them.
+
+It safely bounds older saved coordinates and asks you to review them. Project JSON exports can be imported again as OCR JSON.
+
+Working data and optional saved versions use IndexedDB. Clearing a table check removes its working copy.
 
 ```json
 {
@@ -42,30 +60,41 @@ Each proof is limited to 500 cells on a 99 × 99 grid. Imports outside those lim
 }
 ```
 
-The Project JSON export can be re-imported as OCR JSON. Working data and optional named checkpoints are stored only in IndexedDB. Clearing the proof removes its working copy.
-
 ## Test and build
 
-Playwright 1.58.2 is pinned to match the factory browser image.
+Playwright 1.58.2 matches the factory browser image.
 
 ```sh
-npm test          # unit + desktop/mobile/offline/axe browser tests
-npm run lint      # ESLint across app, tests, worker, and API gateway
+npm test          # unit, claim, desktop, mobile, offline, and axe tests
+npm run lint      # ESLint across the app, tests, worker, and API gateway
 npm run typecheck # TypeScript validation
 npm run build     # production output in ./dist
 npm run preview   # inspect the production build
 ```
 
-The static deployment root is exactly `dist/`, with `index.html` at its root and direct entry documents for `/privacy/` and `/terms/`. The post-build step inlines the small app bundle into the shell so a hard offline navigation never depends on a second request.
+The deployment root is `dist/`, with `index.html` at its root. It includes direct documents for Demo, Privacy, Terms, and 404 responses.
 
-## Privacy and paid unlock
+The build inlines the small app bundle into the page. A primed browser can open the table checker without a network connection.
 
-There are no analytics, trackers, CDN fonts, or third-party runtime scripts. The optional one-time $19 Desk license adds named local checkpoints only; core checking and all accessible exports are free. Purchase and verification use the Sociobot billing API. Verification passes through the deployment’s same-origin, rate-limited gateway so bursts receive `429` and `Retry-After`; no document content enters that path. Sociobot/Dodo is the merchant of record.
+Every public product claim is listed in [`.factory/claims.json`](.factory/claims.json). Each entry names its exact tagged browser test.
+
+## Privacy and paid features
+
+The app has no analytics, trackers, CDN fonts, or third-party runtime scripts.
+
+The optional Desk license costs $19 once. It adds named saved versions stored in IndexedDB on that device.
+
+Core checking and every accessible export remain free. Purchase and verification use the Sociobot billing API.
+
+Verification uses the deployment’s same-origin gateway. A 20-request client burst then receives `429` and `Retry-After` responses.
+
+No document content enters the license request. Sociobot/Dodo is the merchant of record.
 
 See [Privacy](https://accessible-table-ocr-check.sociobot.in/privacy/) and [Terms](https://accessible-table-ocr-check.sociobot.in/terms/).
 
 ## Project notes
 
-- Visual system and generated-art provenance: [`.factory/design.md`](.factory/design.md)
-- Build verification and known gaps: [`.factory/handoff.md`](.factory/handoff.md)
-- License: [MIT](LICENSE)
+- [Visual system and generated-art provenance](.factory/design.md)
+- [Demo sandbox contract](.factory/demo.md)
+- [Build verification and known gaps](.factory/handoff.md)
+- [MIT License](LICENSE)

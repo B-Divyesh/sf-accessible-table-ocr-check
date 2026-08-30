@@ -86,9 +86,11 @@ The optional Desk license costs $19 once. It adds named saved versions stored in
 
 Core checking and every accessible export remain free. Purchase and verification use the Sociobot billing API.
 
-Verification uses the deployment’s same-origin gateway. A 20-request client burst then receives `429` and `Retry-After` responses.
+Verification uses the deployment’s same-origin gateway. A signed client window carries the 20-request allowance across function instances. Request 21 receives `429` with `Retry-After`.
 
 No document content enters the license request. Sociobot/Dodo is the merchant of record.
+
+Run `npm run test:live-rate-limit` after deployment to exercise the live 20-request window. The command preserves the gateway’s signed `HttpOnly` state between requests and fails unless request 21 returns `429` with a positive `Retry-After`.
 
 See [Privacy](https://accessible-table-ocr-check.sociobot.in/privacy/) and [Terms](https://accessible-table-ocr-check.sociobot.in/terms/).
 

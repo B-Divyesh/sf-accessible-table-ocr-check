@@ -235,6 +235,6 @@
     "claim": "A 20-request client burst then receives 429 and Retry-After responses.",
     "where": "README",
     "test": "npm run test:unit -- --testNamePattern \"@claim:license-rate-limit\"",
-    "sandbox": "stub upstream billing; send 21 deterministic requests from one client and inspect response 21"
+    "sandbox": "stub upstream billing; alternate two isolated function modules while carrying signed client state; inspect response 21"
   }
 ]

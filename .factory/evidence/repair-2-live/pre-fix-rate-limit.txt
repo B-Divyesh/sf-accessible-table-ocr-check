@@ -1,0 +1,6 @@
+Pre-repair reproduction on 2026-08-30 UTC
+Target: https://accessible-table-ocr-check.sociobot.in/api/license/verify?license=qa-invalid-token
+Method: 40 rapid GET requests over fresh HTTP connections from one worker/client.
+Observed: request 21 returned 200 without Retry-After; no request returned 429.
+Totals: 30 responses were 200; 10 were upstream 503 with Retry-After: 60.
+Conclusion: process-local counters did not enforce the advertised client allowance across live function workers.

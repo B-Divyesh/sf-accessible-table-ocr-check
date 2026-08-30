@@ -46,9 +46,12 @@ async function freshPage(context: BrowserContext) {
 test('direct demo is ready, resettable, and isolated @claim:demo-ready @claim:demo-isolation', async ({ page }) => {
   await page.goto('/');
   await importJson(page, '#ocr-file', { sourcePage: 'Private scan', cells: [sampleCell({ text: 'Private value' })] }, 'private.json');
+  await expect(page.locator('[data-cell="cell-1"] [data-field="text"]')).toHaveValue('Private value');
+  await page.waitForTimeout(350);
   const realBefore = await databaseRecord(page, 'table-proofing-desk');
 
-  await page.goto('/demo');
+  await page.goto('/?demo=1');
+  await expect(page).toHaveURL(/\/demo$/);
   await expect(page).toHaveTitle('Demo — Accessible Table OCR Check');
   await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
   await expect(page.locator('.cell-row')).toHaveCount(9);

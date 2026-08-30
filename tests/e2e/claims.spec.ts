@@ -1,6 +1,8 @@
 import { readFile } from 'node:fs/promises';
 import { expect, test, type BrowserContext, type Page } from '@playwright/test';
 
+const appOrigin = new URL(process.env.PLAYWRIGHT_BASE_URL ?? 'http://127.0.0.1:4173').origin;
+
 const sampleCell = (overrides: Record<string, unknown> = {}) => ({
   id: 'cell-1', text: 'Route', row: 1, column: 1, role: 'columnheader', readingOrder: 1,
   bbox: [10, 10, 40, 20], ...overrides,
@@ -89,7 +91,7 @@ test('keeps documents in-browser without third-party runtime requests @claim:bro
   await downloadText(page, 'Export CSV');
   await page.reload();
   await expect(page.locator('[data-cell="c5"] [data-field="text"]')).toHaveValue('PRIVATE-DOCUMENT-MARKER');
-  expect(requests.every((request) => new URL(request.url).origin === 'http://127.0.0.1:4173')).toBe(true);
+  expect(requests.every((request) => new URL(request.url).origin === appOrigin)).toBe(true);
   expect(requests.every((request) => !request.body?.includes('PRIVATE-DOCUMENT-MARKER'))).toBe(true);
   const state = await page.evaluate(async () => ({
     databases: (await indexedDB.databases()).map((item) => item.name),
@@ -206,7 +208,7 @@ test('stores and restores licensed saved versions locally @claim:licensed-saved-
   page.on('request', (request) => {
     const url = new URL(request.url());
     requestPaths.push(url.pathname);
-    if (url.origin !== 'http://127.0.0.1:4173') offOrigin.push(request.url());
+    if (url.origin !== appOrigin) offOrigin.push(request.url());
   });
   await page.route('**/api/license/verify?**', (route) => route.fulfill({ json: { valid: true, reason: 'ok', expires_at: null } }));
   await page.goto('/?license=recorded-valid-license');

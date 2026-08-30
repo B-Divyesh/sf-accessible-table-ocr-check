@@ -10,6 +10,7 @@ const PRODUCT = 'accessible-table-ocr-check';
 const VERIFY_URL = `https://api.sociobot.in/api/v1/products/${PRODUCT}/verify`;
 const COOKIE_NAME = '__Host-atoc_rate';
 const windows = new Map();
+const INSTANCE_ID = createHash('sha256').update(process.env.WEBSITE_INSTANCE_ID || `${process.pid}-${Date.now()}-${Math.random()}`).digest('hex').slice(0, 12);
 
 function header(req, name) {
   return req.headers?.[name] || req.headers?.[name.toLowerCase()] || req.headers?.get?.(name) || '';
@@ -88,6 +89,7 @@ module.exports = async function licenseVerify(context, req) {
     'X-RateLimit-Limit': String(MAX_REQUESTS),
     'X-RateLimit-Remaining': String(limit.remaining ?? 0),
     'X-RateLimit-Policy': 'signed-client-window',
+    'X-RateLimit-Instance': INSTANCE_ID,
     ...(limit.cookie ? { 'Set-Cookie': limit.cookie } : {}),
   };
   if (!limit.configured) {

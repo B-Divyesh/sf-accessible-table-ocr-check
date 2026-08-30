@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+const appOrigin = new URL(process.env.PLAYWRIGHT_BASE_URL ?? 'http://127.0.0.1:4173').origin;
+
 test('opens the demo, identifies it, corrects it, and exports semantic HTML', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
@@ -133,6 +135,7 @@ test('repairs a legacy unsafe saved coordinate before rendering @claim:legacy-re
 
 test('builds hardened static deployment policy', async ({ request }, testInfo) => {
   test.skip(testInfo.project.name !== 'chromium', 'desktop project only');
+  test.skip(Boolean(process.env.PLAYWRIGHT_BASE_URL), 'build artifact policy is checked locally');
   const response = await request.get('/staticwebapp.config.json');
   expect(response.ok()).toBe(true);
   const config = await response.json();
@@ -151,7 +154,7 @@ test('supports keyboard correction, reduced motion, and a private core flow', as
   test.skip(testInfo.project.name !== 'chromium', 'desktop project only');
   const offOrigin: string[] = [];
   page.on('request', (request) => {
-    if (new URL(request.url()).origin !== 'http://127.0.0.1:4173') offOrigin.push(request.url());
+    if (new URL(request.url()).origin !== appOrigin) offOrigin.push(request.url());
   });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');

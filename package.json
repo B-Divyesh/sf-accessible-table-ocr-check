@@ -12,6 +12,7 @@
     "test": "vitest run tests/*.test.ts && playwright test",
     "test:unit": "vitest run tests/*.test.ts",
     "test:e2e": "playwright test",
+    "test:e2e:live": "PLAYWRIGHT_BASE_URL=https://accessible-table-ocr-check.sociobot.in playwright test",
     "test:claims": "vitest run tests/*.test.ts --testNamePattern @claim: && playwright test --project=chromium --grep @claim:",
     "test:live-rate-limit": "node scripts/verify-live-rate-limit.mjs"
   },

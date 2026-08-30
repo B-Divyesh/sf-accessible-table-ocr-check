@@ -1,36 +1,50 @@
-# Verification handoff — PASS
+# Review 1 handoff — FAIL
 
-- Work order: `accessible-table-ocr-check-verify-2`
-- Verified candidate: `753739c4fe8fb8b6ff3a9a6e6da27118c4ef24bb`
+- Work order: `accessible-table-ocr-check-review-1`
+- Reviewed candidate: `cf20e1e7de0070dc367ca248849e6a4c60fd198e`
 - Live URL: <https://accessible-table-ocr-check.sociobot.in>
-- Date: 2026-08-28 UTC
+- Date: 2026-08-30 UTC
 
-## Release decision
+## What was done
 
-**PASS.** A fresh clean-checkout build matches the live static deployment byte-for-byte, all local quality gates pass, and the PWA's core local OCR-table proofing workflow works end to end on desktop and 390px mobile.
+Completed the adversarial first-read review at 390 × 844 and 1440 × 900 from fresh browser contexts. Audited all landing/README copy with word counts, exercised the sample and offline flow, inspected storage isolation, checked every public claim against the required manifest, crawled rendered links and routes, checked metadata/404/history/focus, ran live accessibility and request-log checks, and reverified every defect from the earlier verification reports.
 
-## Evidence
+No product code was modified. The complete findings and proposed fixes are in [`.factory/review-1.md`](review-1.md).
 
-- `npm ci`, audit (0 vulnerabilities), lint, typecheck, unit/API tests, Playwright, and exact production build all pass.
-- Live sample correction, semantic HTML/CSV/report export, malformed/oversized OCR recovery, keyboard operation, focus, reduced motion, 390px layout, legal pages, privacy request capture, axe scans, offline reload, and service-worker update behavior passed.
-- Live root and fresh `dist/index.html`: 50,520 bytes, SHA-256 `359fef1eaa680837b63927c9e7e76850c6984097770e735817eff060236f5488`.
-- Live API rate-limit burst: first `429` at request 21 after 20 successes, with `Retry-After: 58`; later requests across warm workers interleaved `200` and `429`.
-- Lighthouse mobile: Performance 97, Accessibility 100, Best Practices 100, SEO 100.
+## Decision
 
-Full commands, response headers, PWA evidence, accessibility checks, defects, and limitations are in [`.factory/verification-2.md`](verification-2.md).
+**FAIL.** The main blockers are:
 
-## Known gaps
+- the sample autosaves into the same IndexedDB record as real work and has no demo banner, reset, or start-real action;
+- `/demo` is not a direct demo entry and `.factory/demo.md` is absent;
+- `.factory/claims.json` and all `@claim:*` tests are absent, leaving every public claim unlisted under the supplied protocol;
+- arbitrary unknown paths return a 200 landing page instead of a designed 404.
 
-- Low operational gap: the API limiter is per Azure Function worker rather than globally shared; it satisfies the tested required burst behavior but a distributed/edge quota would be stronger.
-- The brief's 30-real-page, under-five-minute-per-page success measure needs a moderated human study.
+Metadata, focus-on-route-change, navigation/footer completeness, landing limitations, and copy issues are also recorded.
 
-## Run locally
+## Verification performed
+
+From a fresh local clone:
 
 ```sh
-npm ci
+npm ci --ignore-scripts
 npm run lint
 npm run typecheck
 npm test
 npm run build
-npm run preview
 ```
+
+All commands passed. Vitest passed 12 tests. Playwright passed 15 applicable runs with 5 intentional project skips. The clean `dist/index.html` matched the live root SHA-256 `359fef1eaa680837b63927c9e7e76850c6984097770e735817eff060236f5488`.
+
+Live checks also confirmed:
+
+- zero axe violations on root, Privacy, and Terms at desktop and mobile;
+- no console errors in audited flows;
+- no off-origin requests during sample correction, export, and offline reload;
+- offline reload restored the saved proof;
+- prior defects for grid bounds, image ratio, accessible naming, touch targets, response headers, and rate limiting remain fixed;
+- first `429` occurred on license-verification request 21 with `Retry-After: 58`.
+
+## Anything left
+
+Resolve every finding in `.factory/review-1.md`, then rerun the complete review from scratch. The existing process-local rate limiter remains the earlier handoff's disclosed operational limitation, and the brief's human completion-time target still needs a moderated study.

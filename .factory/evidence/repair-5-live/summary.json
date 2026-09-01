@@ -1,0 +1,67 @@
+{
+  "candidate": "1f2c53d",
+  "deploymentId": "49895aaa-f36d-4ee9-a562-f01bf5ced13a",
+  "liveUrl": "https://accessible-table-ocr-check.sociobot.in",
+  "apiContentHash": "6cbb5ecf6a6b92736899ccb5b8565989",
+  "concurrentAllowance": {
+    "simultaneousRequests": 25,
+    "functionInstances": 5,
+    "allowed200": 20,
+    "rejected429": 5,
+    "rejectedCounts": [21, 22, 23, 24, 25],
+    "retryAfterSeconds": [59, 58, 58, 58, 57],
+    "policy": "atomic-product-window",
+    "result": "pass"
+  },
+  "sequentialAllowance": {
+    "allowed200": 20,
+    "request21Status": 429,
+    "request21RetryAfterSeconds": 58,
+    "result": "pass"
+  },
+  "liveBrowser": {
+    "passed": 52,
+    "skipped": 8,
+    "viewports": [
+      "desktop",
+      "390x844"
+    ],
+    "result": "pass"
+  },
+  "routeAccessibility": {
+    "routeViewportChecks": 10,
+    "axeViolations": 0,
+    "normalRouteConsoleErrors": 0,
+    "expected404DocumentErrors": 2,
+    "horizontalOverflowFailures": 0,
+    "result": "pass"
+  },
+  "liveIdentity": {
+    "checked": 21,
+    "matched": 21,
+    "result": "pass"
+  },
+  "lighthouse": {
+    "performance": 99,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "fcpMs": 930.98,
+    "lcpMs": 1350.98,
+    "tbtMs": 125,
+    "cls": 0,
+    "totalBytes": 105458
+  },
+  "infrastructure": {
+    "staticWebApp": "sf-accessible-table-ocr-check",
+    "rateLimitCache": "sf-accessible-table-ocr-check-rate-limit",
+    "cacheRegion": "centralus",
+    "cacheSku": "Basic C0",
+    "cacheTlsMinimum": "1.2",
+    "nonTlsPortEnabled": false,
+    "appSettingNames": [
+      "RATE_LIMIT_REDIS_HOST",
+      "RATE_LIMIT_REDIS_KEY"
+    ]
+  }
+}

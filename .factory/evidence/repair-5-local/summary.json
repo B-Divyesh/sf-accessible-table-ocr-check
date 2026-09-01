@@ -1,0 +1,54 @@
+{
+  "candidate": "1f2c53d",
+  "date": "2026-09-01",
+  "cleanInstall": {
+    "rootPackages": 142,
+    "apiPackages": 7,
+    "auditVulnerabilities": 0
+  },
+  "unitAndApi": {
+    "passed": 16,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 53,
+    "skipped": 7,
+    "viewports": [
+      "desktop",
+      "390x844"
+    ]
+  },
+  "claimsRunSeparately": {
+    "passed": 34,
+    "failed": 0
+  },
+  "lint": "pass",
+  "typecheck": "pass",
+  "build": "pass",
+  "urlCheck": {
+    "errors": [],
+    "title": "Accessible Table OCR Check — fix reading order",
+    "lang": "en",
+    "h1": 1,
+    "main": true,
+    "imagesMissingAlt": 0,
+    "unlabeledButtons": 0
+  },
+  "lighthouse": {
+    "performance": 98,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "fcpMs": 774.6083,
+    "lcpMs": 1653.2166,
+    "tbtMs": 156,
+    "cls": 0,
+    "totalBytes": 104472
+  },
+  "bundle": {
+    "javascriptBytes": 36597,
+    "javascriptGzipBytes": 13010,
+    "cssBytes": 19578,
+    "cssGzipBytes": 4980
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "candidate": "1f2c53d",
+  "checkedAt": "2026-09-01T21:35:10.272Z",
+  "results": [
+    {
+      "path": "404.html",
+      "status": 200,
+      "size": 58121,
+      "sha256": "6f80d0b9f7299454050a4f7c1005999833ca3b6cea92eb75c71370030fca3cf1",
+      "matches": true
+    },
+    {
+      "path": "assets/index-ETZ9P4Nb.css",
+      "status": 200,
+      "size": 19578,
+      "sha256": "492c5b5528614df5be74153ae584f3486243571a9db6d91d0e5c122b7ba7bc47",
+      "matches": true
+    },
+    {
+      "path": "assets/index-vZOHaL1N.js",
+      "status": 200,
+      "size": 36597,
+      "sha256": "4d21b36e5d752c6b6071599d2155bb6d40c3b8e39e22ba58f4df53ad480ea4bd",
+      "matches": true
+    },
+    {
+      "path": "assets/index-vZOHaL1N.js.map",
+      "status": 200,
+      "size": 80722,
+      "sha256": "8596f1d5d579a0969b34de0b0c3baeee9383992f403bba1ade505cf339f9f62c",
+      "matches": true
+    },
+    {
+      "path": "assets/proofing-table-640.webp",
+      "status": 200,
+      "size": 22664,
+      "sha256": "007b7e501ae80000f543288d324a571c1e0baedbacf33e7769e69ae2d86e6d99",
+      "matches": true
+    },
+    {
+      "path": "assets/proofing-table.webp",
+      "status": 200,
+      "size": 110030,
+      "sha256": "563a64c377abea6743da30329b60861d3072be55ff8ef5b566ff397dedae2d74",
+      "matches": true
+    },
+    {
+      "path": "assets/social-preview.jpg",
+      "status": 200,
+      "size": 138697,
+      "sha256": "2f9da83e643f6c5683c0772c0d0104263862e46c5761d66ee34c1b08fdc44cce",
+      "matches": true
+    },
+    {
+      "path": "demo/index.html",
+      "status": 200,
+      "size": 58121,
+      "sha256": "6f80d0b9f7299454050a4f7c1005999833ca3b6cea92eb75c71370030fca3cf1",
+      "matches": true
+    },
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "size": 444,
+      "sha256": "d910d59789a7e34f7e932b081c648feeb6c8b66bb630f2562c8cb76a94b788cf",
+      "matches": true
+    },
+    {
+      "path": "icons/apple-touch-icon.png",
+      "status": 200,
+      "size": 54507,
+      "sha256": "8e6ff06119f0b7425ab6cf995f0202c6f3ea7b08e4ea3da393c416ec2059c14f",
+      "matches": true
+    },
+    {
+      "path": "icons/icon-192.png",
+      "status": 200,
+      "size": 61281,
+      "sha256": "45822e07306ca16b5ab2edae74d9a8f0251495672a82da4daa9f725b127cbb34",
+      "matches": true
+    },
+    {
+      "path": "icons/icon-512.png",
+      "status": 200,
+      "size": 450970,
+      "sha256": "329fc92eca6456ce904f7b1dddb5b1eafc09a96eb1c55823da0a40b26969deba",
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "size": 58121,
+      "sha256": "6f80d0b9f7299454050a4f7c1005999833ca3b6cea92eb75c71370030fca3cf1",
+      "matches": true
+    },
+    {
+      "path": "manifest.json",
+      "status": 200,
+      "size": 520,
+      "sha256": "a2ece6f1cb4933775081540e587da5f3961b0a8c6ab2f1865f4c44806ee24582",
+      "matches": true
+    },
+    {
+      "path": "offline.html",
+      "status": 200,
+      "size": 706,
+      "sha256": "66160527251e0edad4ab314485ee53be5fb6c13702abcd4e3fb21ef9a3e79e91",
+      "matches": true
+    },
+    {
+      "path": "privacy/index.html",
+      "status": 200,
+      "size": 58121,
+      "sha256": "6f80d0b9f7299454050a4f7c1005999833ca3b6cea92eb75c71370030fca3cf1",
+      "matches": true
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "size": 92,
+      "sha256": "350c0ff86a09823f190e78eb903b97378435b8438c853c5b8228d3702d84e9a5",
+      "matches": true
+    },
+    {
+      "path": "sample-table.svg",
+      "status": 200,
+      "size": 1583,
+      "sha256": "f9a257776b0f30970532b6db1f5cd13b720236166acab15e2d132b2ad602e4e1",
+      "matches": true
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "size": 416,
+      "sha256": "ce7fd5b6b01c038f2114795ff14bbddb12a6bae54c01f4022a6248b93d1fd4bc",
+      "matches": true
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "size": 1823,
+      "sha256": "35db7c262466c68990143b07ca7fa27e3c6fd4873bbebc45a5d81cda0040cf49",
+      "matches": true
+    },
+    {
+      "path": "terms/index.html",
+      "status": 200,
+      "size": 58121,
+      "sha256": "6f80d0b9f7299454050a4f7c1005999833ca3b6cea92eb75c71370030fca3cf1",
+      "matches": true
+    }
+  ]
+}

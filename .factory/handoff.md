@@ -1,4 +1,19 @@
-# Repair 3 handoff — PASS
+# Verification handoff — FAIL
+
+- Work order: `accessible-table-ocr-check-verify-5`
+- Candidate: `d683aaa568a3c4181a12b68d10d04cb62bb9b8df`
+- Live URL: <https://accessible-table-ocr-check.sociobot.in>
+- Date: 2026-09-01 UTC
+
+**FAIL.** The candidate passed the functional, claims, privacy, offline, build, live-identity, rate-limit, and demo-autosave-isolation checks. It does not meet the mandatory 44×44 CSS-pixel control baseline at desktop: the home link is 192×38px and the four primary navigation links are 40×22px, 89×22px, 51×22px, and 87×22px at 1440×900.
+
+Required follow-up: give every header action link a 44×44 CSS-pixel minimum at all viewport sizes and add a desktop visible-control regression over landing, demo, privacy, terms, and 404. Then rerun local/live suites, every declared claim command, and the live rate-limit boundary.
+
+See [verification-5.md](verification-5.md) for exact evidence and all findings. The repair-3 handoff below is historical evidence and is superseded by this verification result.
+
+---
+
+# Repair 3 handoff — historical PASS
 
 - Work order: `accessible-table-ocr-check-repair-3`
 - Verifier base: `2a47514cf8825d6286e28c930d0e6b7458d0146e`

@@ -71,6 +71,23 @@ test('direct demo is ready, resettable, and isolated @claim:demo-ready @claim:de
   expect(await databaseRecord(page, 'demo:table-proofing-desk')).toBeNull();
 });
 
+test('does not let a queued demo autosave recreate isolated data after exit', async ({ page }) => {
+  await page.goto('/');
+  await importJson(page, '#ocr-file', { sourcePage: 'Private scan', cells: [sampleCell({ text: 'Private value' })] }, 'private.json');
+  await page.waitForTimeout(350);
+  const realBefore = await databaseRecord(page, 'table-proofing-desk');
+
+  await page.goto('/demo');
+  await page.getByRole('button', { name: 'Move Yes later' }).click();
+  await page.getByRole('button', { name: 'Reset demo' }).click();
+  await expect(page.getByText('2 reading-order or cell errors')).toBeVisible();
+  await page.getByRole('button', { name: 'Start for real' }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await page.waitForTimeout(350);
+  expect(await databaseRecord(page, 'table-proofing-desk')).toEqual(realBefore);
+  expect(await databaseRecord(page, 'demo:table-proofing-desk')).toBeNull();
+});
+
 test('corrects reading order and exports scoped HTML @claim:proof-and-export', async ({ page }) => {
   await page.goto('/demo');
   await expect(page.locator('.overlay')).toHaveCount(9);

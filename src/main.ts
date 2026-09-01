@@ -298,8 +298,23 @@ function exportProject(kind: string) {
   }
 }
 
-function scheduleSave(message: string) { window.clearTimeout(saveTimer); saveTimer = window.setTimeout(() => persist(message), 250); }
-async function persist(message: string) { if (!project) return; assertBoundedGrid(project.cells); project.updatedAt = new Date().toISOString(); await saveProject(project, demoMode); announce(message); }
+function cancelScheduledSave() { window.clearTimeout(saveTimer); saveTimer = 0; }
+function scheduleSave(message: string) {
+  cancelScheduledSave();
+  const queuedProject = project;
+  const queuedDemoMode = demoMode;
+  saveTimer = window.setTimeout(() => {
+    saveTimer = 0;
+    void persist(message, queuedProject, queuedDemoMode);
+  }, 250);
+}
+async function persist(message: string, savedProject = project, savedDemoMode = demoMode) {
+  if (!savedProject) return;
+  assertBoundedGrid(savedProject.cells);
+  savedProject.updatedAt = new Date().toISOString();
+  await saveProject(savedProject, savedDemoMode);
+  if (project === savedProject && demoMode === savedDemoMode) announce(message);
+}
 function announce(message: string) { const live = document.querySelector<HTMLElement>('#live-status'); if (live) live.textContent = message; }
 
 function bindLicense() {
@@ -371,7 +386,10 @@ async function enterDemo(reset = false) {
   demoMode = true;
   productNotice = '';
   selectedCell = '';
-  if (reset) await clearProject(true);
+  if (reset) {
+    cancelScheduledSave();
+    await clearProject(true);
+  }
   project = reset ? null : await loadProject(true);
   if (!project) {
     project = structuredClone(sampleProject);
@@ -384,6 +402,7 @@ async function enterDemo(reset = false) {
 }
 
 async function startForReal() {
+  cancelScheduledSave();
   await clearProject(true);
   demoMode = false;
   productNotice = '';

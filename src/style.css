@@ -136,7 +136,7 @@ input:hover, select:hover { border-color: var(--ink); }
 .mini-upload { position: relative; display: inline-flex; min-height: 44px; align-items: center; padding: 8px 4px; color: var(--teal); text-decoration: underline; cursor: pointer; }
 .source-canvas { position: relative; display: grid; min-height: 460px; place-items: center; overflow: hidden; border: 2px solid var(--ink); background: var(--sheet); box-shadow: 8px 8px 0 rgb(23 35 33 / 20%); }
 .source-canvas > img { width: 100%; height: auto; max-height: 680px; object-fit: contain; }
-.overlay { position: absolute; min-width: 32px; min-height: 32px; padding: 0; border: 2px solid var(--coral); background: rgb(242 200 189 / 18%); cursor: pointer; transition: background 180ms ease, transform 180ms ease; }
+.overlay { position: absolute; min-width: 44px; min-height: 44px; padding: 0; border: 2px solid var(--coral); background: rgb(242 200 189 / 18%); cursor: pointer; transition: background 180ms ease, transform 180ms ease; }
 .overlay:hover, .overlay.selected { z-index: 2; background: rgb(244 227 165 / 45%); transform: scale(1.03); }
 .overlay span { position: absolute; top: -13px; left: -13px; display: grid; width: 30px; height: 30px; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--coral); color: white; font-size: .75rem; font-weight: 900; }
 .overlay.selected span { background: var(--mustard); color: var(--ink); }
@@ -197,7 +197,7 @@ th { background: var(--teal-wash); }
 .legal-page h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); }
 .legal-page h2 { margin-top: 48px; font-size: 1.55rem; }
 .legal-page p { max-width: 68ch; color: var(--muted); font-size: 1.06rem; }
-.text-link { display: inline-block; margin-top: 40px; font-weight: 800; }
+.text-link { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; margin-top: 40px; font-weight: 800; }
 .not-found { position: relative; max-width: 1100px; min-height: 65vh; margin: 0 auto; padding: 100px clamp(20px, 8vw, 120px); overflow: hidden; }
 .not-found > p { max-width: 42rem; color: var(--muted); font-size: 1.1rem; }
 .misprint { position: absolute; z-index: -1; right: 6%; bottom: 2%; display: flex; align-items: center; color: var(--coral-wash); font: 700 clamp(9rem, 30vw, 23rem)/.8 Georgia, serif; transform: rotate(-4deg); }
@@ -229,7 +229,8 @@ footer p { margin: 0; }
   body { font-size: 16px; }
   .site-header { padding: 14px 16px; }
   .site-header nav { gap: 6px 12px; justify-content: flex-start; overflow-x: auto; }
-  .site-header nav a { min-height: 44px; display: inline-flex; align-items: center; white-space: nowrap; }
+  .site-header a { min-width: 44px; min-height: 44px; }
+  .site-header nav a { display: inline-flex; align-items: center; white-space: nowrap; }
   .local-badge { font-size: .67rem; }
   .demo-banner { align-items: stretch; flex-direction: column; gap: 4px; padding: 10px 16px; }
   .demo-banner > div { margin-top: 4px; }

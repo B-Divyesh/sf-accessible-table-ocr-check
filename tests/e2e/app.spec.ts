@@ -3,6 +3,31 @@ import AxeBuilder from '@axe-core/playwright';
 
 const appOrigin = new URL(process.env.PLAYWRIGHT_BASE_URL ?? 'http://127.0.0.1:4173').origin;
 
+const mobileTargetSelector = [
+  'a[href]',
+  'button',
+  'input:not([type="hidden"]):not([type="file"])',
+  'select',
+  'summary',
+  'label:has(input[type="file"])',
+  '[role="button"]',
+  '[role="link"]',
+].join(', ');
+
+async function undersizedVisibleTargets(page: import('@playwright/test').Page) {
+  return page.locator(mobileTargetSelector).evaluateAll((elements) => elements.map((element) => {
+    const rect = element.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    const hiddenAncestor = element.closest('[hidden], [aria-hidden="true"]');
+    return {
+      name: element.getAttribute('aria-label') || element.textContent?.trim().replace(/\s+/g, ' ').slice(0, 80) || element.tagName.toLowerCase(),
+      width: rect.width,
+      height: rect.height,
+      visible: !hiddenAncestor && rect.width > 0 && rect.height > 0 && style.display !== 'none' && style.visibility !== 'hidden',
+    };
+  }).filter((target) => target.visible && (target.width < 44 || target.height < 44)));
+}
+
 test('opens the demo, identifies it, corrects it, and exports semantic HTML', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });
@@ -37,6 +62,14 @@ test('fits the core workflow on a 390px viewport', async ({ page }, testInfo) =>
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
   await page.getByRole('button', { name: 'Move Yes later' }).click();
   await expect(page.getByText('No structural errors detected')).toBeVisible();
+});
+
+test('gives every visible mobile control a 44 by 44 CSS-pixel target', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile', 'mobile project only');
+  for (const route of ['/', '/demo', '/privacy/', '/terms/', '/missing-page']) {
+    await page.goto(route);
+    expect(await undersizedVisibleTargets(page)).toEqual([]);
+  }
 });
 
 test('preserves hero artwork proportions, visible naming, and mobile touch targets', async ({ page }, testInfo) => {

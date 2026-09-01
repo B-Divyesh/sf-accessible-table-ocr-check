@@ -76,6 +76,14 @@ The deployment root is `dist/`, with `index.html` at its root. It includes direc
 
 The build inlines the small app bundle into the page. A primed browser can open the table checker without a network connection.
 
+Production uses the factory’s static deployment command, which uploads `dist/` and the managed `api/` functions:
+
+```sh
+/opt/fleet/lib/deploy-static.sh accessible-table-ocr-check dist
+```
+
+The license gateway requires `RATE_LIMIT_REDIS_HOST` and `RATE_LIMIT_REDIS_KEY` app settings from the product-owned `sf-accessible-table-ocr-check-rate-limit` cache. It returns `503` if that shared counter is unavailable.
+
 Every public product claim is listed in [`.factory/claims.json`](.factory/claims.json). Each entry names its exact tagged browser test.
 
 ## Privacy and paid features
@@ -86,11 +94,11 @@ The optional Desk license costs $19 once. It adds named saved versions stored in
 
 Core checking and every accessible export remain free. Purchase and verification use the Sociobot billing API.
 
-Verification uses the deployment’s same-origin gateway. A signed client window carries the 20-request allowance across function instances. Request 21 receives `429` with `Retry-After`.
+Verification uses the deployment’s same-origin gateway. One atomic product counter applies the 20-request allowance across function instances. Every request beyond 20 receives `429` with `Retry-After`.
 
 No document content enters the license request. Sociobot/Dodo is the merchant of record.
 
-Run `npm run test:live-rate-limit` after deployment to exercise the live 20-request window. The command preserves the gateway’s signed `HttpOnly` state between requests and fails unless request 21 returns `429` with a positive `Retry-After`.
+Run `npm run test:live-rate-limit` after deployment from a fresh 60-second window. It starts 25 requests together and requires atomic counts 1–20 to pass and counts 21–25 to return `429` with a positive `Retry-After`. Run `npm run test:live-rate-limit:sequential` after the next fresh window to check the same boundary in sequence.
 
 See [Privacy](https://accessible-table-ocr-check.sociobot.in/privacy/) and [Terms](https://accessible-table-ocr-check.sociobot.in/terms/).
 

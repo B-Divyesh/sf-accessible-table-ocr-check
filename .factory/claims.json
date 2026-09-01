@@ -232,9 +232,9 @@
   },
   {
     "id": "license-rate-limit",
-    "claim": "A 20-request client burst then receives 429 and Retry-After responses.",
+    "claim": "A simultaneous client burst allows 20 requests, then every excess request receives 429 and a positive Retry-After.",
     "where": "README",
     "test": "npm run test:unit -- --testNamePattern \"@claim:license-rate-limit\"",
-    "sandbox": "stub upstream billing; alternate two isolated function modules while carrying signed client state; inspect response 21"
+    "sandbox": "stub upstream billing; start 25 requests together across two isolated function modules sharing one atomic store; sort by atomic count and require counts 21–25 to return 429 with a positive Retry-After"
   }
 ]

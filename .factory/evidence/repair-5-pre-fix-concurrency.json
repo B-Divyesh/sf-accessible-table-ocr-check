@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-01T21:01:00Z",
+  "target": "https://accessible-table-ocr-check.sociobot.in/api/license/verify",
+  "simultaneousRequests": 25,
+  "elapsedMs": 2065,
+  "statusCounts": {
+    "200": 25,
+    "429": 0
+  },
+  "positiveRetryAfterOnRejectedRequests": false,
+  "remainingValues": {
+    "19": 25
+  },
+  "functionInstances": [
+    "b5e03f010a75",
+    "7200af94b052",
+    "f57491a79a9b",
+    "39c7be0e4ebc"
+  ],
+  "result": "FAIL: all 25 simultaneous requests were admitted; no response included Retry-After."
+}

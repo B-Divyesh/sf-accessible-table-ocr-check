@@ -3,6 +3,8 @@
 // CommonJS is required by the Azure Functions v1 entry-point contract.
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { createHash } = require('node:crypto');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { isIP } = require('node:net');
 
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS = 20;
@@ -30,8 +32,16 @@ function header(req, name) {
 }
 
 function clientKey(req) {
-  const forwarded = header(req, 'x-forwarded-for');
-  const address = String(forwarded).split(',')[0].trim() || 'unknown-client';
+  const forwarded = header(req, 'x-azure-clientip') || header(req, 'x-forwarded-for');
+  const supplied = String(forwarded).split(',')[0].trim();
+  let address = supplied || 'unknown-client';
+  if (supplied && !isIP(supplied)) {
+    const bracketed = supplied.match(/^\[([0-9a-f:]+)\](?::\d+)?$/i);
+    const separator = supplied.lastIndexOf(':');
+    const withoutPort = separator > 0 ? supplied.slice(0, separator) : '';
+    if (bracketed && isIP(bracketed[1])) address = bracketed[1];
+    else if (/^\d+$/.test(supplied.slice(separator + 1)) && isIP(withoutPort)) address = withoutPort;
+  }
   return createHash('sha256').update(address).digest('base64url').slice(0, 22);
 }
 

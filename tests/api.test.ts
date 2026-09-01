@@ -50,7 +50,7 @@ describe('license verification response policy', () => {
 
     const responses = await Promise.all(Array.from({ length: 25 }, (_, index) => {
       const instance = index % 2 === 0 ? instanceA : instanceB;
-      return instance(context(), { headers: { 'x-forwarded-for': '203.0.113.42' }, query: { license: 'invalid-test-token' } });
+      return instance(context(), { headers: { 'x-forwarded-for': `203.0.113.42:${40_000 + index}` }, query: { license: 'invalid-test-token' } });
     }));
     const byCount = responses.toSorted((left, right) => Number(left.headers['X-RateLimit-Count']) - Number(right.headers['X-RateLimit-Count']));
 

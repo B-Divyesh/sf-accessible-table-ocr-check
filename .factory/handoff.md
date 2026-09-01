@@ -1,31 +1,43 @@
-# Polish 2 handoff
+# Verification 8 handoff — FAIL
 
-## Completed
+## Result
 
-- Fixed every F-2-1 through F-2-14 finding in `.factory/review-2.md`; the exact mapping is in `.factory/polish-2.md`.
-- Kept the isolated `/demo` storage boundary and made the phone demo show a live issue result and correction above the 844 px fold.
-- Removed price, merchant, card-data, and refund claims that cannot be proved from a non-mutating billing contract.
-- Added outcome-level claim coverage for license-request document privacy, local token/cadence, revoked licenses, fail-closed limiting, and direct route documents.
-- Updated plain-language copy, catalog description, interactive labels, claims manifest, and build id (`polish-2`).
+Candidate `2218cd00b1a3a993ebc7ce034bb9aba36f0e49c5` at <https://accessible-table-ocr-check.sociobot.in> is **FAIL** as of 2026-09-01 UTC.
 
-## Verification
+Product code was not changed. The full report is in `.factory/verification-8.md`.
 
-- `npm ci`
-- `npm run lint`
-- `npm run typecheck`
-- `npm run build` — produced `dist/`; inline JS 13.09 KB gzip and CSS 5.08 KB gzip.
-- `npm test` — 15 Vitest tests passed; 59 Playwright tests passed, 7 expected desktop/mobile skips.
-- Targeted outcome check: `npm run test:e2e -- --project=chromium --grep '@claim:revoked-license'` passed.
-- Fresh clone: all 35 commands named in `.factory/claims.json` passed independently; results are retained at `/tmp/accessible-table-ocr-check-claim-results.log` in the worker.
+## Release blockers
 
-## Deployment and live verification
+1. **High — live license gateway unavailable.** Both live allowance tests failed. All 25 concurrent and all 21 sequential `/api/license/verify` requests returned `503`, `Retry-After: 60`, count 0, and policy `atomic-product-window`. The observed working allowance is 0, not the documented 20 requests per client per 60 seconds, and no excess request reached `429`. Restore the product-owned shared limiter/settings and rerun both commands from fresh windows.
+2. **Medium — 200% text overlap at 390 px.** The header wordmark and “Local by default” badge overlap by about 145.6 × 51.2 CSS px when root text is 32 px. Adjust the mobile header reflow, then repeat the 200% text-size check.
 
-- Released commit `2218cd00b1a3a993ebc7ce034bb9aba36f0e49c5` with `/opt/fleet/lib/deploy-static.sh accessible-table-ocr-check dist`.
-- Cold live mobile browser suite: 9 passed, 5 expected project skips. It includes the 390 × 844 demo-above-fold check, routes, focus, offline reload, 404, and layout checks.
-- `/opt/fleet/lib/verify-url.sh` passed on the live root. Evidence: `.factory/evidence/polish-2-live/verify.json` and its desktop/mobile screenshots. It found title, `lang=en`, one h1, main, image alt text, no unlabeled buttons, and no console errors.
-- The live app suite uses Playwright Axe on landing and demo; no serious or critical violations were found. The standalone Axe CLI could not locate a Chrome binary in this worker, so the existing Playwright Axe integration is the recorded accessibility evidence.
-- Cold live unknown route check: `/does-not-exist-polish-2` returned HTTP 404. Live `/demo` served `polish-2`, `demo-result`, and `Move Yes later`.
+## What passed
 
-## Known gaps
+- All 36 declared claim commands passed separately from the clean candidate checkout.
+- Cold first-read and one-click isolated demo passed.
+- `npm ci`, API `npm ci`, lint, typecheck, full tests, production build, and live Playwright suite passed.
+- The core job passed for normal data, 500-cell/99-grid boundaries, malformed and over-limit recovery, keyboard correction, semantic exports, persistence, and demo isolation.
+- All 21 public artifacts matched the candidate build byte-for-byte.
+- Independent axe audits across five routes, desktop, and 390 px found zero violations and no serious/critical findings at default text size.
+- Privacy request logging, security headers, caching, internal links, reduced motion, service-worker activation/update, and offline reload passed.
+- Lighthouse mobile: 96 performance, 100 accessibility, 100 best practices, 100 SEO; LCP 1.20 s, CLS 0, 44.3 KB transferred.
 
-None known.
+## Commands to reproduce
+
+```sh
+npm ci
+npm ci --prefix api --ignore-scripts
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npm run test:e2e:live
+npm run test:live-rate-limit
+npm run test:live-rate-limit:sequential
+```
+
+For the text-resize defect, open `/` at 390 × 844 and enlarge root text from 16 px to 32 px. The wordmark occupies x 16–247.23 / y 14–106.03, while the badge occupies x 101.64–374 / y 34.41–85.63.
+
+## Remaining verification
+
+After both blockers are repaired and deployed, repeat every claim command, the full local/live suites, the two live allowance tests from fresh 60-second windows, candidate/live byte comparison, and the 200% text-size audit. The brief's 30-page moderated timing study remains unmeasured and is not presented as a product claim.

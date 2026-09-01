@@ -1,0 +1,349 @@
+{
+  "routes": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "status": 200,
+      "title": "Accessible Table OCR Check — fix reading order",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/demo",
+      "status": 200,
+      "title": "Demo — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/privacy/",
+      "status": 200,
+      "title": "Privacy — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/terms/",
+      "status": 200,
+      "title": "Terms — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/missing-page",
+      "status": 404,
+      "title": "Page not found — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/",
+      "status": 200,
+      "title": "Accessible Table OCR Check — fix reading order",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/demo",
+      "status": 200,
+      "title": "Demo — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/privacy/",
+      "status": 200,
+      "title": "Privacy — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/terms/",
+      "status": 200,
+      "title": "Terms — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/missing-page",
+      "status": 404,
+      "title": "Page not found — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": true,
+      "missingAlt": 0,
+      "overflow": false,
+      "smallTargets": [],
+      "axeSeriousCritical": [],
+      "axeAll": []
+    }
+  ],
+  "keyboard": {
+    "firstFocus": {
+      "text": "Skip to main content",
+      "href": "#main",
+      "outline": "rgb(169, 52, 43) solid 3px",
+      "outlineColor": "rgb(169, 52, 43)",
+      "outlineWidth": "3px"
+    },
+    "skipTarget": "https://accessible-table-ocr-check.sociobot.in/#main",
+    "moveFocus": {
+      "outline": "rgb(169, 52, 43) solid 3px",
+      "outlineColor": "rgb(169, 52, 43)",
+      "outlineWidth": "3px"
+    },
+    "corrected": true
+  },
+  "privacy": {
+    "requestCount": 5,
+    "offOrigin": [],
+    "markerInRequestBody": false,
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/demo"
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/sample-table.svg"
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/sample-table.svg"
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/demo"
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/sample-table.svg"
+      }
+    ],
+    "localStorage": [],
+    "cookies": [],
+    "indexedDB": {
+      "databases": [
+        "demo:table-proofing-desk"
+      ]
+    }
+  },
+  "pwa": {
+    "beforeOffline": {
+      "controlled": true,
+      "active": "activated",
+      "waiting": null,
+      "installing": null,
+      "caches": [
+        "proof-desk-v3"
+      ]
+    },
+    "offline": {
+      "url": "https://accessible-table-ocr-check.sociobot.in/demo",
+      "notice": true,
+      "workbench": true,
+      "editable": true
+    },
+    "errors": [],
+    "manifest": {
+      "name": "Accessible Table OCR Check",
+      "short_name": "Table Check",
+      "display": "standalone",
+      "start_url": "/?source=pwa&v=3",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any"
+        },
+        {
+          "src": "/icons/icon-512.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "any maskable"
+        }
+      ]
+    }
+  },
+  "headers": {
+    "/": {
+      "status": 200,
+      "cacheControl": "no-cache, must-revalidate",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+      "hsts": "max-age=10886400; includeSubDomains; preload",
+      "xFrameOptions": "DENY"
+    },
+    "/sw.js": {
+      "status": 200,
+      "cacheControl": "no-cache, no-store, must-revalidate",
+      "contentType": "text/javascript",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+      "hsts": "max-age=10886400; includeSubDomains; preload",
+      "xFrameOptions": "DENY"
+    },
+    "/manifest.json": {
+      "status": 200,
+      "cacheControl": "public, max-age=3600, must-revalidate",
+      "contentType": "application/json",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+      "hsts": "max-age=10886400; includeSubDomains; preload",
+      "xFrameOptions": "DENY"
+    },
+    "/assets/proofing-table.webp": {
+      "status": 200,
+      "cacheControl": "public, max-age=31536000, immutable",
+      "contentType": "image/webp",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+      "hsts": "max-age=10886400; includeSubDomains; preload",
+      "xFrameOptions": "DENY"
+    },
+    "/privacy/": {
+      "status": 200,
+      "cacheControl": "no-cache, must-revalidate",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+      "hsts": "max-age=10886400; includeSubDomains; preload",
+      "xFrameOptions": "DENY"
+    },
+    "/terms/": {
+      "status": 200,
+      "cacheControl": "no-cache, must-revalidate",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+      "hsts": "max-age=10886400; includeSubDomains; preload",
+      "xFrameOptions": "DENY"
+    },
+    "/missing-page": {
+      "status": 404,
+      "cacheControl": "public, must-revalidate, max-age=30",
+      "contentType": "text/html",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+      "xContentTypeOptions": "nosniff",
+      "referrerPolicy": "strict-origin-when-cross-origin",
+      "permissionsPolicy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+      "hsts": "max-age=10886400; includeSubDomains; preload",
+      "xFrameOptions": "DENY"
+    }
+  },
+  "links": [
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/#main",
+      "status": 200
+    },
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/",
+      "status": 200
+    },
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/demo",
+      "status": 200
+    },
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/#how",
+      "status": 200
+    },
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/privacy/",
+      "status": 200
+    },
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/#license",
+      "status": 200
+    },
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/#import",
+      "status": 200
+    },
+    {
+      "href": "https://accessible-table-ocr-check.sociobot.in/terms/",
+      "status": 200
+    }
+  ],
+  "errors": [
+    "desktop console: Failed to load resource: the server responded with a status of 404 ()",
+    "mobile console: Failed to load resource: the server responded with a status of 404 ()"
+  ]
+}

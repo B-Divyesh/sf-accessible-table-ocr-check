@@ -1,0 +1,26 @@
+
+> accessible-table-ocr-check@1.0.0 test:live-rate-limit
+> node scripts/verify-live-rate-limit.mjs
+
+1	200	-	signed-client-window
+2	200	-	signed-client-window
+3	200	-	signed-client-window
+4	200	-	signed-client-window
+5	200	-	signed-client-window
+6	200	-	signed-client-window
+7	200	-	signed-client-window
+8	200	-	signed-client-window
+9	200	-	signed-client-window
+10	200	-	signed-client-window
+11	200	-	signed-client-window
+12	200	-	signed-client-window
+13	200	-	signed-client-window
+14	200	-	signed-client-window
+15	200	-	signed-client-window
+16	200	-	signed-client-window
+17	200	-	signed-client-window
+18	200	-	signed-client-window
+19	200	-	signed-client-window
+20	200	-	signed-client-window
+21	429	58	signed-client-window
+function instances observed: 1

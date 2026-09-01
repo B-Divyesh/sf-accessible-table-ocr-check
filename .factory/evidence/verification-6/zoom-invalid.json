@@ -1,0 +1,19 @@
+{
+  "method": "640 CSS-pixel viewport representing 200% browser zoom from 1280 by 900",
+  "zoomLanding": {
+    "horizontalOverflow": false,
+    "h1Visible": true,
+    "sampleVisible": true
+  },
+  "zoomDemo": {
+    "horizontalOverflow": false,
+    "headingVisible": true,
+    "exportVisible": true
+  },
+  "invalid": "This is not valid JSON. Export OCR results as JSON and try again.",
+  "invalidLiveRegion": {
+    "role": "status",
+    "ariaLive": null
+  },
+  "recoveryLanding": true
+}

@@ -1,0 +1,9 @@
+{
+  "toast": "A newer proofing desk is ready.\nUpdate now",
+  "updateButton": true,
+  "buttonSize": {
+    "width": 97.390625,
+    "height": 44
+  },
+  "errors": []
+}

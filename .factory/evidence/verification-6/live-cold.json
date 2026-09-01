@@ -1,0 +1,94 @@
+{
+  "firstRead": {
+    "url": "https://accessible-table-ocr-check.sociobot.in/",
+    "title": "Accessible Table OCR Check — fix reading order",
+    "h1": [
+      "Fix a scanned table’sreading order."
+    ],
+    "visibleText": [
+      "＋Tableproofing desk",
+      "Demo",
+      "How it works",
+      "Privacy",
+      "Desk license",
+      "For scanned-table accessibility checks",
+      "Fix a scanned table’sreading order.",
+      "For librarians and accessibility reviewers who compare OCR with a scan before sharing a table with screen-reader users.",
+      "Try it with sample data →",
+      "Import your page",
+      "Opens a scanned transit table with two reading-order errors.",
+      "Runs in your browser",
+      "No document upload",
+      "Works offline after first visit"
+    ],
+    "actions": [
+      {
+        "text": "＋Tableproofing desk",
+        "tag": "A",
+        "href": "https://accessible-table-ocr-check.sociobot.in/"
+      },
+      {
+        "text": "Demo",
+        "tag": "A",
+        "href": "https://accessible-table-ocr-check.sociobot.in/demo"
+      },
+      {
+        "text": "How it works",
+        "tag": "A",
+        "href": "https://accessible-table-ocr-check.sociobot.in/#how"
+      },
+      {
+        "text": "Privacy",
+        "tag": "A",
+        "href": "https://accessible-table-ocr-check.sociobot.in/privacy/"
+      },
+      {
+        "text": "Desk license",
+        "tag": "A",
+        "href": "https://accessible-table-ocr-check.sociobot.in/#license"
+      },
+      {
+        "text": "Try it with sample data →",
+        "tag": "A",
+        "href": "https://accessible-table-ocr-check.sociobot.in/demo"
+      },
+      {
+        "text": "Import your page",
+        "tag": "A",
+        "href": "https://accessible-table-ocr-check.sociobot.in/#import"
+      }
+    ]
+  },
+  "status": 200,
+  "headers": {
+    "cache-control": "no-cache, must-revalidate",
+    "content-encoding": "br",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'",
+    "content-type": "text/html",
+    "date": "Tue, 01 Sep 2026 20:29:05 GMT",
+    "etag": "\"26493795\"",
+    "last-modified": "Tue, 01 Sep 2026 20:14:08 GMT",
+    "permissions-policy": "camera=(), geolocation=(), microphone=(), payment=(), usb=()",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+    "vary": "Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-frame-options": "DENY",
+    "x-xss-protection": "1; mode=block"
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://accessible-table-ocr-check.sociobot.in/",
+      "type": "document"
+    },
+    {
+      "method": "GET",
+      "url": "https://accessible-table-ocr-check.sociobot.in/assets/proofing-table.webp",
+      "type": "image"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": []
+}

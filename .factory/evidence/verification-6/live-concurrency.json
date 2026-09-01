@@ -1,0 +1,211 @@
+{
+  "elapsedMs": 1119,
+  "counts": {
+    "200": 25
+  },
+  "instances": [
+    "17ed5def4d21"
+  ],
+  "results": [
+    {
+      "request": 1,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 2,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 3,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 4,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 5,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 6,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 7,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 8,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 9,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 10,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 11,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 12,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 13,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 14,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 15,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 16,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 17,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 18,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 19,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 20,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 21,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "18"
+    },
+    {
+      "request": 22,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 23,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 24,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    },
+    {
+      "request": 25,
+      "status": 200,
+      "retryAfter": null,
+      "instance": "17ed5def4d21",
+      "policy": "signed-client-window",
+      "remaining": "19"
+    }
+  ]
+}

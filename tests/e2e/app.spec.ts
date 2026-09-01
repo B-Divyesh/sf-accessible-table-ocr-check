@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 const appOrigin = new URL(process.env.PLAYWRIGHT_BASE_URL ?? 'http://127.0.0.1:4173').origin;
 
-const mobileTargetSelector = [
+const interactiveTargetSelector = [
   'a[href]',
   'button',
   'input:not([type="hidden"]):not([type="file"])',
@@ -15,7 +15,7 @@ const mobileTargetSelector = [
 ].join(', ');
 
 async function undersizedVisibleTargets(page: import('@playwright/test').Page) {
-  return page.locator(mobileTargetSelector).evaluateAll((elements) => elements.map((element) => {
+  return page.locator(interactiveTargetSelector).evaluateAll((elements) => elements.map((element) => {
     const rect = element.getBoundingClientRect();
     const style = getComputedStyle(element);
     const hiddenAncestor = element.closest('[hidden], [aria-hidden="true"]');
@@ -66,6 +66,14 @@ test('fits the core workflow on a 390px viewport', async ({ page }, testInfo) =>
 
 test('gives every visible mobile control a 44 by 44 CSS-pixel target', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile', 'mobile project only');
+  for (const route of ['/', '/demo', '/privacy/', '/terms/', '/missing-page']) {
+    await page.goto(route);
+    expect(await undersizedVisibleTargets(page)).toEqual([]);
+  }
+});
+
+test('gives every visible desktop control a 44 by 44 CSS-pixel target', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'desktop project only');
   for (const route of ['/', '/demo', '/privacy/', '/terms/', '/missing-page']) {
     await page.goto(route);
     expect(await undersizedVisibleTargets(page)).toEqual([]);

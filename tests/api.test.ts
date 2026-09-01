@@ -75,20 +75,19 @@ describe('license verification response policy', () => {
     expect(Number(responses[20].headers['Retry-After'])).toBeGreaterThan(0);
   });
 
-  it('fails closed when the shared atomic limiter is not configured', async () => {
+  it('fails closed when the shared limiter is unavailable @claim:license-fails-closed', async () => {
     delete process.env.RATE_LIMIT_REDIS_HOST;
     delete process.env.RATE_LIMIT_REDIS_KEY;
-    const response = await verifyLicense(context(), { headers: {}, query: { license: 'token' } });
-    expect(response.status).toBe(503);
-    expect(response.headers['Retry-After']).toBe('60');
-    expect(response.headers['X-RateLimit-Policy']).toBe('atomic-product-window');
-  });
+    const missing = await verifyLicense(context(), { headers: {}, query: { license: 'token' } });
+    expect(missing.status).toBe(503);
+    expect(missing.headers['Retry-After']).toBe('60');
+    expect(missing.headers['X-RateLimit-Policy']).toBe('atomic-product-window');
 
-  it('fails closed when the shared atomic limiter errors', async () => {
     const log = context();
     verifyLicense._setRateLimitStoreForTests({ take: async () => { throw new Error('cache unavailable'); } });
-    const response = await verifyLicense(log, { headers: {}, query: { license: 'token' } });
-    expect(response.status).toBe(503);
+    const unavailable = await verifyLicense(log, { headers: {}, query: { license: 'token' } });
+    expect(unavailable.status).toBe(503);
+    expect(unavailable.headers['Retry-After']).toBe('60');
     expect(log.log.error).toHaveBeenCalledOnce();
   });
 

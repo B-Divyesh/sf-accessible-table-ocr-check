@@ -43,7 +43,7 @@ test('opens the demo, identifies it, corrects it, and exports semantic HTML', as
   await expect(page.getByText('2 reading-order or cell errors')).toBeVisible();
   const workbenchA11y = await new AxeBuilder({ page }).analyze();
   expect(workbenchA11y.violations.filter((item) => ['serious', 'critical'].includes(item.impact ?? ''))).toEqual([]);
-  await page.getByRole('button', { name: 'Move Yes later' }).click();
+  await page.locator('[data-action="quick-demo-fix"]').click();
   await expect(page.getByText('No structural errors detected')).toBeVisible();
   await expect(page.getByRole('table', { name: 'Current semantic table preview' })).toBeVisible();
 
@@ -59,8 +59,13 @@ test('fits the core workflow on a 390px viewport', async ({ page }, testInfo) =>
   await page.goto('/');
   await page.getByRole('link', { name: /Try it with sample data/ }).click();
   await expect(page.getByRole('heading', { name: 'Review reading order' })).toBeVisible();
+  await expect(page.locator('.demo-result')).toContainText('Transit access survey · 9 cells · 2 reading-order errors');
+  await expect(page.locator('.demo-result').getByRole('button', { name: 'Move Yes later' })).toBeVisible();
+  const resultBounds = await page.locator('.demo-result').boundingBox();
+  expect(resultBounds?.y).toBeGreaterThanOrEqual(0);
+  expect((resultBounds?.y ?? 0) + (resultBounds?.height ?? 0)).toBeLessThanOrEqual(844);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
-  await page.getByRole('button', { name: 'Move Yes later' }).click();
+  await page.locator('[data-action="quick-demo-fix"]').click();
   await expect(page.getByText('No structural errors detected')).toBeVisible();
 });
 
@@ -206,7 +211,7 @@ test('supports keyboard correction, reduced motion, and a private core flow', as
   const sample = page.getByRole('link', { name: /Try it with sample data/ });
   await sample.focus();
   await page.keyboard.press('Enter');
-  const move = page.getByRole('button', { name: 'Move Yes later' });
+  const move = page.locator('.cell-actions button[aria-label="Move Yes later"]');
   expect(await move.evaluate((element) => element.tabIndex)).toBe(0);
   await move.focus();
   await page.keyboard.press('Space');
@@ -265,7 +270,7 @@ test('keeps the required header and footer skeleton on every route', async ({ pa
     await expect(page.locator('header .wordmark')).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Demo' })).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Privacy' })).toBeVisible();
-    await expect(page.getByText(/Built by Param Factory · Build polish-1/)).toBeVisible();
+    await expect(page.getByText(/Built by Param Factory · Build polish-2/)).toBeVisible();
     await expect(page.locator('main h1')).toHaveCount(1);
   }
 });

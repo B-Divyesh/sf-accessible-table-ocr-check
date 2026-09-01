@@ -74,7 +74,7 @@ npm run preview   # inspect the production build
 
 The deployment root is `dist/`, with `index.html` at its root. It includes direct documents for Demo, Privacy, Terms, and 404 responses.
 
-The build inlines the small app bundle into the page. A primed browser can open the table checker without a network connection.
+The build inlines the small app bundle into the page. After one connected visit, the browser can open the table checker without a network connection.
 
 Production uses the factory’s static deployment command, which uploads `dist/` and the managed `api/` functions:
 
@@ -84,21 +84,21 @@ Production uses the factory’s static deployment command, which uploads `dist/`
 
 The license gateway requires `RATE_LIMIT_REDIS_HOST` and `RATE_LIMIT_REDIS_KEY` app settings from the product-owned `sf-accessible-table-ocr-check-rate-limit` cache. It returns `503` if that shared counter is unavailable.
 
-Every public product claim is listed in [`.factory/claims.json`](.factory/claims.json). Each entry names its exact tagged browser test.
+Every public product claim is listed in [`.factory/claims.json`](.factory/claims.json). Each entry names its exact tagged test.
 
 ## Privacy and paid features
 
 The app has no analytics, trackers, CDN fonts, or third-party runtime scripts.
 
-The optional Desk license costs $19 once. It adds named saved versions stored in IndexedDB on that device.
+An optional Desk license adds named saved versions stored in IndexedDB on that device.
 
-Core checking and every accessible export remain free. Purchase and verification use the Sociobot billing API.
+Core checking and every accessible export remain free. License controls use the registered checkout and verification paths.
 
-Verification uses the deployment’s same-origin gateway. One atomic product counter applies the 20-request allowance across function instances. Every request beyond 20 receives `429` with `Retry-After`.
+License checks go through this app’s server. A shared counter allows 20 checks per client in each 60-second window. Every later request receives `429` with `Retry-After`.
 
-No document content enters the license request. Sociobot/Dodo is the merchant of record.
+No document content enters a license request. License tokens stay in localStorage and are checked no more than once each day.
 
-Run `npm run test:live-rate-limit` after deployment from a fresh 60-second window. It starts 25 requests together and requires atomic counts 1–20 to pass and counts 21–25 to return `429` with a positive `Retry-After`. Run `npm run test:live-rate-limit:sequential` after the next fresh window to check the same boundary in sequence.
+Run `npm run test:live-rate-limit` after deployment from a fresh 60-second window. It starts 25 requests together and requires requests 1–20 to pass and requests 21–25 to return `429` with a positive `Retry-After`. Run `npm run test:live-rate-limit:sequential` after the next fresh window to check the same boundary in sequence.
 
 See [Privacy](https://accessible-table-ocr-check.sociobot.in/privacy/) and [Terms](https://accessible-table-ocr-check.sociobot.in/terms/).
 

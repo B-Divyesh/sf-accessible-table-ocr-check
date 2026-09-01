@@ -1,37 +1,22 @@
-# Review 2 handoff — FAIL
+# Polish 2 handoff
 
-- Work order: `accessible-table-ocr-check-review-2`
-- Candidate: `8f5f980f3bf6792cf76f1edf2f9787e6e373ad1b`
-- Live URL: <https://accessible-table-ocr-check.sociobot.in>
-- Reviewed: 1 September 2026 UTC
+## Completed
 
-## Outcome
+- Fixed every F-2-1 through F-2-14 finding in `.factory/review-2.md`; the exact mapping is in `.factory/polish-2.md`.
+- Kept the isolated `/demo` storage boundary and made the phone demo show a live issue result and correction above the 844 px fold.
+- Removed price, merchant, card-data, and refund claims that cannot be proved from a non-mutating billing contract.
+- Added outcome-level claim coverage for license-request document privacy, local token/cadence, revoked licenses, fail-closed limiting, and direct route documents.
+- Updated plain-language copy, catalog description, interactive labels, claims manifest, and build id (`polish-2`).
 
-The adversarial review is recorded in [`review-2.md`](review-2.md). No product code, infrastructure, DNS, billing configuration, or product data was modified.
+## Verification
 
-**FAIL.** The landing page is clear and the core product is functional, but the first 390 px demo screen does not expose the source, issue result, cells, or a correction action. Price, merchant-of-record, and license-request privacy tests do not prove their claimed outcomes. Additional public claims on Privacy, Terms, and README are absent from `.factory/claims.json`. Minor copy/action and audit-document defects also remain.
+- `npm ci`
+- `npm run lint`
+- `npm run typecheck`
+- `npm run build` — produced `dist/`; inline JS 13.09 KB gzip and CSS 5.08 KB gzip.
+- `npm test` — 15 Vitest tests passed; 59 Playwright tests passed, 7 expected desktop/mobile skips.
+- Targeted outcome check: `npm run test:e2e -- --project=chromium --grep '@claim:revoked-license'` passed.
 
-## Verification performed
+## Known gaps
 
-From a fresh clone at the candidate commit:
-
-```text
-34/34 claims.json commands independently  PASS
-npm test                                  PASS — 16 unit/API; 53 browser; 7 skipped
-npm run build                             PASS — dist/ produced
-npm run lint                              PASS
-```
-
-The clean `dist/index.html` and live root are byte-identical: 58,121 bytes, SHA-256 `6f80d0b9f7299454050a4f7c1005999833ca3b6cea92eb75c71370030fca3cf1`.
-
-Live checks confirmed:
-
-- cold first screens at 390 × 844 and 1440 × 900;
-- demo population, reset, exit, real-data isolation, same-origin requests, and offline reload;
-- route titles, metadata, Back/Forward focus, designed HTTP 404, links, robots, sitemap, icons, and social image;
-- zero axe violations on root, demo, Privacy, Terms, and 404 at both widths;
-- the concurrent rate limit: counts 1–20 returned 200 and 21–25 returned 429 plus positive `Retry-After` across four instances.
-
-## Required next work
-
-Resolve F-2-1 through F-2-14 in `review-2.md`, especially the phone demo and outcome-level billing/privacy claim tests. Re-run every claims command independently and repeat the complete review; do not accept on aggregate suite results alone.
+None known. Deployment and cold-live verification are recorded after the release command runs.

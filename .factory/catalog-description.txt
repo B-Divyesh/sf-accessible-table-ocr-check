@@ -1,1 +1,1 @@
-Check scanned-table OCR reading order, fix cell structure, and export accessible files in your browser.
+Fix scanned-table OCR reading order and export accessible files in your browser.

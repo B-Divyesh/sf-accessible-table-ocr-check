@@ -140,25 +140,11 @@
     "sandbox": "fresh unlicensed demo; assert free state and complete exports"
   },
   {
-    "id": "desk-price",
-    "claim": "The optional Desk license costs USD 19 once.",
-    "where": "pricing, Terms, README",
-    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:desk-price\"",
-    "sandbox": "fresh landing; assert exact price, frequency, and checkout product path without purchase"
-  },
-  {
     "id": "sociobot-billing-path",
-    "claim": "Purchase and verification use the Sociobot billing path.",
+    "claim": "The Desk license controls use registered checkout and app verification paths.",
     "where": "pricing, Privacy, README",
     "test": "npm run test:e2e -- --project=chromium --grep \"@claim:sociobot-billing-path\"",
-    "sandbox": "inspect checkout target and same-origin verification route without placing an order"
-  },
-  {
-    "id": "merchant-of-record",
-    "claim": "Sociobot/Dodo is the merchant of record.",
-    "where": "pricing, Privacy, Terms, README",
-    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:merchant-of-record\"",
-    "sandbox": "assert merchant text beside the exact registered checkout path"
+    "sandbox": "recorded invalid verification response; assert the registered checkout link and the same-origin verification request without placing an order"
   },
   {
     "id": "licensed-saved-versions",
@@ -211,7 +197,7 @@
   },
   {
     "id": "inline-offline-shell",
-    "claim": "The app bundle is inlined so the primed table checker can open offline.",
+    "claim": "The app bundle is inlined so the table checker can open offline after one connected visit.",
     "where": "README",
     "test": "npm run test:e2e -- --project=chromium --grep \"@claim:inline-offline-shell\"",
     "sandbox": "inspect built index for no external JS/CSS and use the dedicated offline claim for navigation"
@@ -236,5 +222,33 @@
     "where": "README",
     "test": "npm run test:unit -- --testNamePattern \"@claim:license-rate-limit\"",
     "sandbox": "stub upstream billing; start 25 requests with varying proxy source ports across two isolated function modules sharing one atomic store; sort by atomic count and require counts 21–25 to return 429 with a positive Retry-After"
+  },
+  {
+    "id": "license-token-cadence",
+    "claim": "A Desk license token stays in localStorage and is checked no more than once per day.",
+    "where": "Privacy",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:license-token-cadence\"",
+    "sandbox": "recorded valid response; seed a current verdict, reload with zero requests, age it past 24 hours, then require exactly one verification request"
+  },
+  {
+    "id": "revoked-license",
+    "claim": "An inactive Desk license removes saved versions while free exports remain available.",
+    "where": "Terms",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:revoked-license\"",
+    "sandbox": "recorded valid response followed by a recorded revoked verdict; assert saved versions disappear and all four exports still work"
+  },
+  {
+    "id": "license-fails-closed",
+    "claim": "License verification returns 503 with Retry-After when its shared limit is unavailable.",
+    "where": "README",
+    "test": "npm run test:unit -- --testNamePattern \"@claim:license-fails-closed\"",
+    "sandbox": "call the gateway with a missing configured limiter and an erroring limiter; assert 503 and Retry-After in both cases"
+  },
+  {
+    "id": "direct-route-documents",
+    "claim": "The build includes direct documents for Demo, Privacy, Terms, and 404 responses.",
+    "where": "README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:direct-route-documents\"",
+    "sandbox": "request each built document directly and assert an app shell is returned"
   }
 ]

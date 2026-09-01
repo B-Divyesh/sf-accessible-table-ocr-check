@@ -58,7 +58,7 @@ test('direct demo is ready, resettable, and isolated @claim:demo-ready @claim:de
   await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
   await expect(page.locator('.cell-row')).toHaveCount(9);
   await expect(page.getByText('2 reading-order or cell errors')).toBeVisible();
-  await page.getByRole('button', { name: 'Move Yes later' }).click();
+  await page.locator('[data-action="quick-demo-fix"]').click();
   await expect(page.getByText('No structural errors detected')).toBeVisible();
   expect(await databaseRecord(page, 'table-proofing-desk')).toEqual(realBefore);
 
@@ -78,7 +78,7 @@ test('does not let a queued demo autosave recreate isolated data after exit', as
   const realBefore = await databaseRecord(page, 'table-proofing-desk');
 
   await page.goto('/demo');
-  await page.getByRole('button', { name: 'Move Yes later' }).click();
+  await page.locator('[data-action="quick-demo-fix"]').click();
   await page.getByRole('button', { name: 'Reset demo' }).click();
   await expect(page.getByText('2 reading-order or cell errors')).toBeVisible();
   await page.getByRole('button', { name: 'Start for real' }).click();
@@ -91,7 +91,7 @@ test('does not let a queued demo autosave recreate isolated data after exit', as
 test('corrects reading order and exports scoped HTML @claim:proof-and-export', async ({ page }) => {
   await page.goto('/demo');
   await expect(page.locator('.overlay')).toHaveCount(9);
-  await page.getByRole('button', { name: 'Move Yes later' }).click();
+  await page.locator('[data-action="quick-demo-fix"]').click();
   const html = await downloadText(page, 'Export HTML');
   expect(html).toContain('<th scope="col">Route</th>');
   expect(html).toContain('<th scope="row">River</th>');
@@ -108,6 +108,12 @@ test('keeps documents in-browser without third-party runtime requests @claim:bro
   await downloadText(page, 'Export CSV');
   await page.reload();
   await expect(page.locator('[data-cell="c5"] [data-field="text"]')).toHaveValue('PRIVATE-DOCUMENT-MARKER');
+  await page.route('**/api/license/verify?**', (route) => route.fulfill({ json: { valid: true, reason: 'ok', expires_at: null } }));
+  const licenseRequest = page.waitForRequest('**/api/license/verify?**');
+  await page.goto('/demo?license=recorded-license-token');
+  const license = await licenseRequest;
+  const licenseParts = [license.url(), JSON.stringify(license.headers()), license.postData() ?? ''].join('\n');
+  expect(licenseParts).not.toContain('PRIVATE-DOCUMENT-MARKER');
   expect(requests.every((request) => new URL(request.url).origin === appOrigin)).toBe(true);
   expect(requests.every((request) => !request.body?.includes('PRIVATE-DOCUMENT-MARKER'))).toBe(true);
   const state = await page.evaluate(async () => ({
@@ -117,9 +123,59 @@ test('keeps documents in-browser without third-party runtime requests @claim:bro
     externalResources: performance.getEntriesByType('resource').map((item) => item.name).filter((url) => new URL(url).origin !== location.origin),
   }));
   expect(state.databases).toContain('demo:table-proofing-desk');
-  expect(state.localKeys).toEqual([]);
+  expect(state.localKeys).toContain('sb_license:accessible-table-ocr-check');
   expect(state.cookies).toBe('');
   expect(state.externalResources).toEqual([]);
+});
+
+test('stores a license token locally and checks it at most once per day @claim:license-token-cadence', async ({ page }) => {
+  const verificationRequests: string[] = [];
+  page.on('request', (request) => {
+    if (new URL(request.url()).pathname === '/api/license/verify') verificationRequests.push(request.url());
+  });
+  await page.route('**/api/license/verify?**', (route) => route.fulfill({ json: { valid: true, reason: 'ok', expires_at: null } }));
+  await page.goto('/');
+  await page.evaluate(() => {
+    localStorage.setItem('sb_license:accessible-table-ocr-check', 'recorded-license-token');
+    localStorage.setItem('sb_license:accessible-table-ocr-check:verdict', JSON.stringify({ valid: true, checkedAt: Date.now() }));
+  });
+  await page.reload();
+  await page.waitForTimeout(100);
+  expect(verificationRequests).toHaveLength(0);
+  const keys = await page.evaluate(() => Object.keys(localStorage).sort());
+  expect(keys).toEqual(['sb_license:accessible-table-ocr-check', 'sb_license:accessible-table-ocr-check:verdict']);
+  await page.evaluate(() => localStorage.setItem('sb_license:accessible-table-ocr-check:verdict', JSON.stringify({ valid: true, checkedAt: Date.now() - 86_400_001 })));
+  const request = page.waitForRequest('**/api/license/verify?**');
+  await page.reload();
+  await request;
+  expect(verificationRequests).toHaveLength(1);
+});
+
+test('removes paid saved versions after a recorded revoked verdict while keeping exports @claim:revoked-license', async ({ browser }) => {
+  const context = await browser.newContext({ serviceWorkers: 'block' });
+  const page = await context.newPage();
+  try {
+  let verdict = { valid: true, reason: 'ok' };
+  await page.route('**/api/license/verify?**', (route) => route.fulfill({ json: { ...verdict, expires_at: null } }));
+  await page.goto('/demo?license=recorded-valid-license');
+  await expect(page.getByRole('button', { name: 'Save version' })).toBeVisible();
+  await page.evaluate(() => {
+    localStorage.setItem('sb_license:accessible-table-ocr-check', 'recorded-revoked-license');
+    localStorage.setItem('sb_license:accessible-table-ocr-check:verdict', JSON.stringify({ valid: true, checkedAt: Date.now() - 86_400_001 }));
+  });
+  verdict = { valid: false, reason: 'revoked' };
+  const request = page.waitForRequest('**/api/license/verify?**');
+  await page.reload();
+  await request;
+  await expect(page.getByText('This license is no longer active. Free checking and exports are unchanged.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Save version' })).toHaveCount(0);
+  expect(await downloadText(page, 'Export HTML')).toContain('<table>');
+  expect(await downloadText(page, 'Export CSV')).toContain('Route');
+  expect(await downloadText(page, 'Export issue report')).toContain('ACCESSIBLE TABLE OCR CHECK');
+  expect(JSON.parse(await downloadText(page, 'Export project JSON')).cells).toHaveLength(9);
+  } finally {
+    await context.close();
+  }
 });
 
 test('reloads, edits, and exports offline in its own context @claim:offline-reload', async ({ browser }) => {
@@ -132,7 +188,7 @@ test('reloads, edits, and exports offline in its own context @claim:offline-relo
     await context.setOffline(true);
     await page.reload();
     await expect(page.getByText(/You’re offline/)).toBeVisible();
-    await page.getByRole('button', { name: 'Move Yes later' }).click();
+    await page.locator('[data-action="quick-demo-fix"]').click();
     const csv = await downloadText(page, 'Export CSV');
     expect(csv).toContain('River,12 of 14,Yes');
   } finally {
@@ -204,22 +260,24 @@ test('downloads every promised format without a license @claim:all-exports @clai
   await expect(page.getByText('Free table checking is active')).toBeVisible();
   const html = await downloadText(page, 'Export HTML');
   const csv = await downloadText(page, 'Export CSV');
-  const report = await downloadText(page, 'Issue report');
-  const json = await downloadText(page, 'Project JSON');
+  const report = await downloadText(page, 'Export issue report');
+  const json = await downloadText(page, 'Export project JSON');
   expect(html).toContain('<table>');
   expect(csv.trim().split('\n')).toHaveLength(3);
   expect(report).toContain('ACCESSIBLE TABLE OCR CHECK');
   expect(JSON.parse(json).cells).toHaveLength(9);
 });
 
-test('shows the exact one-time price and billing contract @claim:desk-price @claim:merchant-of-record', async ({ page }) => {
+test('uses the registered checkout and app verification paths @claim:sociobot-billing-path', async ({ page }) => {
+  await page.route('**/api/license/verify?**', (route) => route.fulfill({ json: { valid: false, reason: 'invalid', expires_at: null } }));
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: /Keep saved versions.*\$19 once/ })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Buy Desk license — $19' })).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/accessible-table-ocr-check/checkout');
-  await expect(page.getByText(/One-time purchase · Sociobot\/Dodo is merchant of record/)).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Get Desk license' })).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/accessible-table-ocr-check/checkout');
+  const request = page.waitForRequest('**/api/license/verify?**');
+  await page.goto('/?license=recorded-invalid-license');
+  expect(new URL((await request).url()).pathname).toBe('/api/license/verify');
 });
 
-test('stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions @claim:sociobot-billing-path', async ({ page }) => {
+test('stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions', async ({ page }) => {
   const offOrigin: string[] = [];
   const requestPaths: string[] = [];
   page.on('request', (request) => {
@@ -259,7 +317,7 @@ test('enforces cell and grid limits before replacing saved work @claim:import-li
 
 test('round-trips project JSON through OCR import @claim:project-round-trip', async ({ page }) => {
   await page.goto('/demo');
-  const exported = await downloadText(page, 'Project JSON');
+  const exported = await downloadText(page, 'Export project JSON');
   const original = JSON.parse(exported);
   await page.getByRole('button', { name: 'Start for real' }).click();
   await importJson(page, '#ocr-file', original, 'round-trip.json');
@@ -287,4 +345,12 @@ test('ships an inline shell and a human-check-only image state @claim:inline-off
   await page.locator('#image-file').setInputFiles({ name: 'scan.svg', mimeType: 'image/svg+xml', buffer: Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"/>') });
   await expect(page.getByText('No OCR cells yet. Import JSON or add the first cell.')).toBeVisible();
   await expect(page.getByText(/does not create OCR or check spelling/)).toHaveCount(0);
+});
+
+test('build includes direct documents for every public route @claim:direct-route-documents', async ({ request }) => {
+  for (const path of ['/demo/index.html', '/privacy/index.html', '/terms/index.html', '/404.html']) {
+    const response = await request.get(path);
+    expect(response.ok(), path).toBe(true);
+    expect(await response.text()).toContain('<div id="app"></div>');
+  }
 });

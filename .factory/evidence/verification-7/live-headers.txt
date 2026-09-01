@@ -1,0 +1,60 @@
+PATH /
+content-type: text/html
+cache-control: no-cache, must-revalidate
+content-length: 58121
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+PATH /sw.js
+content-type: text/javascript
+cache-control: no-cache, no-store, must-revalidate
+content-length: 1823
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+PATH /manifest.json
+content-type: application/json
+cache-control: public, max-age=3600, must-revalidate
+content-length: 520
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+PATH /assets/index-vZOHaL1N.js
+content-type: text/javascript
+cache-control: public, max-age=31536000, immutable
+content-length: 36597
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+PATH /privacy/
+content-type: text/html
+cache-control: no-cache, must-revalidate
+content-length: 58121
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+PATH /not-a-route
+content-type: text/html
+cache-control: public, must-revalidate, max-age=30
+content-length: 58121
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-TSGzbl11LGtgcVmdIVW7bUDDuOOeIrpY9N9TrUgOpL0='; style-src 'self' 'sha256-SSxbVShhTfW+dBU65YTzSGJDVxqdttkdDlwSK3unvEc=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY

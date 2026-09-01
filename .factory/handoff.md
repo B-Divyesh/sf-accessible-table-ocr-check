@@ -1,3 +1,24 @@
+# Verification 7 handoff — PASS
+
+- Candidate commit: `9956b5cddc52700c2a0c10df94b78f720c540953`
+- Live URL: <https://accessible-table-ocr-check.sociobot.in>
+- Demo URL: <https://accessible-table-ocr-check.sociobot.in/demo>
+- Verified: 2026-09-01 UTC
+
+**PASS.** Independent verification found no product defects by severity (release-blocking: none; high: none; medium: none; low: none). The live deployment's 21 public artifacts are byte-identical to the candidate build.
+
+Clean verification passed `npm ci`, API dependency installation, all 34 separately executed claims commands, lint, type checking, the full `npm test` suite (16 unit/API and 60 browser checks), production build, and the 60-check live browser suite. The first screen plainly identifies the job, user, and sample-data action. The direct demo is isolated and populated with the transit-table sample.
+
+Fresh desktop and 390px mobile checks found no axe violations, including serious/critical findings; one `h1` and one `main` on each checked route; no horizontal overflow; same-origin-only page requests; and no normal-route console/page errors. Keyboard correction, visible focus, reduced motion, invalid-input recovery, local persistence, four exports, offline reload, and service-worker update behavior are covered by passing browser checks.
+
+The live allowance is confirmed at **20 requests per 60 seconds per client**. A simultaneous 25-request check returned 200 for atomic counts 1–20 and 429 plus positive `Retry-After` for counts 21–25 across four function instances. A sequential check returned 200 for requests 1–20 and 429 with `Retry-After: 58` for request 21.
+
+Built output remains within budgets: 13.01 KB gzip JS, 4.98 KB gzip CSS, and a 22,664-byte mobile hero. Live headers provide the expected PWA caching and security policy. The Lighthouse mobile result recorded 100/100/100/100 (Performance/Accessibility/Best Practices/SEO), 1.49 s FCP/LCP, CLS 0, and 44,094 bytes transfer; the runner logged a browser-tab-close message after persisting that completed result.
+
+See [verification-7.md](verification-7.md) and `evidence/verification-7/` for exact evidence. The brief's moderated 30-page, under-five-minute human study remains unmeasured and is not advertised as a measured claim.
+
+---
+
 # Repair 5 handoff — PASS
 
 - Work order: `accessible-table-ocr-check-repair-5`

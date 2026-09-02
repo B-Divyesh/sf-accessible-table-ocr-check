@@ -96,6 +96,10 @@ An optional Desk license adds named saved versions stored in IndexedDB on that d
 
 Core checking and every accessible export remain free. License controls use the registered checkout and verification paths.
 
+The Desk license is a US$12 one-time purchase. Sociobot, through Dodo, is the merchant of record.
+
+Sociobot/Dodo handles payment and refunds. An approved refund revokes the Desk license automatically.
+
 License checks go through this app’s server. A shared counter allows 20 checks per client in each 60-second window. Every later request receives `429` with `Retry-After`.
 
 No document content enters a license request. License tokens stay in localStorage and are checked no more than once each day.

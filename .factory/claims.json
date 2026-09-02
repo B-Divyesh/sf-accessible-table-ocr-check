@@ -147,6 +147,13 @@
     "sandbox": "recorded invalid verification response; assert the registered checkout link and the same-origin verification request without placing an order"
   },
   {
+    "id": "paid-purchase-terms",
+    "claim": "The Desk license costs US$12 once, with Sociobot/Dodo handling payment and refunds as merchant of record.",
+    "where": "pricing, Privacy, Terms, README",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:paid-purchase-terms\"",
+    "sandbox": "fresh browser state; assert the exact price, one-time terms, merchant-of-record disclosure, and refund effect are visible before checkout on the product and legal routes"
+  },
+  {
     "id": "licensed-saved-versions",
     "claim": "A valid Desk license adds named saved versions that can be restored.",
     "where": "pricing, workbench, Terms, README",

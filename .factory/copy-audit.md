@@ -1,6 +1,6 @@
 # Plain-words copy audit
 
-Audited 1 September 2026. Counts use whitespace-delimited visible words. Every landing-page unit is at most 18 words; the headline is six words. No banned marketing word appears in the landing page, README, or catalog description. The README has 61 prose units and a maximum of 21 words.
+Audited 2 September 2026. Counts use whitespace-delimited visible words. Every landing-page unit is at most 18 words; the headline is six words. No banned marketing word appears in the landing page, README, or catalog description. The README has 66 prose units and a maximum of 22 words.
 
 | # | Words | Landing-page copy | Result |
 |---:|---:|---|---|
@@ -50,16 +50,19 @@ Audited 1 September 2026. Counts use whitespace-delimited visible words. Every l
 | 44 | 5 | Restore a prior cell structure | Pass |
 | 45 | 6 | Saved versions stay in this browser | Pass |
 | 46 | 5 | Free table checking is active | Pass |
-| 47 | 3 | Get Desk license | Pass |
-| 48 | 3 | Restore Desk license | Pass |
-| 49 | 5 | Read the Desk license terms | Pass |
-| 50 | 4 | Accessible Table OCR Check | Pass |
-| 51 | 6 | Your pages stay in this browser. | Pass |
-| 52 | 1 | Terms | Pass |
-| 53 | 6 | Source on GitHub (opens external site) | Pass |
-| 54 | 4 | Built by Param Factory | Pass |
-| 55 | 2 | Build repair-6 | Pass |
-| 56 | 8 | The proofing-desk artwork was generated for this product. | Pass |
+| 47 | 3 | US$12 one-time purchase. | Pass |
+| 48 | 13 | Sociobot, through Dodo, is the merchant of record and handles payment and refunds. | Pass |
+| 49 | 8 | An approved refund revokes the Desk license automatically. | Pass |
+| 50 | 3 | Get Desk license | Pass |
+| 51 | 3 | Restore Desk license | Pass |
+| 52 | 5 | Read the Desk license terms | Pass |
+| 53 | 4 | Accessible Table OCR Check | Pass |
+| 54 | 6 | Your pages stay in this browser. | Pass |
+| 55 | 1 | Terms | Pass |
+| 56 | 6 | Source on GitHub (opens external site) | Pass |
+| 57 | 4 | Built by Param Factory | Pass |
+| 58 | 2 | Build repair-7 | Pass |
+| 59 | 8 | The proofing-desk artwork was generated for this product. | Pass |
 
 ## README
 
@@ -115,20 +118,24 @@ The following extraction includes every prose unit outside commands and JSON. Al
 | 46 | 14 | An optional Desk license adds named saved versions stored in IndexedDB on that device. | Pass |
 | 47 | 8 | Core checking and every accessible export remain free. | Pass |
 | 48 | 9 | License controls use the registered checkout and verification paths. | Pass |
-| 49 | 7 | License checks go through this app’s server. | Pass |
-| 50 | 12 | A shared counter allows 20 checks per client in each 60-second window. | Pass |
-| 51 | 7 | Every later request receives 429 with Retry-After. | Pass |
-| 52 | 7 | No document content enters a license request. | Pass |
-| 53 | 14 | License tokens stay in localStorage and are checked no more than once each day. | Pass |
-| 54 | 11 | Run the concurrent live limit test after deployment from a fresh 60-second window. | Pass |
-| 55 | 21 | It starts 25 requests together and requires requests 1–20 to pass and requests 21–25 to return 429 with a positive Retry-After. | Pass |
-| 56 | 16 | Run the sequential live limit test after the next fresh window to check the same boundary. | Pass |
-| 57 | 4 | See Privacy and Terms. | Pass |
-| 58 | 2 | Project notes | Pass |
-| 59 | 5 | Visual system and generated-art provenance | Pass |
-| 60 | 3 | Demo sandbox contract | Pass |
-| 61 | 5 | Build verification and known gaps | Pass |
-| 62 | 2 | MIT License | Pass |
+| 49 | 8 | The Desk license is a US$12 one-time purchase. | Pass |
+| 50 | 8 | Sociobot, through Dodo, is the merchant of record. | Pass |
+| 51 | 5 | Sociobot/Dodo handles payment and refunds. | Pass |
+| 52 | 8 | An approved refund revokes the Desk license automatically. | Pass |
+| 53 | 7 | License checks go through this app’s server. | Pass |
+| 54 | 12 | A shared counter allows 20 checks per client in each 60-second window. | Pass |
+| 55 | 7 | Every later request receives 429 with Retry-After. | Pass |
+| 56 | 7 | No document content enters a license request. | Pass |
+| 57 | 14 | License tokens stay in localStorage and are checked no more than once each day. | Pass |
+| 58 | 11 | Run the concurrent live limit test after deployment from a fresh 60-second window. | Pass |
+| 59 | 21 | It starts 25 requests together and requires requests 1–20 to pass and requests 21–25 to return 429 with a positive Retry-After. | Pass |
+| 60 | 16 | Run the sequential live limit test after the next fresh window to check the same boundary. | Pass |
+| 61 | 4 | See Privacy and Terms. | Pass |
+| 62 | 2 | Project notes | Pass |
+| 63 | 5 | Visual system and generated-art provenance | Pass |
+| 64 | 3 | Demo sandbox contract | Pass |
+| 65 | 5 | Build verification and known gaps | Pass |
+| 66 | 2 | MIT License | Pass |
 
 ## Terminology
 

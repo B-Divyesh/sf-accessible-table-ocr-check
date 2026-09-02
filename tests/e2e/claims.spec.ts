@@ -277,6 +277,16 @@ test('uses the registered checkout and app verification paths @claim:sociobot-bi
   expect(new URL((await request).url()).pathname).toBe('/api/license/verify');
 });
 
+test('shows the exact one-time price, merchant, and refund terms before checkout @claim:paid-purchase-terms', async ({ page }) => {
+  for (const path of ['/', '/privacy/', '/terms/']) {
+    await page.goto(path);
+    const main = page.getByRole('main');
+    await expect(main.getByText('US$12 one-time purchase.', { exact: true })).toBeVisible();
+    await expect(main.getByText('Sociobot, through Dodo, is the merchant of record and handles payment and refunds.', { exact: true })).toBeVisible();
+    await expect(main.getByText('An approved refund revokes the Desk license automatically.', { exact: true })).toBeVisible();
+  }
+});
+
 test('stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions', async ({ page }) => {
   const offOrigin: string[] = [];
   const requestPaths: string[] = [];

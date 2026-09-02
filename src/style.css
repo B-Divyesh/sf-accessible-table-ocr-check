@@ -112,6 +112,9 @@ code { padding: 2px 5px; background: var(--teal-wash); color: var(--ink); }
 .license-stamp { padding: 32px; border: 3px double var(--ink); background: var(--mustard-wash); box-shadow: 10px 10px 0 var(--coral-wash); transform: rotate(-.5deg); }
 .license-state { color: var(--success); font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; }
 .license-notice { padding: 8px; border-left: 4px solid var(--coral); background: var(--sheet); }
+.purchase-terms { margin: 20px 0; padding: 16px 0; border-block: 1px solid var(--line); }
+.purchase-terms p { margin: 6px 0; }
+.purchase-terms .license-price { color: var(--ink); font-family: Georgia, serif; font-size: 1.2rem; font-weight: 700; }
 details { margin-top: 20px; }
 summary { min-height: 44px; cursor: pointer; font-weight: 750; }
 .inline-field { display: flex; gap: 10px; }

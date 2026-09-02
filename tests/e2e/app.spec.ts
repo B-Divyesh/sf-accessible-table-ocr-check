@@ -297,7 +297,7 @@ test('keeps the required header and footer skeleton on every route', async ({ pa
     await expect(page.locator('header .wordmark')).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Demo' })).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Privacy' })).toBeVisible();
-    await expect(page.getByText(/Built by Param Factory · Build repair-6/)).toBeVisible();
+    await expect(page.getByText(/Built by Param Factory · Build repair-7/)).toBeVisible();
     await expect(page.locator('main h1')).toHaveCount(1);
   }
 });

@@ -1,4 +1,4 @@
-const VERSION = 'proof-desk-v4';
+const VERSION = 'proof-desk-v5';
 const SHELL = [
   /* BUILD_ASSETS */
   '/', '/index.html', '/offline.html', '/manifest.json', '/icon.svg',

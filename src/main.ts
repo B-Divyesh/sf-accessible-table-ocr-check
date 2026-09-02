@@ -11,7 +11,7 @@ const VERDICT_KEY = `${LICENSE_KEY}:verdict`;
 const API_BASE = 'https://api.sociobot.in/api/v1';
 const LICENSE_VERIFY_PATH = '/api/license/verify';
 const SITE_URL = 'https://accessible-table-ocr-check.sociobot.in';
-const BUILD_ID = 'repair-6';
+const BUILD_ID = 'repair-7';
 let project: Project | null = null;
 let selectedCell = '';
 let saveTimer = 0;
@@ -61,13 +61,14 @@ function shell(content: string) {
 function legalPage(kind: 'privacy' | 'terms') {
   const privacy = kind === 'privacy';
   setMetadata(`${privacy ? 'Privacy' : 'Terms'} — Accessible Table OCR Check`, privacy ? 'How Accessible Table OCR Check stores documents and handles optional license checks.' : 'Terms for using Accessible Table OCR Check and its optional one-time Desk license.', `/${kind}/`);
-  app.innerHTML = shell(`<article class="legal-page"><p class="eyebrow">Plain-language policy · 30 August 2026</p><h1>${privacy ? 'How we handle your documents' : 'Terms of use'}</h1>${privacy ? `
+  app.innerHTML = shell(`<article class="legal-page"><p class="eyebrow">Plain-language policy · 2 September 2026</p><h1>${privacy ? 'How we handle your documents' : 'Terms of use'}</h1>${privacy ? `
     <h2>What stays local</h2><p>Source images, OCR JSON, corrections, and saved versions stay in your browser’s IndexedDB. They are not uploaded to us. Exports are created on your device.</p>
     <h2>License checks</h2><p>If you add an optional Desk license, its token is stored in localStorage. The app checks it no more than once each day. Use the checkout link to add a license.</p>
+    <h2>Purchase and refunds</h2><p>US$12 one-time purchase.</p><p>Sociobot, through Dodo, is the merchant of record and handles payment and refunds.</p><p>An approved refund revokes the Desk license automatically.</p>
     <h2>Analytics and deletion</h2><p>There are no analytics, ad trackers, third-party fonts, or runtime scripts. Clear the current table check in the app or clear this site’s browser storage to remove local data.</p>
     <h2>Contact</h2><p>Questions can be filed in the project’s public source repository.</p>` : `
     <h2>Use and responsibility</h2><p>You may use the app to review tables you are permitted to process. Copyright permission remains your responsibility. The tool highlights likely structure defects but cannot guarantee that OCR text or accessibility is correct; a human must compare the export with the source.</p>
-    <h2>Desk license</h2><p>A Desk license adds local saved versions on supported devices. Core checking and HTML, CSV, JSON, and issue-report exports remain free. If a license is no longer active, saved versions are unavailable. Free checking and exports remain available.</p>
+    <h2>Desk license</h2><p>A Desk license adds local saved versions on supported devices. Core checking and HTML, CSV, JSON, and issue-report exports remain free. If a license is no longer active, saved versions are unavailable. Free checking and exports remain available.</p><p>US$12 one-time purchase.</p><p>Sociobot, through Dodo, is the merchant of record and handles payment and refunds.</p><p>An approved refund revokes the Desk license automatically.</p>
     <h2>Availability</h2><p>The software is provided under the MIT License without warranty. Keep your own copies of important source material and exports.</p>`}<p><a class="text-link" href="/">← Return to the proofing desk</a></p></article>`);
 }
 
@@ -94,7 +95,7 @@ function landing() {
 }
 
 function licenseSection() {
-  return `<section id="license" class="license-section" aria-labelledby="license-heading"><div><p class="eyebrow">Optional Desk license</p><h2 id="license-heading">Keep saved versions.</h2><p>Core checking and every accessible export stay free. A Desk license adds named saved versions for comparing OCR passes.</p><ul><li>Save named before-and-after versions</li><li>Restore a prior cell structure</li><li>Saved versions stay in this browser</li></ul></div><div class="license-stamp"><p class="license-state">${licenseActive ? '✓ Desk license active' : 'Free table checking is active'}</p>${licenseNotice ? `<p class="license-notice">${escapeHtml(licenseNotice)}</p>` : ''}${licenseActive ? '<p>Your saved versions are available on this device.</p>' : `<a class="button primary" href="${API_BASE}/products/${SLUG}/checkout">Get Desk license</a><details><summary>Restore Desk license</summary><form id="license-form"><label for="license-token">License token</label><div class="inline-field"><input id="license-token" name="license" autocomplete="off" required><button class="button quiet" type="submit" aria-label="Verify license">Verify license</button></div></form></details>`}<p class="merchant"><a href="/terms/">Read the Desk license terms</a></p></div></section>`;
+  return `<section id="license" class="license-section" aria-labelledby="license-heading"><div><p class="eyebrow">Optional Desk license</p><h2 id="license-heading">Keep saved versions.</h2><p>Core checking and every accessible export stay free. A Desk license adds named saved versions for comparing OCR passes.</p><ul><li>Save named before-and-after versions</li><li>Restore a prior cell structure</li><li>Saved versions stay in this browser</li></ul></div><div class="license-stamp"><p class="license-state">${licenseActive ? '✓ Desk license active' : 'Free table checking is active'}</p>${licenseNotice ? `<p class="license-notice">${escapeHtml(licenseNotice)}</p>` : ''}<div class="purchase-terms"><p class="license-price">US$12 one-time purchase.</p><p>Sociobot, through Dodo, is the merchant of record and handles payment and refunds.</p><p>An approved refund revokes the Desk license automatically.</p></div>${licenseActive ? '<p>Your saved versions are available on this device.</p>' : `<a class="button primary" href="${API_BASE}/products/${SLUG}/checkout">Get Desk license</a><details><summary>Restore Desk license</summary><form id="license-form"><label for="license-token">License token</label><div class="inline-field"><input id="license-token" name="license" autocomplete="off" required><button class="button quiet" type="submit" aria-label="Verify license">Verify license</button></div></form></details>`}<p class="merchant"><a href="/terms/">Read the Desk license terms</a></p></div></section>`;
 }
 
 function readFile(file: File, asText = false): Promise<string> {

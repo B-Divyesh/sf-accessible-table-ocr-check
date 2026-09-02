@@ -1,0 +1,12 @@
+{
+  "before": {
+    "controlled": true,
+    "caches": [
+      "proof-desk-v4"
+    ]
+  },
+  "offlineVisible": true,
+  "corrected": true,
+  "download": "transit-access-survey-csv.csv",
+  "errors": []
+}

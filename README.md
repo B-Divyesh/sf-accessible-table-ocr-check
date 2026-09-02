@@ -82,6 +82,8 @@ Production uses the factory’s static deployment command, which uploads `dist/`
 /opt/fleet/lib/deploy-static.sh accessible-table-ocr-check dist
 ```
 
+`npm run build` installs the API’s locked runtime packages before producing `dist/`, so the managed function is complete in a clean deployment.
+
 The license gateway requires `RATE_LIMIT_REDIS_HOST` and `RATE_LIMIT_REDIS_KEY` app settings from the product-owned `sf-accessible-table-ocr-check-rate-limit` cache. It returns `503` if that shared counter is unavailable.
 
 Every public product claim is listed in [`.factory/claims.json`](.factory/claims.json). Each entry names its exact tagged test.

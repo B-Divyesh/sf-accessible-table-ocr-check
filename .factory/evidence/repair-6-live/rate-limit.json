@@ -1,0 +1,32 @@
+{
+  "checked_at_utc": "2026-09-02",
+  "endpoint": "https://accessible-table-ocr-check.sociobot.in/api/license/verify",
+  "before_repair": {
+    "mode": "concurrent",
+    "requests": 25,
+    "status_counts": { "503": 25 },
+    "reported_counts": { "0": 25 },
+    "instances": 4,
+    "result": "fail"
+  },
+  "after_repair_concurrent": {
+    "requests": 25,
+    "status_counts": { "200": 20, "429": 5 },
+    "reported_count_range": [1, 25],
+    "reported_counts_contiguous": true,
+    "excess_retry_after_seconds_range": [58, 59],
+    "instances": 4,
+    "policy": "atomic-product-window",
+    "result": "pass"
+  },
+  "after_repair_sequential": {
+    "requests": 21,
+    "status_counts": { "200": 20, "429": 1 },
+    "reported_count_range": [1, 21],
+    "reported_counts_contiguous": true,
+    "excess_retry_after_seconds": 58,
+    "instances": 1,
+    "policy": "atomic-product-window",
+    "result": "pass"
+  }
+}

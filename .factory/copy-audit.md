@@ -58,7 +58,7 @@ Audited 1 September 2026. Counts use whitespace-delimited visible words. Every l
 | 52 | 1 | Terms | Pass |
 | 53 | 6 | Source on GitHub (opens external site) | Pass |
 | 54 | 4 | Built by Param Factory | Pass |
-| 55 | 2 | Build polish-2 | Pass |
+| 55 | 2 | Build repair-6 | Pass |
 | 56 | 8 | The proofing-desk artwork was generated for this product. | Pass |
 
 ## README
@@ -105,29 +105,30 @@ The following extraction includes every prose unit outside commands and JSON. Al
 | 36 | 10 | The build inlines the small app bundle into the page. | Pass |
 | 37 | 15 | After one connected visit, the browser can open the table checker without a network connection. | Pass |
 | 38 | 15 | Production uses the factory static deployment command, which uploads dist/ and managed api/ functions. | Pass |
-| 39 | 14 | The license gateway requires product-owned shared-counter app settings. | Pass |
-| 40 | 9 | It returns 503 if that shared counter is unavailable. | Pass |
-| 41 | 8 | Every public product claim is listed in claims.json. | Pass |
-| 42 | 7 | Each entry names its exact tagged test. | Pass |
-| 43 | 4 | Privacy and paid features | Pass |
-| 44 | 12 | The app has no analytics, trackers, CDN fonts, or third-party runtime scripts. | Pass |
-| 45 | 14 | An optional Desk license adds named saved versions stored in IndexedDB on that device. | Pass |
-| 46 | 8 | Core checking and every accessible export remain free. | Pass |
-| 47 | 9 | License controls use the registered checkout and verification paths. | Pass |
-| 48 | 7 | License checks go through this app’s server. | Pass |
-| 49 | 12 | A shared counter allows 20 checks per client in each 60-second window. | Pass |
-| 50 | 7 | Every later request receives 429 with Retry-After. | Pass |
-| 51 | 7 | No document content enters a license request. | Pass |
-| 52 | 14 | License tokens stay in localStorage and are checked no more than once each day. | Pass |
-| 53 | 11 | Run the concurrent live limit test after deployment from a fresh 60-second window. | Pass |
-| 54 | 21 | It starts 25 requests together and requires requests 1–20 to pass and requests 21–25 to return 429 with a positive Retry-After. | Pass |
-| 55 | 16 | Run the sequential live limit test after the next fresh window to check the same boundary. | Pass |
-| 56 | 4 | See Privacy and Terms. | Pass |
-| 57 | 2 | Project notes | Pass |
-| 58 | 5 | Visual system and generated-art provenance | Pass |
-| 59 | 3 | Demo sandbox contract | Pass |
-| 60 | 5 | Build verification and known gaps | Pass |
-| 61 | 2 | MIT License | Pass |
+| 39 | 22 | npm run build installs the API’s locked runtime packages before producing dist/, so the managed function is complete in a clean deployment. | Pass |
+| 40 | 14 | The license gateway requires product-owned shared-counter app settings. | Pass |
+| 41 | 9 | It returns 503 if that shared counter is unavailable. | Pass |
+| 42 | 8 | Every public product claim is listed in claims.json. | Pass |
+| 43 | 7 | Each entry names its exact tagged test. | Pass |
+| 44 | 4 | Privacy and paid features | Pass |
+| 45 | 12 | The app has no analytics, trackers, CDN fonts, or third-party runtime scripts. | Pass |
+| 46 | 14 | An optional Desk license adds named saved versions stored in IndexedDB on that device. | Pass |
+| 47 | 8 | Core checking and every accessible export remain free. | Pass |
+| 48 | 9 | License controls use the registered checkout and verification paths. | Pass |
+| 49 | 7 | License checks go through this app’s server. | Pass |
+| 50 | 12 | A shared counter allows 20 checks per client in each 60-second window. | Pass |
+| 51 | 7 | Every later request receives 429 with Retry-After. | Pass |
+| 52 | 7 | No document content enters a license request. | Pass |
+| 53 | 14 | License tokens stay in localStorage and are checked no more than once each day. | Pass |
+| 54 | 11 | Run the concurrent live limit test after deployment from a fresh 60-second window. | Pass |
+| 55 | 21 | It starts 25 requests together and requires requests 1–20 to pass and requests 21–25 to return 429 with a positive Retry-After. | Pass |
+| 56 | 16 | Run the sequential live limit test after the next fresh window to check the same boundary. | Pass |
+| 57 | 4 | See Privacy and Terms. | Pass |
+| 58 | 2 | Project notes | Pass |
+| 59 | 5 | Visual system and generated-art provenance | Pass |
+| 60 | 3 | Demo sandbox contract | Pass |
+| 61 | 5 | Build verification and known gaps | Pass |
+| 62 | 2 | MIT License | Pass |
 
 ## Terminology
 

@@ -1,0 +1,62 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "basics": {
+      "title": "Accessible Table OCR Check — fix reading order",
+      "h1": 1,
+      "main": true,
+      "lang": "en"
+    },
+    "serious": 0,
+    "consoleErrors": []
+  },
+  {
+    "route": "/demo",
+    "status": 200,
+    "basics": {
+      "title": "Demo — Accessible Table OCR Check",
+      "h1": 1,
+      "main": true,
+      "lang": "en"
+    },
+    "serious": 0,
+    "consoleErrors": []
+  },
+  {
+    "route": "/privacy/",
+    "status": 200,
+    "basics": {
+      "title": "Privacy — Accessible Table OCR Check",
+      "h1": 1,
+      "main": true,
+      "lang": "en"
+    },
+    "serious": 0,
+    "consoleErrors": []
+  },
+  {
+    "route": "/terms/",
+    "status": 200,
+    "basics": {
+      "title": "Terms — Accessible Table OCR Check",
+      "h1": 1,
+      "main": true,
+      "lang": "en"
+    },
+    "serious": 0,
+    "consoleErrors": []
+  },
+  {
+    "route": "/definitely-not-a-real-route-qa",
+    "status": 404,
+    "basics": {
+      "title": "Page not found — Accessible Table OCR Check",
+      "h1": 1,
+      "main": true,
+      "lang": "en"
+    },
+    "serious": 0,
+    "consoleErrors": []
+  }
+]

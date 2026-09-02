@@ -53,7 +53,7 @@
     "claim": "Working data and saved versions use IndexedDB.",
     "where": "Privacy, README",
     "test": "npm run test:e2e -- --project=chromium --grep \"@claim:indexeddb-only\"",
-    "sandbox": "inspect IndexedDB, localStorage, cookies, and requests after editing and reload"
+    "sandbox": "inspect IndexedDB, browser-storage keys, cookies, and requests after editing and reload"
   },
   {
     "id": "offline-reload",
@@ -239,7 +239,7 @@
   },
   {
     "id": "license-token-cadence",
-    "claim": "A Desk license token stays in localStorage and is checked no more than once per day.",
+    "claim": "A Desk license token stays in browser storage and is checked no more than once per day.",
     "where": "Privacy",
     "test": "npm run test:e2e -- --project=chromium --grep \"@claim:license-token-cadence\"",
     "sandbox": "recorded valid response; seed a current verdict, reload with zero requests, age it past 24 hours, then require exactly one verification request"

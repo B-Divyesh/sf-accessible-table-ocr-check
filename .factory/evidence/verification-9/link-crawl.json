@@ -1,0 +1,98 @@
+{
+  "count": 14,
+  "results": [
+    {
+      "source": "/",
+      "text": "Skip to main content",
+      "href": "https://accessible-table-ocr-check.sociobot.in/#main",
+      "status": 200,
+      "fragmentExists": true
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "Return to the table checker",
+      "href": "https://accessible-table-ocr-check.sociobot.in/",
+      "status": 200
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "Try the sample",
+      "href": "https://accessible-table-ocr-check.sociobot.in/demo",
+      "status": 200
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "How it works",
+      "href": "https://accessible-table-ocr-check.sociobot.in/#how",
+      "status": 200,
+      "fragmentExists": true
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "Privacy",
+      "href": "https://accessible-table-ocr-check.sociobot.in/privacy/",
+      "status": 200
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "Desk license",
+      "href": "https://accessible-table-ocr-check.sociobot.in/#license",
+      "status": 200,
+      "fragmentExists": true
+    },
+    {
+      "source": "/",
+      "text": "Import your page",
+      "href": "https://accessible-table-ocr-check.sociobot.in/#import",
+      "status": 200,
+      "fragmentExists": true
+    },
+    {
+      "source": "/demo",
+      "text": "Get Desk license",
+      "href": "https://api.sociobot.in/api/v1/products/accessible-table-ocr-check/checkout",
+      "notFetched": "checkout link inspected without creating session"
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "Terms",
+      "href": "https://accessible-table-ocr-check.sociobot.in/terms/",
+      "status": 200
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "Source on GitHub (opens external site)",
+      "href": "https://github.com/B-Divyesh/sf-accessible-table-ocr-check",
+      "status": 200,
+      "external": true
+    },
+    {
+      "source": "/demo",
+      "text": "Skip to main content",
+      "href": "https://accessible-table-ocr-check.sociobot.in/demo#main",
+      "status": 200,
+      "fragmentExists": true
+    },
+    {
+      "source": "/privacy/",
+      "text": "Skip to main content",
+      "href": "https://accessible-table-ocr-check.sociobot.in/privacy/#main",
+      "status": 200,
+      "fragmentExists": true
+    },
+    {
+      "source": "/terms/",
+      "text": "Skip to main content",
+      "href": "https://accessible-table-ocr-check.sociobot.in/terms/#main",
+      "status": 200,
+      "fragmentExists": true
+    },
+    {
+      "source": "/missing-verification-9",
+      "text": "Skip to main content",
+      "href": "https://accessible-table-ocr-check.sociobot.in/missing-verification-9#main",
+      "status": 200,
+      "fragmentExists": true
+    }
+  ]
+}

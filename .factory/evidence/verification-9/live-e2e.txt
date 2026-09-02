@@ -1,0 +1,109 @@
+
+> accessible-table-ocr-check@1.0.0 test:e2e:live
+> PLAYWRIGHT_BASE_URL=https://accessible-table-ocr-check.sociobot.in playwright test
+
+
+Running 68 tests using 2 workers
+
+[1A[2K(node:9242) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:9243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:9242) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:9243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/68] [chromium] › tests/e2e/claims.spec.ts:48:1 › direct demo is ready, resettable, and isolated @claim:demo-ready @claim:demo-isolation
+[1A[2K[2/68] [chromium] › tests/e2e/app.spec.ts:31:1 › opens the demo, identifies it, corrects it, and exports semantic HTML
+[1A[2K[3/68] [chromium] › tests/e2e/claims.spec.ts:74:1 › does not let a queued demo autosave recreate isolated data after exit
+[1A[2K[4/68] [chromium] › tests/e2e/claims.spec.ts:91:1 › corrects reading order and exports scoped HTML @claim:proof-and-export
+[1A[2K[5/68] [chromium] › tests/e2e/claims.spec.ts:102:1 › keeps documents in-browser without third-party runtime requests @claim:browser-local @claim:no-document-upload @claim:pages-stay-local @claim:no-third-party-runtime @claim:indexeddb-only
+[1A[2K[6/68] [chromium] › tests/e2e/app.spec.ts:57:1 › fits the core workflow on a 390px viewport
+[1A[2K[7/68] [chromium] › tests/e2e/app.spec.ts:72:1 › keeps the 390px header readable at 200% text size
+[1A[2K[8/68] [chromium] › tests/e2e/app.spec.ts:99:1 › gives every visible mobile control a 44 by 44 CSS-pixel target
+[1A[2K[9/68] [chromium] › tests/e2e/app.spec.ts:107:1 › gives every visible desktop control a 44 by 44 CSS-pixel target
+[1A[2K[10/68] [chromium] › tests/e2e/claims.spec.ts:131:1 › stores a license token locally and checks it at most once per day @claim:license-token-cadence
+[1A[2K[11/68] [chromium] › tests/e2e/app.spec.ts:115:1 › preserves hero artwork proportions, visible naming, and mobile touch targets
+[1A[2K[12/68] [chromium] › tests/e2e/claims.spec.ts:154:1 › removes paid saved versions after a recorded revoked verdict while keeping exports @claim:revoked-license
+[1A[2K[13/68] [chromium] › tests/e2e/app.spec.ts:142:1 › rejects oversized imported grid coordinates before persistence
+[1A[2K[14/68] [chromium] › tests/e2e/app.spec.ts:168:1 › rejects editor values above 99 and keeps the last safe persisted value
+[1A[2K[15/68] [chromium] › tests/e2e/claims.spec.ts:181:1 › reloads, edits, and exports offline in its own context @claim:offline-reload
+[1A[2K[16/68] [chromium] › tests/e2e/app.spec.ts:179:1 › repairs a legacy unsafe saved coordinate before rendering @claim:legacy-recovery
+[1A[2K[17/68] [chromium] › tests/e2e/claims.spec.ts:199:1 › accepts each image format and either import order @claim:import-formats @claim:either-import-order
+[1A[2K[18/68] [chromium] › tests/e2e/app.spec.ts:209:1 › builds hardened static deployment policy
+[1A[2K[19/68] [chromium] › tests/e2e/app.spec.ts:226:1 › supports keyboard correction, reduced motion, and a private core flow
+[1A[2K[20/68] [chromium] › tests/e2e/app.spec.ts:251:1 › reloads the app shell and saved table check offline
+[1A[2K[21/68] [chromium] › tests/e2e/claims.spec.ts:219:1 › accepts documented JSON shapes and normalizes fields and boxes @claim:ocr-schema @claim:json-shapes @claim:field-normalization @claim:bbox-formats
+[1A[2K[22/68] [chromium] › tests/e2e/app.spec.ts:263:1 › serves legal pages directly
+[1A[2K[23/68] [chromium] › tests/e2e/app.spec.ts:272:1 › sets route metadata, supports history focus, and renders a styled 404
+[1A[2K[24/68] [chromium] › tests/e2e/claims.spec.ts:236:1 › shows overlays, maps labels, and reports seeded jumps @claim:reading-order-overlays
+[1A[2K[25/68] [chromium] › tests/e2e/claims.spec.ts:245:1 › updates text, positions, and header roles @claim:cell-corrections
+[1A[2K[26/68] [chromium] › tests/e2e/app.spec.ts:294:1 › keeps the required header and footer skeleton on every route
+[1A[2K[27/68] [chromium] › tests/e2e/claims.spec.ts:258:1 › downloads every promised format without a license @claim:all-exports @claim:free-core @claim:free-state
+[1A[2K[28/68] [chromium] › tests/e2e/claims.spec.ts:271:1 › uses the registered checkout and app verification paths @claim:sociobot-billing-path
+[1A[2K(node:9724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[29/68] [chromium] › tests/e2e/claims.spec.ts:280:1 › stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions
+[1A[2K(node:9724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[30/68] [mobile] › tests/e2e/app.spec.ts:31:1 › opens the demo, identifies it, corrects it, and exports semantic HTML
+[1A[2K[31/68] [chromium] › tests/e2e/claims.spec.ts:304:1 › enforces cell and grid limits before replacing saved work @claim:import-limits @claim:rejection-before-write
+[1A[2K[32/68] [chromium] › tests/e2e/claims.spec.ts:318:1 › round-trips project JSON through OCR import @claim:project-round-trip
+[1A[2K[33/68] [mobile] › tests/e2e/app.spec.ts:57:1 › fits the core workflow on a 390px viewport
+[1A[2K[34/68] [chromium] › tests/e2e/claims.spec.ts:329:1 › clears the real working copy @claim:clear-table-check
+[1A[2K[35/68] [mobile] › tests/e2e/app.spec.ts:72:1 › keeps the 390px header readable at 200% text size
+[1A[2K[36/68] [chromium] › tests/e2e/claims.spec.ts:339:1 › ships an inline shell and a human-check-only image state @claim:inline-offline-shell @claim:human-check-only
+[1A[2K[37/68] [mobile] › tests/e2e/app.spec.ts:99:1 › gives every visible mobile control a 44 by 44 CSS-pixel target
+[1A[2K[38/68] [chromium] › tests/e2e/claims.spec.ts:350:1 › build includes direct documents for every public route @claim:direct-route-documents
+[1A[2K[39/68] [mobile] › tests/e2e/app.spec.ts:107:1 › gives every visible desktop control a 44 by 44 CSS-pixel target
+[1A[2K(node:9909) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[40/68] [mobile] › tests/e2e/app.spec.ts:115:1 › preserves hero artwork proportions, visible naming, and mobile touch targets
+[1A[2K[41/68] [mobile] › tests/e2e/app.spec.ts:142:1 › rejects oversized imported grid coordinates before persistence
+[1A[2K(node:9909) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[42/68] [mobile] › tests/e2e/claims.spec.ts:48:1 › direct demo is ready, resettable, and isolated @claim:demo-ready @claim:demo-isolation
+[1A[2K[43/68] [mobile] › tests/e2e/app.spec.ts:168:1 › rejects editor values above 99 and keeps the last safe persisted value
+[1A[2K[44/68] [mobile] › tests/e2e/app.spec.ts:179:1 › repairs a legacy unsafe saved coordinate before rendering @claim:legacy-recovery
+[1A[2K[45/68] [mobile] › tests/e2e/app.spec.ts:209:1 › builds hardened static deployment policy
+[1A[2K[46/68] [mobile] › tests/e2e/app.spec.ts:226:1 › supports keyboard correction, reduced motion, and a private core flow
+[1A[2K[47/68] [mobile] › tests/e2e/app.spec.ts:251:1 › reloads the app shell and saved table check offline
+[1A[2K[48/68] [mobile] › tests/e2e/app.spec.ts:263:1 › serves legal pages directly
+[1A[2K[49/68] [mobile] › tests/e2e/claims.spec.ts:74:1 › does not let a queued demo autosave recreate isolated data after exit
+[1A[2K[50/68] [mobile] › tests/e2e/app.spec.ts:272:1 › sets route metadata, supports history focus, and renders a styled 404
+[1A[2K[51/68] [mobile] › tests/e2e/app.spec.ts:294:1 › keeps the required header and footer skeleton on every route
+[1A[2K[52/68] [mobile] › tests/e2e/claims.spec.ts:91:1 › corrects reading order and exports scoped HTML @claim:proof-and-export
+[1A[2K[53/68] [mobile] › tests/e2e/claims.spec.ts:102:1 › keeps documents in-browser without third-party runtime requests @claim:browser-local @claim:no-document-upload @claim:pages-stay-local @claim:no-third-party-runtime @claim:indexeddb-only
+[1A[2K[54/68] [mobile] › tests/e2e/claims.spec.ts:131:1 › stores a license token locally and checks it at most once per day @claim:license-token-cadence
+[1A[2K[55/68] [mobile] › tests/e2e/claims.spec.ts:154:1 › removes paid saved versions after a recorded revoked verdict while keeping exports @claim:revoked-license
+[1A[2K[56/68] [mobile] › tests/e2e/claims.spec.ts:181:1 › reloads, edits, and exports offline in its own context @claim:offline-reload
+[1A[2K[57/68] [mobile] › tests/e2e/claims.spec.ts:199:1 › accepts each image format and either import order @claim:import-formats @claim:either-import-order
+[1A[2K[58/68] [mobile] › tests/e2e/claims.spec.ts:219:1 › accepts documented JSON shapes and normalizes fields and boxes @claim:ocr-schema @claim:json-shapes @claim:field-normalization @claim:bbox-formats
+[1A[2K[59/68] [mobile] › tests/e2e/claims.spec.ts:236:1 › shows overlays, maps labels, and reports seeded jumps @claim:reading-order-overlays
+[1A[2K[60/68] [mobile] › tests/e2e/claims.spec.ts:245:1 › updates text, positions, and header roles @claim:cell-corrections
+[1A[2K[61/68] [mobile] › tests/e2e/claims.spec.ts:258:1 › downloads every promised format without a license @claim:all-exports @claim:free-core @claim:free-state
+[1A[2K[62/68] [mobile] › tests/e2e/claims.spec.ts:271:1 › uses the registered checkout and app verification paths @claim:sociobot-billing-path
+[1A[2K[63/68] [mobile] › tests/e2e/claims.spec.ts:280:1 › stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions
+[1A[2K[64/68] [mobile] › tests/e2e/claims.spec.ts:304:1 › enforces cell and grid limits before replacing saved work @claim:import-limits @claim:rejection-before-write
+[1A[2K[65/68] [mobile] › tests/e2e/claims.spec.ts:318:1 › round-trips project JSON through OCR import @claim:project-round-trip
+[1A[2K[66/68] [mobile] › tests/e2e/claims.spec.ts:329:1 › clears the real working copy @claim:clear-table-check
+[1A[2K[67/68] [mobile] › tests/e2e/claims.spec.ts:339:1 › ships an inline shell and a human-check-only image state @claim:inline-offline-shell @claim:human-check-only
+[1A[2K[68/68] [mobile] › tests/e2e/claims.spec.ts:350:1 › build includes direct documents for every public route @claim:direct-route-documents
+[1A[2K  9 skipped
+  59 passed (1.7m)

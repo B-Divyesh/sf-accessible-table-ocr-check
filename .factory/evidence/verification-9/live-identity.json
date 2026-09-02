@@ -1,0 +1,218 @@
+{
+  "candidate": "5a5f94ae11ae9ea54fb59621f2d64973ee310157",
+  "matched": 21,
+  "total": 21,
+  "configStatus": 404,
+  "results": [
+    {
+      "path": "404.html",
+      "status": 200,
+      "localBytes": 59343,
+      "liveBytes": 59343,
+      "localSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "liveSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "match": true,
+      "cacheControl": "no-cache, must-revalidate"
+    },
+    {
+      "path": "assets/index-B0foRK3w.js",
+      "status": 200,
+      "localBytes": 37120,
+      "liveBytes": 37120,
+      "localSha256": "5eb2e2c20dc12c6010efe750a309c345dfb692cb552dcd4d48d6f6824ff65a6b",
+      "liveSha256": "5eb2e2c20dc12c6010efe750a309c345dfb692cb552dcd4d48d6f6824ff65a6b",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "assets/index-B0foRK3w.js.map",
+      "status": 200,
+      "localBytes": 82070,
+      "liveBytes": 82070,
+      "localSha256": "3e754553bfe9559c37cfb8ea5173a0898003b7dfb180a2a0f0bd82bfa56cf45e",
+      "liveSha256": "3e754553bfe9559c37cfb8ea5173a0898003b7dfb180a2a0f0bd82bfa56cf45e",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "assets/index-COyYm5-r.css",
+      "status": 200,
+      "localBytes": 20277,
+      "liveBytes": 20277,
+      "localSha256": "eb2fe53a94edefbbab853891a787af2be8423112f0ce8e2c5b38db9bf10fc9f8",
+      "liveSha256": "eb2fe53a94edefbbab853891a787af2be8423112f0ce8e2c5b38db9bf10fc9f8",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "assets/proofing-table-640.webp",
+      "status": 200,
+      "localBytes": 22664,
+      "liveBytes": 22664,
+      "localSha256": "007b7e501ae80000f543288d324a571c1e0baedbacf33e7769e69ae2d86e6d99",
+      "liveSha256": "007b7e501ae80000f543288d324a571c1e0baedbacf33e7769e69ae2d86e6d99",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "assets/proofing-table.webp",
+      "status": 200,
+      "localBytes": 110030,
+      "liveBytes": 110030,
+      "localSha256": "563a64c377abea6743da30329b60861d3072be55ff8ef5b566ff397dedae2d74",
+      "liveSha256": "563a64c377abea6743da30329b60861d3072be55ff8ef5b566ff397dedae2d74",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "assets/social-preview.jpg",
+      "status": 200,
+      "localBytes": 138697,
+      "liveBytes": 138697,
+      "localSha256": "2f9da83e643f6c5683c0772c0d0104263862e46c5761d66ee34c1b08fdc44cce",
+      "liveSha256": "2f9da83e643f6c5683c0772c0d0104263862e46c5761d66ee34c1b08fdc44cce",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "demo/index.html",
+      "status": 200,
+      "localBytes": 59343,
+      "liveBytes": 59343,
+      "localSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "liveSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "match": true,
+      "cacheControl": "public, must-revalidate, max-age=30"
+    },
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "localBytes": 444,
+      "liveBytes": 444,
+      "localSha256": "d910d59789a7e34f7e932b081c648feeb6c8b66bb630f2562c8cb76a94b788cf",
+      "liveSha256": "d910d59789a7e34f7e932b081c648feeb6c8b66bb630f2562c8cb76a94b788cf",
+      "match": true,
+      "cacheControl": "public, must-revalidate, max-age=30"
+    },
+    {
+      "path": "icons/apple-touch-icon.png",
+      "status": 200,
+      "localBytes": 54507,
+      "liveBytes": 54507,
+      "localSha256": "8e6ff06119f0b7425ab6cf995f0202c6f3ea7b08e4ea3da393c416ec2059c14f",
+      "liveSha256": "8e6ff06119f0b7425ab6cf995f0202c6f3ea7b08e4ea3da393c416ec2059c14f",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "icons/icon-192.png",
+      "status": 200,
+      "localBytes": 61281,
+      "liveBytes": 61281,
+      "localSha256": "45822e07306ca16b5ab2edae74d9a8f0251495672a82da4daa9f725b127cbb34",
+      "liveSha256": "45822e07306ca16b5ab2edae74d9a8f0251495672a82da4daa9f725b127cbb34",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "icons/icon-512.png",
+      "status": 200,
+      "localBytes": 450970,
+      "liveBytes": 450970,
+      "localSha256": "329fc92eca6456ce904f7b1dddb5b1eafc09a96eb1c55823da0a40b26969deba",
+      "liveSha256": "329fc92eca6456ce904f7b1dddb5b1eafc09a96eb1c55823da0a40b26969deba",
+      "match": true,
+      "cacheControl": "public, max-age=31536000, immutable"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "localBytes": 59343,
+      "liveBytes": 59343,
+      "localSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "liveSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "match": true,
+      "cacheControl": "public, must-revalidate, max-age=30"
+    },
+    {
+      "path": "manifest.json",
+      "status": 200,
+      "localBytes": 520,
+      "liveBytes": 520,
+      "localSha256": "a2ece6f1cb4933775081540e587da5f3961b0a8c6ab2f1865f4c44806ee24582",
+      "liveSha256": "a2ece6f1cb4933775081540e587da5f3961b0a8c6ab2f1865f4c44806ee24582",
+      "match": true,
+      "cacheControl": "public, max-age=3600, must-revalidate"
+    },
+    {
+      "path": "offline.html",
+      "status": 200,
+      "localBytes": 706,
+      "liveBytes": 706,
+      "localSha256": "66160527251e0edad4ab314485ee53be5fb6c13702abcd4e3fb21ef9a3e79e91",
+      "liveSha256": "66160527251e0edad4ab314485ee53be5fb6c13702abcd4e3fb21ef9a3e79e91",
+      "match": true,
+      "cacheControl": "public, must-revalidate, max-age=30"
+    },
+    {
+      "path": "privacy/index.html",
+      "status": 200,
+      "localBytes": 59343,
+      "liveBytes": 59343,
+      "localSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "liveSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "match": true,
+      "cacheControl": "no-cache, must-revalidate"
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "localBytes": 92,
+      "liveBytes": 92,
+      "localSha256": "350c0ff86a09823f190e78eb903b97378435b8438c853c5b8228d3702d84e9a5",
+      "liveSha256": "350c0ff86a09823f190e78eb903b97378435b8438c853c5b8228d3702d84e9a5",
+      "match": true,
+      "cacheControl": "public, must-revalidate, max-age=30"
+    },
+    {
+      "path": "sample-table.svg",
+      "status": 200,
+      "localBytes": 1583,
+      "liveBytes": 1583,
+      "localSha256": "f9a257776b0f30970532b6db1f5cd13b720236166acab15e2d132b2ad602e4e1",
+      "liveSha256": "f9a257776b0f30970532b6db1f5cd13b720236166acab15e2d132b2ad602e4e1",
+      "match": true,
+      "cacheControl": "public, must-revalidate, max-age=30"
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "localBytes": 416,
+      "liveBytes": 416,
+      "localSha256": "ce7fd5b6b01c038f2114795ff14bbddb12a6bae54c01f4022a6248b93d1fd4bc",
+      "liveSha256": "ce7fd5b6b01c038f2114795ff14bbddb12a6bae54c01f4022a6248b93d1fd4bc",
+      "match": true,
+      "cacheControl": "public, must-revalidate, max-age=30"
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "localBytes": 1823,
+      "liveBytes": 1823,
+      "localSha256": "94e192fe635d1213760e29b9799076fb1357c153372ecb577b56c253aaf9cc38",
+      "liveSha256": "94e192fe635d1213760e29b9799076fb1357c153372ecb577b56c253aaf9cc38",
+      "match": true,
+      "cacheControl": "no-cache, no-store, must-revalidate"
+    },
+    {
+      "path": "terms/index.html",
+      "status": 200,
+      "localBytes": 59343,
+      "liveBytes": 59343,
+      "localSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "liveSha256": "86d9163df3aaa1caa720c4b224a7911ef33137edb4a3cc003b0ffa0df4179fec",
+      "match": true,
+      "cacheControl": "no-cache, must-revalidate"
+    }
+  ]
+}

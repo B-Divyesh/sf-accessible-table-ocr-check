@@ -1,0 +1,42 @@
+[
+  {
+    "route": "/",
+    "title": "Accessible Table OCR Check — fix reading order",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "h1": "Fix a scanned table’sreading order.",
+    "visibleControls": 20
+  },
+  {
+    "route": "/demo",
+    "title": "Demo — Accessible Table OCR Check",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "h1": "Review reading order",
+    "visibleControls": 103
+  },
+  {
+    "route": "/privacy/",
+    "title": "Privacy — Accessible Table OCR Check",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "h1": "How we handle your documents",
+    "visibleControls": 10
+  },
+  {
+    "route": "/terms/",
+    "title": "Terms — Accessible Table OCR Check",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "h1": "Terms of use",
+    "visibleControls": 10
+  },
+  {
+    "route": "/missing-verification-9",
+    "title": "Page not found — Accessible Table OCR Check",
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "h1": "This page does not exist",
+    "visibleControls": 11
+  }
+]

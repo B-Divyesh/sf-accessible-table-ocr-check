@@ -1,0 +1,15 @@
+{
+  "before": {
+    "controlled": true,
+    "caches": [
+      "proof-desk-v4"
+    ]
+  },
+  "registration": {
+    "installing": true,
+    "waiting": false,
+    "active": true
+  },
+  "toast": "A newer proofing desk is ready.\nUpdate now",
+  "errors": []
+}

@@ -1,0 +1,151 @@
+{
+  "count": 36,
+  "passed": 36,
+  "failed": [],
+  "rows": [
+    {
+      "id": "demo-ready",
+      "exit": 0
+    },
+    {
+      "id": "demo-isolation",
+      "exit": 0
+    },
+    {
+      "id": "proof-and-export",
+      "exit": 0
+    },
+    {
+      "id": "browser-local",
+      "exit": 0
+    },
+    {
+      "id": "no-document-upload",
+      "exit": 0
+    },
+    {
+      "id": "pages-stay-local",
+      "exit": 0
+    },
+    {
+      "id": "no-third-party-runtime",
+      "exit": 0
+    },
+    {
+      "id": "indexeddb-only",
+      "exit": 0
+    },
+    {
+      "id": "offline-reload",
+      "exit": 0
+    },
+    {
+      "id": "import-formats",
+      "exit": 0
+    },
+    {
+      "id": "either-import-order",
+      "exit": 0
+    },
+    {
+      "id": "ocr-schema",
+      "exit": 0
+    },
+    {
+      "id": "json-shapes",
+      "exit": 0
+    },
+    {
+      "id": "field-normalization",
+      "exit": 0
+    },
+    {
+      "id": "bbox-formats",
+      "exit": 0
+    },
+    {
+      "id": "reading-order-overlays",
+      "exit": 0
+    },
+    {
+      "id": "cell-corrections",
+      "exit": 0
+    },
+    {
+      "id": "all-exports",
+      "exit": 0
+    },
+    {
+      "id": "free-core",
+      "exit": 0
+    },
+    {
+      "id": "free-state",
+      "exit": 0
+    },
+    {
+      "id": "sociobot-billing-path",
+      "exit": 0
+    },
+    {
+      "id": "licensed-saved-versions",
+      "exit": 0
+    },
+    {
+      "id": "local-saved-versions",
+      "exit": 0
+    },
+    {
+      "id": "import-limits",
+      "exit": 0
+    },
+    {
+      "id": "rejection-before-write",
+      "exit": 0
+    },
+    {
+      "id": "legacy-recovery",
+      "exit": 0
+    },
+    {
+      "id": "project-round-trip",
+      "exit": 0
+    },
+    {
+      "id": "clear-table-check",
+      "exit": 0
+    },
+    {
+      "id": "inline-offline-shell",
+      "exit": 0
+    },
+    {
+      "id": "human-check-only",
+      "exit": 0
+    },
+    {
+      "id": "issue-detection",
+      "exit": 0
+    },
+    {
+      "id": "license-rate-limit",
+      "exit": 0
+    },
+    {
+      "id": "license-token-cadence",
+      "exit": 0
+    },
+    {
+      "id": "revoked-license",
+      "exit": 0
+    },
+    {
+      "id": "license-fails-closed",
+      "exit": 0
+    },
+    {
+      "id": "direct-route-documents",
+      "exit": 0
+    }
+  ]
+}

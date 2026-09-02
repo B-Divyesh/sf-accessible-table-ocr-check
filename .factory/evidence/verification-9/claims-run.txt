@@ -1,0 +1,948 @@
+
+===== CLAIM demo-ready =====
+npm run test:e2e -- --project=chromium --grep "@claim:demo-ready"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:demo-ready
+
+[1A[2K[WebServer] (node:590) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:650) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:650) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:48:1 › direct demo is ready, resettable, and isolated @claim:demo-ready @claim:demo-isolation
+[1A[2K  1 passed (12.4s)
+===== RESULT demo-ready exit=0 =====
+
+===== CLAIM demo-isolation =====
+npm run test:e2e -- --project=chromium --grep "@claim:demo-isolation"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:demo-isolation
+
+[1A[2K[WebServer] (node:780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:822) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:840) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:840) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:48:1 › direct demo is ready, resettable, and isolated @claim:demo-ready @claim:demo-isolation
+[1A[2K  1 passed (10.1s)
+===== RESULT demo-isolation exit=0 =====
+
+===== CLAIM proof-and-export =====
+npm run test:e2e -- --project=chromium --grep "@claim:proof-and-export"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:proof-and-export
+
+[1A[2K[WebServer] (node:968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:1010) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:1046) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1046) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:91:1 › corrects reading order and exports scoped HTML @claim:proof-and-export
+[1A[2K  1 passed (10.3s)
+===== RESULT proof-and-export exit=0 =====
+
+===== CLAIM browser-local =====
+npm run test:e2e -- --project=chromium --grep "@claim:browser-local"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:browser-local
+
+[1A[2K[WebServer] (node:1182) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:1225) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:1243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:102:1 › keeps documents in-browser without third-party runtime requests @claim:browser-local @claim:no-document-upload @claim:pages-stay-local @claim:no-third-party-runtime @claim:indexeddb-only
+[1A[2K  1 passed (11.9s)
+===== RESULT browser-local exit=0 =====
+
+===== CLAIM no-document-upload =====
+npm run test:e2e -- --project=chromium --grep "@claim:no-document-upload"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:no-document-upload
+
+[1A[2K[WebServer] (node:1372) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:1414) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:1432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:102:1 › keeps documents in-browser without third-party runtime requests @claim:browser-local @claim:no-document-upload @claim:pages-stay-local @claim:no-third-party-runtime @claim:indexeddb-only
+[1A[2K  1 passed (11.2s)
+===== RESULT no-document-upload exit=0 =====
+
+===== CLAIM pages-stay-local =====
+npm run test:e2e -- --project=chromium --grep "@claim:pages-stay-local"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:pages-stay-local
+
+[1A[2K[WebServer] (node:1582) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:1624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:1642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1642) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:102:1 › keeps documents in-browser without third-party runtime requests @claim:browser-local @claim:no-document-upload @claim:pages-stay-local @claim:no-third-party-runtime @claim:indexeddb-only
+[1A[2K  1 passed (11.2s)
+===== RESULT pages-stay-local exit=0 =====
+
+===== CLAIM no-third-party-runtime =====
+npm run test:e2e -- --project=chromium --grep "@claim:no-third-party-runtime"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:no-third-party-runtime
+
+[1A[2K[WebServer] (node:1767) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:1809) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:1827) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:1827) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:102:1 › keeps documents in-browser without third-party runtime requests @claim:browser-local @claim:no-document-upload @claim:pages-stay-local @claim:no-third-party-runtime @claim:indexeddb-only
+[1A[2K  1 passed (10.7s)
+===== RESULT no-third-party-runtime exit=0 =====
+
+===== CLAIM indexeddb-only =====
+npm run test:e2e -- --project=chromium --grep "@claim:indexeddb-only"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:indexeddb-only
+
+[1A[2K[WebServer] (node:1953) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:1995) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:2031) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:2031) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:102:1 › keeps documents in-browser without third-party runtime requests @claim:browser-local @claim:no-document-upload @claim:pages-stay-local @claim:no-third-party-runtime @claim:indexeddb-only
+[1A[2K  1 passed (11.2s)
+===== RESULT indexeddb-only exit=0 =====
+
+===== CLAIM offline-reload =====
+npm run test:e2e -- --project=chromium --grep "@claim:offline-reload"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:offline-reload
+
+[1A[2K[WebServer] (node:2158) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:2201) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:2219) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:2219) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:181:1 › reloads, edits, and exports offline in its own context @claim:offline-reload
+[1A[2K  1 passed (10.9s)
+===== RESULT offline-reload exit=0 =====
+
+===== CLAIM import-formats =====
+npm run test:e2e -- --project=chromium --grep "@claim:import-formats"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:import-formats
+
+[1A[2K[WebServer] (node:2347) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:2389) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:2407) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:2407) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:199:1 › accepts each image format and either import order @claim:import-formats @claim:either-import-order
+[1A[2K  1 passed (14.1s)
+===== RESULT import-formats exit=0 =====
+
+===== CLAIM either-import-order =====
+npm run test:e2e -- --project=chromium --grep "@claim:either-import-order"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:either-import-order
+
+[1A[2K[WebServer] (node:2595) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:2638) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:2656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:2656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:199:1 › accepts each image format and either import order @claim:import-formats @claim:either-import-order
+[1A[2K  1 passed (12.9s)
+===== RESULT either-import-order exit=0 =====
+
+===== CLAIM ocr-schema =====
+npm run test:e2e -- --project=chromium --grep "@claim:ocr-schema"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:ocr-schema
+
+[1A[2K[WebServer] (node:2828) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:2870) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:2888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:2888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:219:1 › accepts documented JSON shapes and normalizes fields and boxes @claim:ocr-schema @claim:json-shapes @claim:field-normalization @claim:bbox-formats
+[1A[2K  1 passed (10.3s)
+===== RESULT ocr-schema exit=0 =====
+
+===== CLAIM json-shapes =====
+npm run test:e2e -- --project=chromium --grep "@claim:json-shapes"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:json-shapes
+
+[1A[2K[WebServer] (node:3016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:3059) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:3077) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:3077) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:219:1 › accepts documented JSON shapes and normalizes fields and boxes @claim:ocr-schema @claim:json-shapes @claim:field-normalization @claim:bbox-formats
+[1A[2K  1 passed (10.1s)
+===== RESULT json-shapes exit=0 =====
+
+===== CLAIM field-normalization =====
+npm run test:e2e -- --project=chromium --grep "@claim:field-normalization"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:field-normalization
+
+[1A[2K[WebServer] (node:3228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:3270) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:3288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:3288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:219:1 › accepts documented JSON shapes and normalizes fields and boxes @claim:ocr-schema @claim:json-shapes @claim:field-normalization @claim:bbox-formats
+[1A[2K  1 passed (9.2s)
+===== RESULT field-normalization exit=0 =====
+
+===== CLAIM bbox-formats =====
+npm run test:e2e -- --project=chromium --grep "@claim:bbox-formats"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:bbox-formats
+
+[1A[2K[WebServer] (node:3416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:3458) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:3476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:3476) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:219:1 › accepts documented JSON shapes and normalizes fields and boxes @claim:ocr-schema @claim:json-shapes @claim:field-normalization @claim:bbox-formats
+[1A[2K  1 passed (10.2s)
+===== RESULT bbox-formats exit=0 =====
+
+===== CLAIM reading-order-overlays =====
+npm run test:e2e -- --project=chromium --grep "@claim:reading-order-overlays"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:reading-order-overlays
+
+[1A[2K[WebServer] (node:3603) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:3645) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:3663) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:3663) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:236:1 › shows overlays, maps labels, and reports seeded jumps @claim:reading-order-overlays
+[1A[2K  1 passed (9.0s)
+===== RESULT reading-order-overlays exit=0 =====
+
+===== CLAIM cell-corrections =====
+npm run test:e2e -- --project=chromium --grep "@claim:cell-corrections"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:cell-corrections
+
+[1A[2K[WebServer] (node:3811) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:3855) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:3873) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:3873) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:245:1 › updates text, positions, and header roles @claim:cell-corrections
+[1A[2K  1 passed (10.6s)
+===== RESULT cell-corrections exit=0 =====
+
+===== CLAIM all-exports =====
+npm run test:e2e -- --project=chromium --grep "@claim:all-exports"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:all-exports
+
+[1A[2K[WebServer] (node:4000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:4042) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:4060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:4060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:258:1 › downloads every promised format without a license @claim:all-exports @claim:free-core @claim:free-state
+[1A[2K  1 passed (10.6s)
+===== RESULT all-exports exit=0 =====
+
+===== CLAIM free-core =====
+npm run test:e2e -- --project=chromium --grep "@claim:free-core"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:free-core
+
+[1A[2K[WebServer] (node:4187) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:4230) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:4248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:4248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:258:1 › downloads every promised format without a license @claim:all-exports @claim:free-core @claim:free-state
+[1A[2K  1 passed (10.7s)
+===== RESULT free-core exit=0 =====
+
+===== CLAIM free-state =====
+npm run test:e2e -- --project=chromium --grep "@claim:free-state"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:free-state
+
+[1A[2K[WebServer] (node:4397) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:4439) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:4457) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:4457) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:258:1 › downloads every promised format without a license @claim:all-exports @claim:free-core @claim:free-state
+[1A[2K  1 passed (10.8s)
+===== RESULT free-state exit=0 =====
+
+===== CLAIM sociobot-billing-path =====
+npm run test:e2e -- --project=chromium --grep "@claim:sociobot-billing-path"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:sociobot-billing-path
+
+[1A[2K[WebServer] (node:4586) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:4629) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:4647) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:4647) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:271:1 › uses the registered checkout and app verification paths @claim:sociobot-billing-path
+[1A[2K  1 passed (10.2s)
+===== RESULT sociobot-billing-path exit=0 =====
+
+===== CLAIM licensed-saved-versions =====
+npm run test:e2e -- --project=chromium --grep "@claim:licensed-saved-versions"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:licensed-saved-versions
+
+[1A[2K[WebServer] (node:4773) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:4816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:4852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:4852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:280:1 › stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions
+[1A[2K  1 passed (12.8s)
+===== RESULT licensed-saved-versions exit=0 =====
+
+===== CLAIM local-saved-versions =====
+npm run test:e2e -- --project=chromium --grep "@claim:local-saved-versions"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:local-saved-versions
+
+[1A[2K[WebServer] (node:4981) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:5023) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:5041) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:5041) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:280:1 › stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions
+[1A[2K  1 passed (13.0s)
+===== RESULT local-saved-versions exit=0 =====
+
+===== CLAIM import-limits =====
+npm run test:e2e -- --project=chromium --grep "@claim:import-limits"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:import-limits
+
+[1A[2K[WebServer] (node:5170) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:5212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:5230) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:5230) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:304:1 › enforces cell and grid limits before replacing saved work @claim:import-limits @claim:rejection-before-write
+[1A[2K  1 passed (12.5s)
+===== RESULT import-limits exit=0 =====
+
+===== CLAIM rejection-before-write =====
+npm run test:e2e -- --project=chromium --grep "@claim:rejection-before-write"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:rejection-before-write
+
+[1A[2K[WebServer] (node:5384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:5426) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:5444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:5444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:304:1 › enforces cell and grid limits before replacing saved work @claim:import-limits @claim:rejection-before-write
+[1A[2K  1 passed (12.5s)
+===== RESULT rejection-before-write exit=0 =====
+
+===== CLAIM legacy-recovery =====
+npm run test:e2e -- --project=chromium --grep "@claim:legacy-recovery"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:legacy-recovery
+
+[1A[2K[WebServer] (node:5575) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:5617) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:5635) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:5635) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/app.spec.ts:179:1 › repairs a legacy unsafe saved coordinate before rendering @claim:legacy-recovery
+[1A[2K  1 passed (10.4s)
+===== RESULT legacy-recovery exit=0 =====
+
+===== CLAIM project-round-trip =====
+npm run test:e2e -- --project=chromium --grep "@claim:project-round-trip"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:project-round-trip
+
+[1A[2K[WebServer] (node:5781) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:5824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:5842) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:5842) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:318:1 › round-trips project JSON through OCR import @claim:project-round-trip
+[1A[2K  1 passed (10.3s)
+===== RESULT project-round-trip exit=0 =====
+
+===== CLAIM clear-table-check =====
+npm run test:e2e -- --project=chromium --grep "@claim:clear-table-check"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:clear-table-check
+
+[1A[2K[WebServer] (node:5972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:6014) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:6032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:6032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:329:1 › clears the real working copy @claim:clear-table-check
+[1A[2K  1 passed (10.7s)
+===== RESULT clear-table-check exit=0 =====
+
+===== CLAIM inline-offline-shell =====
+npm run test:e2e -- --project=chromium --grep "@claim:inline-offline-shell"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:inline-offline-shell
+
+[1A[2K[WebServer] (node:6162) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:6205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:6223) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:6223) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:339:1 › ships an inline shell and a human-check-only image state @claim:inline-offline-shell @claim:human-check-only
+[1A[2K  1 passed (8.9s)
+===== RESULT inline-offline-shell exit=0 =====
+
+===== CLAIM human-check-only =====
+npm run test:e2e -- --project=chromium --grep "@claim:human-check-only"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:human-check-only
+
+[1A[2K[WebServer] (node:6371) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:6413) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:6432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:6432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:339:1 › ships an inline shell and a human-check-only image state @claim:inline-offline-shell @claim:human-check-only
+[1A[2K  1 passed (10.0s)
+===== RESULT human-check-only exit=0 =====
+
+===== CLAIM issue-detection =====
+npm run test:unit -- --testNamePattern "@claim:issue-detection"
+
+> accessible-table-ocr-check@1.0.0 test:unit
+> vitest run tests/*.test.ts --testNamePattern @claim:issue-detection
+
+
+ RUN  v3.2.7 /work/repo
+
+ ↓ tests/api.test.ts (5 tests | 5 skipped)
+ ✓ tests/logic.test.ts (11 tests | 10 skipped) 48ms
+
+ Test Files  1 passed | 1 skipped (2)
+      Tests  1 passed | 15 skipped (16)
+   Start at  00:50:25
+   Duration  1.40s (transform 268ms, setup 0ms, collect 436ms, tests 48ms, environment 0ms, prepare 622ms)
+
+===== RESULT issue-detection exit=0 =====
+
+===== CLAIM license-rate-limit =====
+npm run test:unit -- --testNamePattern "@claim:license-rate-limit"
+
+> accessible-table-ocr-check@1.0.0 test:unit
+> vitest run tests/*.test.ts --testNamePattern @claim:license-rate-limit
+
+
+ RUN  v3.2.7 /work/repo
+
+ ↓ tests/logic.test.ts (11 tests | 11 skipped)
+ ✓ tests/api.test.ts (5 tests | 4 skipped) 57ms
+
+ Test Files  1 passed | 1 skipped (2)
+      Tests  1 passed | 15 skipped (16)
+   Start at  00:50:28
+   Duration  1.47s (transform 411ms, setup 0ms, collect 591ms, tests 57ms, environment 1ms, prepare 606ms)
+
+===== RESULT license-rate-limit exit=0 =====
+
+===== CLAIM license-token-cadence =====
+npm run test:e2e -- --project=chromium --grep "@claim:license-token-cadence"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:license-token-cadence
+
+[1A[2K[WebServer] (node:6871) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:6913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:6931) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:6931) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:131:1 › stores a license token locally and checks it at most once per day @claim:license-token-cadence
+[1A[2K  1 passed (10.5s)
+===== RESULT license-token-cadence exit=0 =====
+
+===== CLAIM revoked-license =====
+npm run test:e2e -- --project=chromium --grep "@claim:revoked-license"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:revoked-license
+
+[1A[2K[WebServer] (node:7058) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:7100) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:7118) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:7118) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:154:1 › removes paid saved versions after a recorded revoked verdict while keeping exports @claim:revoked-license
+[1A[2K  1 passed (11.0s)
+===== RESULT revoked-license exit=0 =====
+
+===== CLAIM license-fails-closed =====
+npm run test:unit -- --testNamePattern "@claim:license-fails-closed"
+
+> accessible-table-ocr-check@1.0.0 test:unit
+> vitest run tests/*.test.ts --testNamePattern @claim:license-fails-closed
+
+
+ RUN  v3.2.7 /work/repo
+
+ ✓ tests/api.test.ts (5 tests | 4 skipped) 5ms
+ ↓ tests/logic.test.ts (11 tests | 11 skipped)
+
+ Test Files  1 passed | 1 skipped (2)
+      Tests  1 passed | 15 skipped (16)
+   Start at  00:50:55
+   Duration  1.40s (transform 239ms, setup 0ms, collect 427ms, tests 5ms, environment 60ms, prepare 595ms)
+
+===== RESULT license-fails-closed exit=0 =====
+
+===== CLAIM direct-route-documents =====
+npm run test:e2e -- --project=chromium --grep "@claim:direct-route-documents"
+
+> accessible-table-ocr-check@1.0.0 test:e2e
+> playwright test --project=chromium --grep @claim:direct-route-documents
+
+[1A[2K[WebServer] (node:7423) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[WebServer] (node:7466) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:7484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:7484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] [chromium] › tests/e2e/claims.spec.ts:350:1 › build includes direct documents for every public route @claim:direct-route-documents
+[1A[2K  1 passed (8.8s)
+===== RESULT direct-route-documents exit=0 =====

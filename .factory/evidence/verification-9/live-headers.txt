@@ -1,0 +1,99 @@
+URL https://accessible-table-ocr-check.sociobot.in/
+HTTP/2 200
+content-type: text/html
+date: Wed, 02 Sep 2026 01:01:00 GMT
+cache-control: no-cache, must-revalidate
+etag: "47350875"
+last-modified: Wed, 02 Sep 2026 00:38:51 GMT
+content-length: 59343
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-XrLiwg3BLGAQ7+dQownDRd+2kstVLc1NSNb2gk/2Wms='; style-src 'self' 'sha256-6y/lOpTt77urhTiRp4evK+hCMRLwzo4sWzjbm/EPyfg=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+
+URL https://accessible-table-ocr-check.sociobot.in/demo
+HTTP/2 200
+content-type: text/html
+date: Wed, 02 Sep 2026 01:01:01 GMT
+cache-control: no-cache, must-revalidate
+etag: "47350875"
+last-modified: Wed, 02 Sep 2026 00:38:51 GMT
+content-length: 59343
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-XrLiwg3BLGAQ7+dQownDRd+2kstVLc1NSNb2gk/2Wms='; style-src 'self' 'sha256-6y/lOpTt77urhTiRp4evK+hCMRLwzo4sWzjbm/EPyfg=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+
+URL https://accessible-table-ocr-check.sociobot.in/assets/index-B0foRK3w.js
+HTTP/2 200
+content-type: text/javascript
+date: Wed, 02 Sep 2026 01:01:01 GMT
+cache-control: public, max-age=31536000, immutable
+etag: "47350875"
+last-modified: Wed, 02 Sep 2026 00:38:51 GMT
+content-length: 37120
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-XrLiwg3BLGAQ7+dQownDRd+2kstVLc1NSNb2gk/2Wms='; style-src 'self' 'sha256-6y/lOpTt77urhTiRp4evK+hCMRLwzo4sWzjbm/EPyfg=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+
+URL https://accessible-table-ocr-check.sociobot.in/manifest.json
+HTTP/2 200
+content-type: application/json
+date: Wed, 02 Sep 2026 01:01:01 GMT
+cache-control: public, max-age=3600, must-revalidate
+etag: "47350875"
+last-modified: Wed, 02 Sep 2026 00:38:51 GMT
+content-length: 520
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-XrLiwg3BLGAQ7+dQownDRd+2kstVLc1NSNb2gk/2Wms='; style-src 'self' 'sha256-6y/lOpTt77urhTiRp4evK+hCMRLwzo4sWzjbm/EPyfg=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+
+URL https://accessible-table-ocr-check.sociobot.in/sw.js
+HTTP/2 200
+content-type: text/javascript
+date: Wed, 02 Sep 2026 01:01:02 GMT
+cache-control: no-cache, no-store, must-revalidate
+etag: "47350875"
+last-modified: Wed, 02 Sep 2026 00:38:51 GMT
+content-length: 1823
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-dns-prefetch-control: off
+content-security-policy: default-src 'self'; base-uri 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self' 'sha256-XrLiwg3BLGAQ7+dQownDRd+2kstVLc1NSNb2gk/2Wms='; style-src 'self' 'sha256-6y/lOpTt77urhTiRp4evK+hCMRLwzo4sWzjbm/EPyfg=' 'sha256-uX6id2te7Fo0npiT3Z2cNq3UtHFN1+3hE+HWDg3UQI0='; style-src-attr 'unsafe-inline'; worker-src 'self'
+permissions-policy: camera=(), geolocation=(), microphone=(), payment=(), usb=()
+x-frame-options: DENY
+
+URL https://accessible-table-ocr-check.sociobot.in/api/license/verify?license=qa-invalid-token
+HTTP/2 429
+content-type: application/json; charset=utf-8
+date: Wed, 02 Sep 2026 01:01:03 GMT
+cache-control: no-store
+retry-after: 47
+content-length: 70
+strict-transport-security: max-age=31536000; includeSubDomains
+x-ms-middleware-request-id: 8ef23251-8ff7-475f-975e-4c158b5d2469
+x-ratelimit-limit: 20
+x-ratelimit-remaining: 0
+x-ratelimit-count: 22
+x-ratelimit-policy: atomic-product-window
+x-ratelimit-instance: b5619ee68a88

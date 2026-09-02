@@ -1,0 +1,26 @@
+[
+  {
+    "route": "/",
+    "priceCurrencyMentions": [],
+    "oneTimeMentions": [],
+    "merchantMentions": [],
+    "refundMentions": [],
+    "licenseSection": "OPTIONAL DESK LICENSE\n\nKeep saved versions.\n\nCore checking and every accessible export stay free. A Desk license adds named saved versions for comparing OCR passes.\n\nSave named before-and-after versions\nRestore a prior cell structure\nSaved versions stay in this browser\n\nFree table checking is active\n\nGet Desk license\nRestore Desk license\n\nRead the Desk license terms"
+  },
+  {
+    "route": "/terms/",
+    "priceCurrencyMentions": [],
+    "oneTimeMentions": [],
+    "merchantMentions": [],
+    "refundMentions": [],
+    "licenseSection": "Skip to main content\n＋\nTABLE\nPROOFING DESK\nDemo\nHow it works\nPrivacy\nDesk license\n● LOCAL BY DEFAULT\n\nPLAIN-LANGUAGE POLICY · 30 AUGUST 2026\n\nTerms of use\nUse and responsibility\n\nYou may use the app to review tables you are permitted to process. Copyright permission remains your responsibility. The tool highlights likely structure defects but cannot guarantee that OCR text or accessibility is correct; a human must compare the export with the source.\n\nDesk license\n\nA Desk license adds local saved versions on supported devices. Core checking and HTML, CSV, JSON, and issue-report exports remain free. If a license is no longer active, saved versions are unavailable. Free checking and exports remain available.\n\nAvailability\n\nThe software is provided under the MIT License without warranty. Keep your own copies of important source material and exports.\n\n← Return to the proofing desk\n\nAccessible Table OCR Check · Your pages stay in this browser.\n\nPrivacy\nTerms\nSource on GitHub (opens external site)\n\nBuilt by Param Factory · Build repair-6 · The proofing-desk artwork was generated for this product."
+  },
+  {
+    "route": "/privacy/",
+    "priceCurrencyMentions": [],
+    "oneTimeMentions": [],
+    "merchantMentions": [],
+    "refundMentions": [],
+    "licenseSection": "Skip to main content\n＋\nTABLE\nPROOFING DESK\nDemo\nHow it works\nPrivacy\nDesk license\n● LOCAL BY DEFAULT\n\nPLAIN-LANGUAGE POLICY · 30 AUGUST 2026\n\nHow we handle your documents\nWhat stays local\n\nSource images, OCR JSON, corrections, and saved versions stay in your browser’s IndexedDB. They are not uploaded to us. Exports are created on your device.\n\nLicense checks\n\nIf you add an optional Desk license, its token is stored in localStorage. The app checks it no more than once each day. Use the checkout link to add a license.\n\nAnalytics and deletion\n\nThere are no analytics, ad trackers, third-party fonts, or runtime scripts. Clear the current table check in the app or clear this site’s browser storage to remove local data.\n\nContact\n\nQuestions can be filed in the project’s public source repository.\n\n← Return to the proofing desk\n\nAccessible Table OCR Check · Your pages stay in this browser.\n\nPrivacy\nTerms\nSource on GitHub (opens external site)\n\nBuilt by Param Factory · Build repair-6 · The proofing-desk artwork was generated for this product."
+  }
+]

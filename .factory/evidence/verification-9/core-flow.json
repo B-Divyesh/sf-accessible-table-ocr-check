@@ -1,0 +1,38 @@
+{
+  "initial": {
+    "cells": 9,
+    "overlays": 9,
+    "hasTwoErrors": true
+  },
+  "corrected": true,
+  "exports": {
+    "html": {
+      "file": "transit-access-survey-html.html",
+      "table": true,
+      "colScope": true,
+      "rowScope": true,
+      "source": true,
+      "order": true
+    },
+    "csv": {
+      "file": "transit-access-survey-csv.csv",
+      "rows": 3
+    },
+    "report": {
+      "file": "transit-access-survey-report.txt",
+      "heading": true
+    },
+    "json": {
+      "file": "transit-access-survey-json.json",
+      "cells": 9
+    }
+  },
+  "invalid": "This is not valid JSON. Export OCR results as JSON and try again.",
+  "recovered": {
+    "cells": 1,
+    "text": "Recovered",
+    "row": "99",
+    "col": "99"
+  },
+  "elapsedMs": 1256
+}

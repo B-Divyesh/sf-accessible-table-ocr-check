@@ -1,0 +1,39 @@
+
+> accessible-table-ocr-check@1.0.0 test:live-rate-limit
+> node scripts/verify-live-rate-limit.mjs --concurrent
+
+1	5	200	-	15	atomic-product-window	b5619ee68a88
+2	6	200	-	14	atomic-product-window	b5619ee68a88
+3	9	200	-	11	atomic-product-window	501f2c809d24
+4	10	200	-	10	atomic-product-window	b5619ee68a88
+5	22	429	32	0	atomic-product-window	ddf7a70db8b0
+6	7	200	-	13	atomic-product-window	b5619ee68a88
+7	8	200	-	12	atomic-product-window	ddf7a70db8b0
+8	15	200	-	5	atomic-product-window	b5619ee68a88
+9	24	429	32	0	atomic-product-window	ddf7a70db8b0
+10	21	429	32	0	atomic-product-window	ddf7a70db8b0
+11	4	200	-	16	atomic-product-window	b5619ee68a88
+12	20	200	-	0	atomic-product-window	b5619ee68a88
+13	11	200	-	9	atomic-product-window	b5619ee68a88
+14	14	200	-	6	atomic-product-window	b5619ee68a88
+15	18	200	-	2	atomic-product-window	ddf7a70db8b0
+16	26	429	32	0	atomic-product-window	ddf7a70db8b0
+17	13	200	-	7	atomic-product-window	b5619ee68a88
+18	27	429	32	0	atomic-product-window	ddf7a70db8b0
+19	28	429	31	0	atomic-product-window	1dcf5c1bfa81
+20	23	429	32	0	atomic-product-window	ddf7a70db8b0
+21	17	200	-	3	atomic-product-window	ddf7a70db8b0
+22	12	200	-	8	atomic-product-window	b5619ee68a88
+23	16	200	-	4	atomic-product-window	b5619ee68a88
+24	19	200	-	1	atomic-product-window	b5619ee68a88
+25	25	429	32	0	atomic-product-window	ddf7a70db8b0
+function instances observed: 4
+file:///work/repo/scripts/verify-live-rate-limit.mjs:40
+  throw new Error(`Live ${mode} rate-limit regression failed: expected counts 1–${expectedLength}, counts 1–20 as 200, and every excess count as 429 with positive Retry-After.`);
+        ^
+
+Error: Live concurrent rate-limit regression failed: expected counts 1–25, counts 1–20 as 200, and every excess count as 429 with positive Retry-After.
+    at file:///work/repo/scripts/verify-live-rate-limit.mjs:40:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+Node.js v22.23.2

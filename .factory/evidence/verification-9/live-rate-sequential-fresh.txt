@@ -1,0 +1,26 @@
+
+> accessible-table-ocr-check@1.0.0 test:live-rate-limit:sequential
+> node scripts/verify-live-rate-limit.mjs --sequential
+
+1	1	200	-	19	atomic-product-window	b5619ee68a88
+2	2	200	-	18	atomic-product-window	b5619ee68a88
+3	3	200	-	17	atomic-product-window	b5619ee68a88
+4	4	200	-	16	atomic-product-window	b5619ee68a88
+5	5	200	-	15	atomic-product-window	b5619ee68a88
+6	6	200	-	14	atomic-product-window	b5619ee68a88
+7	7	200	-	13	atomic-product-window	b5619ee68a88
+8	8	200	-	12	atomic-product-window	b5619ee68a88
+9	9	200	-	11	atomic-product-window	b5619ee68a88
+10	10	200	-	10	atomic-product-window	b5619ee68a88
+11	11	200	-	9	atomic-product-window	b5619ee68a88
+12	12	200	-	8	atomic-product-window	b5619ee68a88
+13	13	200	-	7	atomic-product-window	b5619ee68a88
+14	14	200	-	6	atomic-product-window	b5619ee68a88
+15	15	200	-	5	atomic-product-window	b5619ee68a88
+16	16	200	-	4	atomic-product-window	b5619ee68a88
+17	17	200	-	3	atomic-product-window	b5619ee68a88
+18	18	200	-	2	atomic-product-window	b5619ee68a88
+19	19	200	-	1	atomic-product-window	b5619ee68a88
+20	20	200	-	0	atomic-product-window	b5619ee68a88
+21	21	429	57	0	atomic-product-window	b5619ee68a88
+function instances observed: 1

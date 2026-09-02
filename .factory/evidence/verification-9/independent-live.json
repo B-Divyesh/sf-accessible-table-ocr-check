@@ -1,0 +1,264 @@
+{
+  "audits": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "title": "Accessible Table OCR Check — fix reading order",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/demo",
+      "title": "Demo — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/privacy/",
+      "title": "Privacy — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/terms/",
+      "title": "Terms — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/missing-verification-9",
+      "title": "Page not found — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/",
+      "title": "Accessible Table OCR Check — fix reading order",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/demo",
+      "title": "Demo — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/privacy/",
+      "title": "Privacy — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/terms/",
+      "title": "Terms — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/missing-verification-9",
+      "title": "Page not found — Accessible Table OCR Check",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "missingAlt": 0,
+      "overflow": 0,
+      "axe": []
+    },
+    {
+      "viewport": "mobile-200-percent",
+      "route": "/",
+      "wordmark": {
+        "left": 16,
+        "right": 353.0625,
+        "top": 14,
+        "bottom": 73.109375,
+        "width": 337.0625,
+        "height": 59.109375
+      },
+      "badge": {
+        "left": 101.640625,
+        "right": 374,
+        "top": 97.109375,
+        "bottom": 148.328125,
+        "width": 272.359375,
+        "height": 51.21875
+      },
+      "overlapWidth": 251.421875,
+      "overlapHeight": 0,
+      "overflow": 0,
+      "nav": [
+        {
+          "text": "Demo",
+          "left": 16,
+          "right": 96.015625,
+          "top": 181.328125,
+          "bottom": 225.953125,
+          "width": 80.015625,
+          "height": 44.625
+        },
+        {
+          "text": "How it works",
+          "left": 108.015625,
+          "right": 285.625,
+          "top": 181.328125,
+          "bottom": 225.953125,
+          "width": 177.609375,
+          "height": 44.625
+        },
+        {
+          "text": "Privacy",
+          "left": 16,
+          "right": 118.484375,
+          "top": 231.953125,
+          "bottom": 276.578125,
+          "width": 102.484375,
+          "height": 44.625
+        },
+        {
+          "text": "Desk license",
+          "left": 130.484375,
+          "right": 304.984375,
+          "top": 231.953125,
+          "bottom": 276.578125,
+          "width": 174.5,
+          "height": 44.625
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "viewport": "desktop",
+      "type": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "viewport": "mobile",
+      "type": "console",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ],
+  "keyboard": {
+    "firstFocus": {
+      "text": "Skip to main content",
+      "outline": "rgb(255, 255, 255) solid 0px",
+      "offset": "0px"
+    },
+    "mainHash": "https://accessible-table-ocr-check.sociobot.in/#main",
+    "structuralClear": true
+  },
+  "reduced": {
+    "scroll": "auto",
+    "transition": "1e-05s",
+    "db": [
+      "https://accessible-table-ocr-check.sociobot.in/assets/proofing-table.webp",
+      "https://accessible-table-ocr-check.sociobot.in/assets/proofing-table.webp",
+      "https://accessible-table-ocr-check.sociobot.in/sample-table.svg"
+    ]
+  },
+  "privacy": {
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/",
+        "body": null
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/assets/proofing-table.webp",
+        "body": null
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/assets/proofing-table.webp",
+        "body": null
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/sample-table.svg",
+        "body": null
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/demo",
+        "body": null
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/sample-table.svg",
+        "body": null
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/demo",
+        "body": null
+      },
+      {
+        "method": "GET",
+        "url": "https://accessible-table-ocr-check.sociobot.in/sample-table.svg",
+        "body": null
+      }
+    ],
+    "allSameOrigin": true,
+    "markerInRequest": false,
+    "storage": {
+      "dbs": [
+        "demo:table-proofing-desk",
+        "table-proofing-desk"
+      ],
+      "local": [],
+      "cookies": ""
+    }
+  },
+  "offline": {
+    "heading": true,
+    "notice": true,
+    "marker": "VERIFICATION-9-PRIVATE-MARKER"
+  }
+}

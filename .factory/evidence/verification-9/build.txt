@@ -1,0 +1,13 @@
+
+> accessible-table-ocr-check@1.0.0 build
+> tsc --noEmit && vite build && node scripts/postbuild.mjs
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 7 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  2.04 kB │ gzip:  0.66 kB
+dist/assets/index-COyYm5-r.css  20.28 kB │ gzip:  5.11 kB
+dist/assets/index-B0foRK3w.js   37.12 kB │ gzip: 13.09 kB │ map: 82.07 kB
+✓ built in 384ms

@@ -54,7 +54,7 @@ function redisSettings() {
 }
 
 async function sharedStore() {
-  if (storeOverride) return storeOverride;
+  if (storeOverride) return typeof storeOverride === 'function' ? storeOverride() : storeOverride;
   const settings = redisSettings();
   if (!settings) return undefined;
   if (!redisPromise) {
@@ -93,18 +93,35 @@ async function sharedStore() {
   return redisPromise;
 }
 
+async function discardFailedStore(store) {
+  if (storeOverride || !redisPromise) return;
+  const pending = redisPromise;
+  const current = await pending.catch(() => undefined);
+  if (redisPromise !== pending || current !== store) return;
+  redisPromise = undefined;
+  await current?.close?.().catch(() => {});
+}
+
 async function checkLimit(req) {
-  const store = await sharedStore();
-  if (!store) return { configured: false, allowed: false, count: 0, retryAfter: 60, remaining: 0 };
-  const state = await store.take(clientKey(req));
-  const retryAfter = Math.max(1, Math.ceil(state.ttlMs / 1_000));
-  return {
-    configured: true,
-    allowed: state.count <= MAX_REQUESTS,
-    count: state.count,
-    retryAfter,
-    remaining: Math.max(0, MAX_REQUESTS - state.count),
-  };
+  const key = clientKey(req);
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const store = await sharedStore();
+    if (!store) return { configured: false, allowed: false, count: 0, retryAfter: 60, remaining: 0 };
+    try {
+      const state = await store.take(key);
+      const retryAfter = Math.max(1, Math.ceil(state.ttlMs / 1_000));
+      return {
+        configured: true,
+        allowed: state.count <= MAX_REQUESTS,
+        count: state.count,
+        retryAfter,
+        remaining: Math.max(0, MAX_REQUESTS - state.count),
+      };
+    } catch (error) {
+      await discardFailedStore(store);
+      if (attempt === 1) throw error;
+    }
+  }
 }
 
 module.exports = async function licenseVerify(context, req) {

@@ -69,6 +69,33 @@ test('fits the core workflow on a 390px viewport', async ({ page }, testInfo) =>
   await expect(page.getByText('No structural errors detected')).toBeVisible();
 });
 
+test('keeps the 390px header readable at 200% text size', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile', 'mobile project only');
+  await page.goto('/');
+  await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
+
+  const boxes = await page.locator('.wordmark, .local-badge').evaluateAll((elements) => elements.map((element) => {
+    const bounds = element.getBoundingClientRect();
+    return { left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom };
+  }));
+  const [wordmark, badge] = boxes;
+  const overlapWidth = Math.max(0, Math.min(wordmark.right, badge.right) - Math.max(wordmark.left, badge.left));
+  const overlapHeight = Math.max(0, Math.min(wordmark.bottom, badge.bottom) - Math.max(wordmark.top, badge.top));
+
+  expect(overlapWidth * overlapHeight).toBe(0);
+  await expect(page.locator('.wordmark')).toContainText('Tableproofing desk');
+  await expect(page.locator('.local-badge')).toContainText('Local by default');
+  const navLinks = page.getByRole('navigation', { name: 'Primary' }).getByRole('link');
+  await expect(navLinks).toHaveCount(4);
+  for (const link of await navLinks.all()) {
+    await expect(link).toBeVisible();
+    const bounds = await link.boundingBox();
+    expect(bounds?.x).toBeGreaterThanOrEqual(0);
+    expect((bounds?.x ?? 391) + (bounds?.width ?? 0)).toBeLessThanOrEqual(390);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+});
+
 test('gives every visible mobile control a 44 by 44 CSS-pixel target', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile', 'mobile project only');
   for (const route of ['/', '/demo', '/privacy/', '/terms/', '/missing-page']) {
@@ -270,7 +297,7 @@ test('keeps the required header and footer skeleton on every route', async ({ pa
     await expect(page.locator('header .wordmark')).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Demo' })).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Privacy' })).toBeVisible();
-    await expect(page.getByText(/Built by Param Factory · Build polish-2/)).toBeVisible();
+    await expect(page.getByText(/Built by Param Factory · Build repair-6/)).toBeVisible();
     await expect(page.locator('main h1')).toHaveCount(1);
   }
 });

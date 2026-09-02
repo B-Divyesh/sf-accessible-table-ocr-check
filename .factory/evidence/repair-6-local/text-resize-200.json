@@ -1,0 +1,55 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "rootFontSize": "32px",
+  "wordmark": {
+    "left": 16,
+    "right": 353.0625,
+    "top": 14,
+    "bottom": 73.109375,
+    "width": 337.0625,
+    "height": 59.109375
+  },
+  "badge": {
+    "left": 101.640625,
+    "right": 374,
+    "top": 97.109375,
+    "bottom": 148.328125,
+    "width": 272.359375,
+    "height": 51.21875
+  },
+  "links": [
+    {
+      "text": "Demo",
+      "left": 16,
+      "right": 96.015625,
+      "top": 181.328125,
+      "bottom": 225.953125
+    },
+    {
+      "text": "How it works",
+      "left": 108.015625,
+      "right": 285.625,
+      "top": 181.328125,
+      "bottom": 225.953125
+    },
+    {
+      "text": "Privacy",
+      "left": 16,
+      "right": 118.484375,
+      "top": 231.953125,
+      "bottom": 276.578125
+    },
+    {
+      "text": "Desk license",
+      "left": 130.484375,
+      "right": 304.984375,
+      "top": 231.953125,
+      "bottom": 276.578125
+    }
+  ],
+  "overlapArea": 0,
+  "horizontalOverflow": false
+}

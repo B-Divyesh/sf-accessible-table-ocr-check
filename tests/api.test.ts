@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url);
 type ApiResponse = { status: number; headers: Record<string, string>; body: unknown };
 type RateLimitStore = { take: (key: string) => Promise<{ count: number; ttlMs: number }> };
 type VerifyLicense = ((context: { log: { warn: () => void; error: () => void } }, request: unknown) => Promise<ApiResponse>) & {
-  _setRateLimitStoreForTests: (store: RateLimitStore | undefined) => void;
+  _setRateLimitStoreForTests: (store: RateLimitStore | (() => RateLimitStore) | undefined) => void;
   _resetForTests: () => Promise<void>;
 };
 
@@ -70,6 +70,28 @@ describe('license verification response policy', () => {
     for (let index = 0; index < 21; index += 1) {
       responses.push(await verifyLicense(context(), { headers: { 'x-forwarded-for': '203.0.113.43' }, query: { license: 'invalid-test-token' } }));
     }
+    expect(responses.slice(0, 20).every((response) => response.status === 200)).toBe(true);
+    expect(responses[20].status).toBe(429);
+    expect(Number(responses[20].headers['Retry-After'])).toBeGreaterThan(0);
+  });
+
+  it('replaces a stale shared client and preserves the documented allowance', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => upstreamResponse()));
+    const healthyStore = atomicStore();
+    let storeLoads = 0;
+    verifyLicense._setRateLimitStoreForTests(() => {
+      storeLoads += 1;
+      return storeLoads === 1
+        ? { take: async () => { throw new Error('stale client'); } }
+        : healthyStore;
+    });
+
+    const responses = [];
+    for (let index = 0; index < 21; index += 1) {
+      responses.push(await verifyLicense(context(), { headers: { 'x-forwarded-for': '203.0.113.44' }, query: { license: 'invalid-test-token' } }));
+    }
+
+    expect(storeLoads).toBe(22);
     expect(responses.slice(0, 20).every((response) => response.status === 200)).toBe(true);
     expect(responses[20].status).toBe(429);
     expect(Number(responses[20].headers['Retry-After'])).toBeGreaterThan(0);

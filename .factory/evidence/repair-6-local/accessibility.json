@@ -1,0 +1,57 @@
+[
+  {
+    "viewport": "desktop",
+    "route": "/",
+    "violations": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/demo",
+    "violations": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/privacy/",
+    "violations": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/terms/",
+    "violations": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/missing-page",
+    "violations": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/",
+    "violations": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/demo",
+    "violations": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/privacy/",
+    "violations": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/terms/",
+    "violations": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/missing-page",
+    "violations": []
+  },
+  {
+    "viewport": "mobile-200%-text",
+    "route": "/",
+    "violations": []
+  }
+]

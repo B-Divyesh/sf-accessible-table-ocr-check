@@ -231,8 +231,10 @@ footer p { margin: 0; }
 
 @media (max-width: 620px) {
   body { font-size: 16px; }
-  .site-header { padding: 14px 16px; }
-  .site-header nav { gap: 6px 12px; justify-content: flex-start; overflow-x: auto; }
+  .site-header { display: flex; flex-wrap: wrap; padding: 14px 16px; }
+  .wordmark { order: 1; }
+  .local-badge { order: 2; margin-left: auto; }
+  .site-header nav { order: 3; flex: 1 0 100%; flex-wrap: wrap; gap: 6px 12px; justify-content: flex-start; overflow-x: visible; }
   .site-header nav a { white-space: nowrap; }
   .local-badge { font-size: .67rem; }
   .demo-banner { align-items: stretch; flex-direction: column; gap: 4px; padding: 10px 16px; }

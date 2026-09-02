@@ -1,0 +1,31 @@
+{
+  "record_version": 1,
+  "asset": {
+    "path": "/assets/proofing-table.webp",
+    "sha256": "563a64c377abea6743da30329b60861d3072be55ff8ef5b566ff397dedae2d74",
+    "width": 1280,
+    "height": 853
+  },
+  "derivatives": [
+    {
+      "path": "/assets/proofing-table-640.webp",
+      "sha256": "007b7e501ae80000f543288d324a571c1e0baedbacf33e7769e69ae2d86e6d99",
+      "width": 640,
+      "height": 427
+    },
+    {
+      "path": "/assets/social-preview.jpg",
+      "sha256": "2f9da83e643f6c5683c0772c0d0104263862e46c5761d66ee34c1b08fdc44cce",
+      "width": 1200,
+      "height": 630
+    }
+  ],
+  "origin": {
+    "created_for": "accessible-table-ocr-check",
+    "method": "Factory Azure image deployment via /opt/fleet/lib/gen-image.sh",
+    "model": "OpenAI image model",
+    "generated_on": "2026-08-28",
+    "license": "Original product artwork; no third-party source imagery."
+  },
+  "prompt": "Wide landscape editorial risograph collage for an accessibility table proofing tool. Top-down librarian proofing desk made from warm uncoated paper and cut-paper layers. One scanned book page shows an abstract grid with no letters; translucent numbered-style circles and cell-shaped paper pieces travel from the scan into a clean semantic table grid. Crop marks, subtle registration crosses, fibrous edges, two-color overprint, halftone grain. Deep petrol blue, faded vermilion coral, muted mustard, charcoal on warm oat paper. Flat overhead light, tactile handmade composition, useful quiet negative space at left. No people, no hands, no laptop, no logos, no brands, no watermark, no readable text or letters, no glossy 3D, no gradient."
+}

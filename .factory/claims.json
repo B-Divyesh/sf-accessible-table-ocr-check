@@ -148,10 +148,17 @@
   },
   {
     "id": "paid-purchase-terms",
-    "claim": "The Desk license costs US$12 once, with Sociobot/Dodo handling payment and refunds as merchant of record.",
+    "claim": "The Desk license checkout is a US$12 one-time purchase. Hosted checkout shows Sociobot, and Dodo Payments handles order questions and returns.",
     "where": "pricing, Privacy, Terms, README",
     "test": "npm run test:e2e -- --project=chromium --grep \"@claim:paid-purchase-terms\"",
-    "sandbox": "fresh browser state; assert the exact price, one-time terms, merchant-of-record disclosure, and refund effect are visible before checkout on the product and legal routes"
+    "sandbox": "recorded public hosted-checkout fixture; assert its USD cents, one-time session, business, checkout host, and order-help disclosure, then compare every rendered product/legal disclosure"
+  },
+  {
+    "id": "generated-art-provenance",
+    "claim": "The proofing-desk artwork was generated for this product.",
+    "where": "footer, .factory/design.md",
+    "test": "npm run test:e2e -- --project=chromium --grep \"@claim:generated-art-provenance\"",
+    "sandbox": "built app; fetch the public provenance record, verify every shipped art-file SHA-256, inspect its generation record, and assert the footer disclosure"
   },
   {
     "id": "licensed-saved-versions",

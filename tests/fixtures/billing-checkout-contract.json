@@ -1,0 +1,29 @@
+{
+  "fixture_version": 1,
+  "captured_at": "2026-09-02T02:43:31.601Z",
+  "source": {
+    "checkout_endpoint": "https://api.sociobot.in/api/v1/products/accessible-table-ocr-check/checkout",
+    "checkout_endpoint_status": 303,
+    "hosted_checkout_host": "checkout.dodopayments.com",
+    "hosted_checkout_status": 200,
+    "hosted_checkout_html_sha256": "0c0749bbaa34e6897a6eba5cf0c9176100dde422e884e54808435543503d1b1e",
+    "capture_method": "GET the registered checkout endpoint without an order, follow its 303 redirect, and record the public hosted-checkout session fields below."
+  },
+  "checkout_session": {
+    "business_name": "Sociobot",
+    "payment_processor_name": "Dodo Payments",
+    "product_slug": "accessible-table-ocr-check",
+    "product_name": "Accessible Table OCR Check",
+    "session_type": "one_time",
+    "price": {
+      "type": "one_time_price",
+      "currency": "USD",
+      "amount_minor": 1200,
+      "tax_inclusive": true
+    },
+    "hosted_copy": {
+      "product_description": "One-time unlock for Accessible Table OCR Check (accessible-table-ocr-check). Delivered instantly as a license for the product page.",
+      "order_help": "This order process is conducted by our online reseller & Merchant of Record, dodopayments.com, who also handles order-related inquiries and returns."
+    }
+  }
+}

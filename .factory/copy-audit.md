@@ -51,8 +51,8 @@ Audited 2 September 2026. Counts use whitespace-delimited visible words. Every l
 | 45 | 6 | Saved versions stay in this browser | Pass |
 | 46 | 5 | Free table checking is active | Pass |
 | 47 | 3 | US$12 one-time purchase. | Pass |
-| 48 | 13 | Sociobot, through Dodo, is the merchant of record and handles payment and refunds. | Pass |
-| 49 | 8 | An approved refund revokes the Desk license automatically. | Pass |
+| 48 | 12 | Checkout is processed by Dodo Payments, with Sociobot shown as the business. | Pass; checked against hosted-checkout fixture |
+| 49 | 7 | Dodo Payments handles order questions and returns. | Pass; checked against hosted-checkout fixture |
 | 50 | 3 | Get Desk license | Pass |
 | 51 | 3 | Restore Desk license | Pass |
 | 52 | 5 | Read the Desk license terms | Pass |
@@ -61,8 +61,8 @@ Audited 2 September 2026. Counts use whitespace-delimited visible words. Every l
 | 55 | 1 | Terms | Pass |
 | 56 | 6 | Source on GitHub (opens external site) | Pass |
 | 57 | 4 | Built by Param Factory | Pass |
-| 58 | 2 | Build repair-7 | Pass |
-| 59 | 8 | The proofing-desk artwork was generated for this product. | Pass |
+| 58 | 2 | Build polish-3 | Pass |
+| 59 | 8 | The proofing-desk artwork was generated for this product. | Pass; `@claim:generated-art-provenance` verifies the public hash record |
 
 ## README
 
@@ -85,7 +85,7 @@ The following extraction includes every prose unit outside commands and JSON. Al
 | 13 | 5 | Use Node.js 20 or later. | Pass |
 | 14 | 5 | Open the printed local URL. | Pass |
 | 15 | 12 | Choose Try it with sample data to open an isolated transit-table check. | Pass |
-| 16 | 9 | The demo uses a separate IndexedDB database named demo:table-proofing-desk. | Pass |
+| 16 | 8 | The demo uses separate browser storage named demo:table-proofing-desk. | Pass |
 | 17 | 8 | Resetting or leaving it deletes that demo record. | Pass |
 | 18 | 2 | Import format | Pass |
 | 19 | 9 | Import a PNG, JPEG, WebP, or SVG page image. | Pass |
@@ -99,7 +99,7 @@ The following extraction includes every prose unit outside commands and JSON. Al
 | 27 | 10 | The app rejects larger imports before saving or rendering them. | Pass |
 | 28 | 12 | It safely bounds older saved coordinates and asks you to review them. | Pass |
 | 29 | 10 | Project JSON exports can be imported again as OCR JSON. | Pass |
-| 30 | 8 | Working data and optional saved versions use IndexedDB. | Pass |
+| 30 | 9 | Working data and optional saved versions use browser storage. | Pass |
 | 31 | 8 | Clearing a table check removes its working copy. | Pass |
 | 32 | 3 | Test and build | Pass |
 | 33 | 7 | Playwright 1.58.2 matches the factory browser image. | Pass |
@@ -115,18 +115,18 @@ The following extraction includes every prose unit outside commands and JSON. Al
 | 43 | 7 | Each entry names its exact tagged test. | Pass |
 | 44 | 4 | Privacy and paid features | Pass |
 | 45 | 12 | The app has no analytics, trackers, CDN fonts, or third-party runtime scripts. | Pass |
-| 46 | 14 | An optional Desk license adds named saved versions stored in IndexedDB on that device. | Pass |
+| 46 | 15 | An optional Desk license adds named saved versions kept in browser storage on that device. | Pass |
 | 47 | 8 | Core checking and every accessible export remain free. | Pass |
 | 48 | 9 | License controls use the registered checkout and verification paths. | Pass |
 | 49 | 8 | The Desk license is a US$12 one-time purchase. | Pass |
-| 50 | 8 | Sociobot, through Dodo, is the merchant of record. | Pass |
-| 51 | 5 | Sociobot/Dodo handles payment and refunds. | Pass |
-| 52 | 8 | An approved refund revokes the Desk license automatically. | Pass |
+| 50 | 12 | Checkout is processed by Dodo Payments, with Sociobot shown as the business. | Pass; checked against hosted-checkout fixture |
+| 51 | 7 | Dodo Payments handles order questions and returns. | Pass; checked against hosted-checkout fixture |
+| 52 | 18 | If a license is no longer active, saved versions are unavailable while free checking and exports remain available. | Pass |
 | 53 | 7 | License checks go through this app’s server. | Pass |
 | 54 | 12 | A shared counter allows 20 checks per client in each 60-second window. | Pass |
 | 55 | 7 | Every later request receives 429 with Retry-After. | Pass |
 | 56 | 7 | No document content enters a license request. | Pass |
-| 57 | 14 | License tokens stay in localStorage and are checked no more than once each day. | Pass |
+| 57 | 13 | License tokens stay in browser storage and are checked no more than once each day. | Pass |
 | 58 | 11 | Run the concurrent live limit test after deployment from a fresh 60-second window. | Pass |
 | 59 | 21 | It starts 25 requests together and requires requests 1–20 to pass and requests 21–25 to return 429 with a positive Retry-After. | Pass |
 | 60 | 16 | Run the sequential live limit test after the next fresh window to check the same boundary. | Pass |

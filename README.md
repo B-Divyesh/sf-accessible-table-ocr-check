@@ -23,7 +23,7 @@ npm run dev
 
 Open the printed local URL. Choose **Try it with sample data** to open an isolated transit-table check.
 
-The demo uses a separate IndexedDB database named `demo:table-proofing-desk`. Resetting or leaving it deletes that demo record.
+The demo uses separate browser storage named `demo:table-proofing-desk`. Resetting or leaving it deletes that demo record.
 
 ## Import format
 
@@ -39,7 +39,7 @@ Each table check supports 500 cells on a 99 × 99 grid. The app rejects larger i
 
 It safely bounds older saved coordinates and asks you to review them. Project JSON exports can be imported again as OCR JSON.
 
-Working data and optional saved versions use IndexedDB. Clearing a table check removes its working copy.
+Working data and optional saved versions use browser storage. Clearing a table check removes its working copy.
 
 ```json
 {
@@ -92,17 +92,17 @@ Every public product claim is listed in [`.factory/claims.json`](.factory/claims
 
 The app has no analytics, trackers, CDN fonts, or third-party runtime scripts.
 
-An optional Desk license adds named saved versions stored in IndexedDB on that device.
+An optional Desk license adds named saved versions kept in browser storage on that device.
 
 Core checking and every accessible export remain free. License controls use the registered checkout and verification paths.
 
-The Desk license is a US$12 one-time purchase. Sociobot, through Dodo, is the merchant of record.
+The Desk license is a US$12 one-time purchase. Checkout is processed by Dodo Payments, with Sociobot shown as the business.
 
-Sociobot/Dodo handles payment and refunds. An approved refund revokes the Desk license automatically.
+Dodo Payments handles order questions and returns. If a license is no longer active, saved versions are unavailable while free checking and exports remain available.
 
 License checks go through this app’s server. A shared counter allows 20 checks per client in each 60-second window. Every later request receives `429` with `Retry-After`.
 
-No document content enters a license request. License tokens stay in localStorage and are checked no more than once each day.
+No document content enters a license request. License tokens stay in browser storage and are checked no more than once each day.
 
 Run `npm run test:live-rate-limit` after deployment from a fresh 60-second window. It starts 25 requests together and requires requests 1–20 to pass and requests 21–25 to return `429` with a positive `Retry-After`. Run `npm run test:live-rate-limit:sequential` after the next fresh window to check the same boundary in sequence.
 

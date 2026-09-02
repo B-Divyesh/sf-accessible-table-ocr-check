@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { expect, test, type BrowserContext, type Page } from '@playwright/test';
 
@@ -277,14 +278,66 @@ test('uses the registered checkout and app verification paths @claim:sociobot-bi
   expect(new URL((await request).url()).pathname).toBe('/api/license/verify');
 });
 
-test('shows the exact one-time price, merchant, and refund terms before checkout @claim:paid-purchase-terms', async ({ page }) => {
+test('matches the recorded hosted-checkout contract before checkout @claim:paid-purchase-terms', async ({ page }) => {
+  const fixture = JSON.parse(await readFile('tests/fixtures/billing-checkout-contract.json', 'utf8')) as {
+    source: { checkout_endpoint: string; checkout_endpoint_status: number; hosted_checkout_host: string; hosted_checkout_status: number; hosted_checkout_html_sha256: string };
+    checkout_session: { business_name: string; payment_processor_name: string; product_slug: string; product_name: string; session_type: string; price: { type: string; currency: string; amount_minor: number }; hosted_copy: { product_description: string; order_help: string } };
+  };
+  const price = fixture.checkout_session.price;
+  const displayedPrice = `${price.currency === 'USD' ? 'US$' : `${price.currency} `}${(price.amount_minor / 100).toFixed(0)} one-time purchase.`;
+
+  expect(fixture.source.checkout_endpoint).toBe('https://api.sociobot.in/api/v1/products/accessible-table-ocr-check/checkout');
+  expect(fixture.source.checkout_endpoint_status).toBe(303);
+  expect(fixture.source.hosted_checkout_host).toBe('checkout.dodopayments.com');
+  expect(fixture.source.hosted_checkout_status).toBe(200);
+  expect(fixture.source.hosted_checkout_html_sha256).toMatch(/^[a-f0-9]{64}$/);
+  expect(fixture.checkout_session).toMatchObject({
+    business_name: 'Sociobot',
+    payment_processor_name: 'Dodo Payments',
+    product_slug: 'accessible-table-ocr-check',
+    product_name: 'Accessible Table OCR Check',
+    session_type: 'one_time',
+  });
+  expect(price).toMatchObject({ type: 'one_time_price', currency: 'USD', amount_minor: 1200 });
+  expect(fixture.checkout_session.hosted_copy.product_description).toContain('One-time unlock');
+  expect(fixture.checkout_session.hosted_copy.order_help).toContain('order-related inquiries and returns');
+
   for (const path of ['/', '/privacy/', '/terms/']) {
     await page.goto(path);
     const main = page.getByRole('main');
-    await expect(main.getByText('US$12 one-time purchase.', { exact: true })).toBeVisible();
-    await expect(main.getByText('Sociobot, through Dodo, is the merchant of record and handles payment and refunds.', { exact: true })).toBeVisible();
-    await expect(main.getByText('An approved refund revokes the Desk license automatically.', { exact: true })).toBeVisible();
+    await expect(main.getByText(displayedPrice, { exact: true })).toBeVisible();
+    await expect(main.getByText(`Checkout is processed by ${fixture.checkout_session.payment_processor_name}, with ${fixture.checkout_session.business_name} shown as the business.`, { exact: true })).toBeVisible();
+    await expect(main.getByText(`${fixture.checkout_session.payment_processor_name} handles order questions and returns.`, { exact: true })).toBeVisible();
+    await expect(main).not.toContainText(/merchant of record|localStorage/i);
   }
+});
+
+test('publishes a hash-checked record for the generated artwork @claim:generated-art-provenance', async ({ page, request }) => {
+  const record = JSON.parse(await readFile('public/assets/proofing-table.provenance.json', 'utf8')) as {
+    asset: { path: string; sha256: string; width: number; height: number };
+    derivatives: Array<{ path: string; sha256: string; width: number; height: number }>;
+    origin: { created_for: string; method: string; model: string; generated_on: string; license: string };
+    prompt: string;
+  };
+  const files = [record.asset, ...record.derivatives];
+  expect(record.origin).toMatchObject({
+    created_for: 'accessible-table-ocr-check',
+    method: expect.stringContaining('gen-image.sh'),
+    model: expect.stringContaining('image model'),
+    generated_on: '2026-08-28',
+  });
+  expect(record.origin.license).toContain('Original product artwork');
+  expect(record.prompt).toContain('risograph collage');
+  for (const file of files) {
+    const response = await request.get(file.path);
+    expect(response.ok(), file.path).toBe(true);
+    expect(createHash('sha256').update(await response.body()).digest('hex')).toBe(file.sha256);
+  }
+  const publicRecord = await request.get('/assets/proofing-table.provenance.json');
+  expect(publicRecord.ok()).toBe(true);
+  expect(await publicRecord.json()).toEqual(record);
+  await page.goto('/');
+  await expect(page.locator('footer .generated-note')).toContainText('The proofing-desk artwork was generated for this product.');
 });
 
 test('stores and restores licensed saved versions locally @claim:licensed-saved-versions @claim:local-saved-versions', async ({ page }) => {

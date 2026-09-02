@@ -1,0 +1,176 @@
+{
+  "checkedAt": "2026-09-02T01:26:20.216Z",
+  "candidate": "643384c",
+  "count": 21,
+  "matches": 21,
+  "files": [
+    {
+      "path": "404.html",
+      "status": 200,
+      "bytes": 60208,
+      "localSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "liveSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "match": true
+    },
+    {
+      "path": "assets/index-BntknixX.js",
+      "status": 200,
+      "bytes": 37767,
+      "localSha256": "b494e7ad49e999e15bf7b601f89bbe5557c2784a9671fd02f37b2ddd2ab0d6e2",
+      "liveSha256": "b494e7ad49e999e15bf7b601f89bbe5557c2784a9671fd02f37b2ddd2ab0d6e2",
+      "match": true
+    },
+    {
+      "path": "assets/index-BntknixX.js.map",
+      "status": 200,
+      "bytes": 82729,
+      "localSha256": "2823d83c432b324385506d2ca1ca7381d52c5527fd6236f04fff556dc1c635c7",
+      "liveSha256": "2823d83c432b324385506d2ca1ca7381d52c5527fd6236f04fff556dc1c635c7",
+      "match": true
+    },
+    {
+      "path": "assets/index-YkVuJdZp.css",
+      "status": 200,
+      "bytes": 20495,
+      "localSha256": "a62ccdd1ca5dca1c5a6de0193bd594a9001bf46b4f50823d12024c5fc93a03e9",
+      "liveSha256": "a62ccdd1ca5dca1c5a6de0193bd594a9001bf46b4f50823d12024c5fc93a03e9",
+      "match": true
+    },
+    {
+      "path": "assets/proofing-table-640.webp",
+      "status": 200,
+      "bytes": 22664,
+      "localSha256": "007b7e501ae80000f543288d324a571c1e0baedbacf33e7769e69ae2d86e6d99",
+      "liveSha256": "007b7e501ae80000f543288d324a571c1e0baedbacf33e7769e69ae2d86e6d99",
+      "match": true
+    },
+    {
+      "path": "assets/proofing-table.webp",
+      "status": 200,
+      "bytes": 110030,
+      "localSha256": "563a64c377abea6743da30329b60861d3072be55ff8ef5b566ff397dedae2d74",
+      "liveSha256": "563a64c377abea6743da30329b60861d3072be55ff8ef5b566ff397dedae2d74",
+      "match": true
+    },
+    {
+      "path": "assets/social-preview.jpg",
+      "status": 200,
+      "bytes": 138697,
+      "localSha256": "2f9da83e643f6c5683c0772c0d0104263862e46c5761d66ee34c1b08fdc44cce",
+      "liveSha256": "2f9da83e643f6c5683c0772c0d0104263862e46c5761d66ee34c1b08fdc44cce",
+      "match": true
+    },
+    {
+      "path": "demo/index.html",
+      "status": 200,
+      "bytes": 60208,
+      "localSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "liveSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "match": true
+    },
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "bytes": 444,
+      "localSha256": "d910d59789a7e34f7e932b081c648feeb6c8b66bb630f2562c8cb76a94b788cf",
+      "liveSha256": "d910d59789a7e34f7e932b081c648feeb6c8b66bb630f2562c8cb76a94b788cf",
+      "match": true
+    },
+    {
+      "path": "icons/apple-touch-icon.png",
+      "status": 200,
+      "bytes": 54507,
+      "localSha256": "8e6ff06119f0b7425ab6cf995f0202c6f3ea7b08e4ea3da393c416ec2059c14f",
+      "liveSha256": "8e6ff06119f0b7425ab6cf995f0202c6f3ea7b08e4ea3da393c416ec2059c14f",
+      "match": true
+    },
+    {
+      "path": "icons/icon-192.png",
+      "status": 200,
+      "bytes": 61281,
+      "localSha256": "45822e07306ca16b5ab2edae74d9a8f0251495672a82da4daa9f725b127cbb34",
+      "liveSha256": "45822e07306ca16b5ab2edae74d9a8f0251495672a82da4daa9f725b127cbb34",
+      "match": true
+    },
+    {
+      "path": "icons/icon-512.png",
+      "status": 200,
+      "bytes": 450970,
+      "localSha256": "329fc92eca6456ce904f7b1dddb5b1eafc09a96eb1c55823da0a40b26969deba",
+      "liveSha256": "329fc92eca6456ce904f7b1dddb5b1eafc09a96eb1c55823da0a40b26969deba",
+      "match": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 60208,
+      "localSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "liveSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "match": true
+    },
+    {
+      "path": "manifest.json",
+      "status": 200,
+      "bytes": 520,
+      "localSha256": "a2ece6f1cb4933775081540e587da5f3961b0a8c6ab2f1865f4c44806ee24582",
+      "liveSha256": "a2ece6f1cb4933775081540e587da5f3961b0a8c6ab2f1865f4c44806ee24582",
+      "match": true
+    },
+    {
+      "path": "offline.html",
+      "status": 200,
+      "bytes": 706,
+      "localSha256": "66160527251e0edad4ab314485ee53be5fb6c13702abcd4e3fb21ef9a3e79e91",
+      "liveSha256": "66160527251e0edad4ab314485ee53be5fb6c13702abcd4e3fb21ef9a3e79e91",
+      "match": true
+    },
+    {
+      "path": "privacy/index.html",
+      "status": 200,
+      "bytes": 60208,
+      "localSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "liveSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "match": true
+    },
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "bytes": 92,
+      "localSha256": "350c0ff86a09823f190e78eb903b97378435b8438c853c5b8228d3702d84e9a5",
+      "liveSha256": "350c0ff86a09823f190e78eb903b97378435b8438c853c5b8228d3702d84e9a5",
+      "match": true
+    },
+    {
+      "path": "sample-table.svg",
+      "status": 200,
+      "bytes": 1583,
+      "localSha256": "f9a257776b0f30970532b6db1f5cd13b720236166acab15e2d132b2ad602e4e1",
+      "liveSha256": "f9a257776b0f30970532b6db1f5cd13b720236166acab15e2d132b2ad602e4e1",
+      "match": true
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "bytes": 416,
+      "localSha256": "ce7fd5b6b01c038f2114795ff14bbddb12a6bae54c01f4022a6248b93d1fd4bc",
+      "liveSha256": "ce7fd5b6b01c038f2114795ff14bbddb12a6bae54c01f4022a6248b93d1fd4bc",
+      "match": true
+    },
+    {
+      "path": "sw.js",
+      "status": 200,
+      "bytes": 1823,
+      "localSha256": "c77fffd55cac04ebd0643517683bd912a9ca3d62f7b20fd2592f263b1baa7674",
+      "liveSha256": "c77fffd55cac04ebd0643517683bd912a9ca3d62f7b20fd2592f263b1baa7674",
+      "match": true
+    },
+    {
+      "path": "terms/index.html",
+      "status": 200,
+      "bytes": 60208,
+      "localSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "liveSha256": "de94d93c05b497710ecb109e6f1d65ecbaa83d537d3c2fd65934e78191036ef0",
+      "match": true
+    }
+  ]
+}

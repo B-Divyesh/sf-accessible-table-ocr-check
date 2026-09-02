@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-09-02T01:28:33.404Z",
+  "endpointStatus": 303,
+  "hostedCheckout": "https://checkout.dodopayments.com",
+  "checkoutStatus": 200,
+  "product": true,
+  "priceUsd12": true,
+  "oneTime": true
+}

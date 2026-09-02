@@ -1,0 +1,62 @@
+[
+  {
+    "viewport": "desktop",
+    "route": "/",
+    "price": true,
+    "merchant": true,
+    "refund": true,
+    "violations": 0,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/privacy/",
+    "price": true,
+    "merchant": true,
+    "refund": true,
+    "violations": 0,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/terms/",
+    "price": true,
+    "merchant": true,
+    "refund": true,
+    "violations": 0,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/",
+    "price": true,
+    "merchant": true,
+    "refund": true,
+    "violations": 0,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/privacy/",
+    "price": true,
+    "merchant": true,
+    "refund": true,
+    "violations": 0,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/terms/",
+    "price": true,
+    "merchant": true,
+    "refund": true,
+    "violations": 0,
+    "overflow": 0,
+    "errors": []
+  }
+]

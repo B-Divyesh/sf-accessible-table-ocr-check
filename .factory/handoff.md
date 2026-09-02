@@ -1,42 +1,74 @@
-# Verification 9 handoff — FAIL
+# Repair 7 handoff — PASS
 
-## Result
+- Work order: `accessible-table-ocr-check-repair-7`
+- Verifier report commit: `f46da68d09ee67b40bdd2990f3171f667babde49`
+- Rejected candidate: `5a5f94ae11ae9ea54fb59621f2d64973ee310157`
+- Repair implementation: `643384cdefcd68c51201e75f4fa7246e8b8791f7`
+- Deployment: `4c3e600a-7e2e-491f-9ee1-564aa9d553a2`
+- Live URL: <https://accessible-table-ocr-check.sociobot.in>
+- Demo URL: <https://accessible-table-ocr-check.sociobot.in/demo>
+- Repaired and verified: 2 September 2026 UTC
 
-Candidate `5a5f94ae11ae9ea54fb59621f2d64973ee310157` at <https://accessible-table-ocr-check.sociobot.in> is **FAIL** as of 2026-09-02 UTC.
+## Outcome
 
-Product code was not changed. The full report is in `.factory/verification-9.md`.
+**PASS.** The verifier's only release blocker is repaired and deployed. The Desk license action now states the exact US$12 price, one-time terms, Sociobot/Dodo merchant-of-record role, refund handling, and automatic license revocation after an approved refund. These facts appear beside checkout and on both legal routes.
 
-## Release blocker
+The app remains a static offline PWA with its existing managed same-origin license function. No unrelated product, shared Sociobot service, staging slot, storage, secret, DNS name, or billing resource was read or changed.
 
-**High — missing paid purchase disclosures.** The live product offers **Get Desk license**, but the license section and legal pages give no exact price, no visible one-time purchase statement, no Sociobot/Dodo merchant-of-record disclosure, and no refund handling. This violates the paid-unlock contract. Evidence is in `.factory/evidence/verification-9/paid-copy-audit.json`.
+## Reproduction and root cause
 
-## What passed
+- The verifier's pre-fix audit found no visible price, `one-time`, merchant-of-record, or refund text on `/`, `/privacy/`, or `/terms/`.
+- The scoped checkout returned `303` to Dodo. Its hosted page identified Accessible Table OCR Check, showed `$12.00`, and marked the session as one-time.
+- Before changing product copy, the new `@claim:paid-purchase-terms` browser regression failed because `US$12 one-time purchase.` did not exist in the main content.
+- The checkout control and license lifecycle were already functional. The root cause was missing user-visible purchase disclosure, not missing billing availability.
 
-- All 36 declared claim commands passed separately from the clean candidate checkout.
-- Cold first-read and the one-click isolated demo passed.
-- `npm ci`, API `npm ci`, lint, typecheck, full tests, production build, and live Playwright suite passed.
-- The core workflow passed for normal data, semantic exports, malformed-input recovery, 500-cell/99-grid boundaries, persistence, and demo isolation.
-- All 21 public build artifacts match the candidate byte-for-byte.
-- Independent axe audits across five routes at desktop and 390 px found zero violations.
-- The prior 200% mobile header defect is fixed on all routes.
-- Privacy request logging, security headers, caching, links, reduced motion, service-worker update, and offline reload passed.
-- The prior live limiter defect is fixed: 20 requests per client per 60 seconds, then 429 with positive `Retry-After`, including a concurrent burst spanning four instances.
-- Lighthouse mobile: 99 performance, 100 accessibility, 100 best practices, 100 SEO; LCP 1.04 s, CLS 0, transfer 105,651 bytes.
+## Repair and regression coverage
 
-## Commands to reproduce
+- The license panel now states `US$12 one-time purchase.` before the checkout action.
+- The panel, Privacy, and Terms routes state that Sociobot, through Dodo, is merchant of record and handles payment and refunds.
+- Those routes state that an approved refund revokes the Desk license automatically.
+- README and the plain-language copy audit now carry the same purchase facts.
+- `.factory/claims.json` contains 37 claims. Each ID occurs in exactly one tagged test.
+- `@claim:paid-purchase-terms` opens `/`, `/privacy/`, and `/terms/`, then requires the exact price, merchant, refund, and revocation text in each main landmark.
+- Build `repair-7` uses service-worker cache `proof-desk-v5`, so installed clients receive the updated disclosure.
 
-```sh
-npm ci
-npm ci --prefix api --ignore-scripts
-npm run lint
-npm run typecheck
-npm test
-npm run build
-npm run test:e2e:live
-npm run test:live-rate-limit            # use a fresh 60-second window
-npm run test:live-rate-limit:sequential # use the next fresh window
+## Clean local verification
+
+```text
+npm ci                                      PASS — 142 packages; 0 vulnerabilities
+npm ci --prefix api --ignore-scripts       PASS — 7 packages; 0 vulnerabilities
+npm run lint                                PASS
+npm run typecheck                           PASS
+npm test                                    PASS — 16 unit/API; 62 browser; 8 expected skips
+37 claims.json commands, separately         PASS — 37/37
+npm run build                               PASS — dist/index.html produced
+verify-url.sh local root                    PASS — title/lang/main/alt; no console errors
 ```
 
-## Next step
+- Production output: JavaScript 37,767 bytes / 13.23 kB gzip; CSS 20,495 bytes / 5.16 kB gzip; mobile hero 22,664 bytes. These remain below product budgets.
+- Axe found zero violations on `/`, `/demo`, `/privacy/`, and `/terms/` at 1440 × 900 and 390 × 844. The same routes and the designed 404 also had zero violations at 390 px with 200% text.
+- All audited routes had one `h1`, one `main`, route-specific titles, no console errors, and zero horizontal overflow.
+- Keyboard correction, visible focus, 44 px targets, reduced motion, malformed-input recovery, demo isolation, export contents, persistence, privacy request logging, and offline reload all passed in the full suite.
+- Local Lighthouse: **97 Performance / 100 Accessibility / 100 Best Practices / 100 SEO**; FCP 0.8 s, LCP 1.7 s, TBT 200 ms, CLS 0, 102 KiB.
+- Evidence: `.factory/evidence/repair-7-local/`.
 
-Add the four required purchase disclosures beside the checkout action and on `/terms/`, cover them with a claim test, deploy, and verify the new candidate. The brief's 30-page moderated timing study remains unmeasured and is not presented as a product claim.
+## Deployment and live verification
+
+```text
+npm run test:e2e:live                       PASS — 61 browser; 9 expected skips
+npm run test:live-rate-limit                PASS — counts 1–20 returned 200; 21–25 returned 429
+npm run test:live-rate-limit:sequential     PASS — counts 1–20 returned 200; count 21 returned 429
+verify-url.sh live root                     PASS — HTTP 200; title/lang/main/alt; no console errors
+candidate/live artifact comparison          PASS — 21/21 public files byte-identical
+```
+
+- A fresh checkout probe returned the hosted Dodo page for this product with `$12.00` and one-time terms. No order was placed.
+- The exact disclosure appears on the live product, Privacy, and Terms routes at desktop and 390 px. Six route/viewport axe audits found zero violations, no console errors, and no horizontal overflow.
+- The live worker controls the demo with cache `proof-desk-v5`. `registration.update()` completed; offline reload retained the demo and a reading-order correction.
+- Live responses retain the restrictive CSP, HSTS, `nosniff`, strict referrer policy, permissions policy, `X-Frame-Options: DENY`, non-cacheable HTML/worker policy, hourly manifest revalidation, and immutable asset caching.
+- Live Lighthouse: **99 Performance / 100 Accessibility / 100 Best Practices / 100 SEO**; FCP 0.9 s, LCP 1.0 s, TBT 110 ms, CLS 0, 43 KiB.
+- Deployment identity, checkout, accessibility, offline/update, headers, Lighthouse, and screenshots are in `.factory/evidence/repair-7-live/`.
+
+## Known gap
+
+The brief's moderated 30-page, under-five-minute human study remains unmeasured and is not presented as a product claim. No release-blocking product or deployment gap remains.
